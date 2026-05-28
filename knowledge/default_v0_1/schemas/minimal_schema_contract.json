@@ -1,0 +1,51 @@
+{
+  "$schema_version": "vestibular-genbn.clean-seed.v0.1",
+  "schema_id": "minimal_schema_contract",
+  "version": "0.1.0",
+  "created": "2026-05-28",
+  "required_top_level_concepts": [
+    "disease_node_registry",
+    "global_observation_registry",
+    "global_finding_pattern_registry",
+    "candidate_set",
+    "likelihood_table",
+    "criteria_audit_rules",
+    "posterior_audit_rules",
+    "safety_action_rules"
+  ],
+  "disease_node_required_fields": [
+    "id",
+    "label",
+    "status",
+    "family",
+    "posterior_mode"
+  ],
+  "raw_observation_required_fields": [
+    "id",
+    "label",
+    "group",
+    "stage",
+    "value_type",
+    "states"
+  ],
+  "finding_pattern_required_fields": [
+    "id",
+    "label",
+    "rule_type",
+    "rule",
+    "components",
+    "diagnostic_evidence"
+  ],
+  "likelihood_row_required_fields": [
+    "disease_node",
+    "finding_node",
+    "p_finding_true_given_disease_true",
+    "p_finding_true_given_disease_false",
+    "evidence_quality",
+    "use"
+  ],
+  "posterior_policy": {
+    "independent_binary_multilabel": true,
+    "normalization_across_diseases_allowed": false
+  }
+}

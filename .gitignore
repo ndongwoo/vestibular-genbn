@@ -1,0 +1,51 @@
+# Python bytecode/cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Packaging/build artifacts
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Test/coverage/cache
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Virtual environments
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated example outputs
+examples/output_core_v0_1.csv
+
+# Logs
+*.log
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Optional local scratch files
+scratch/
+tmp/
+temp/
+
+# For paper only
+scripts/

@@ -1,0 +1,45 @@
+{
+  "$schema_version": "vestibular-genbn.clean-seed.v0.1",
+  "layer_id": "safety_action_rules",
+  "version": "0.1.0",
+  "created": "2026-05-28",
+  "posterior_evidence": false,
+  "rules": [
+    {
+      "id": "urgent_central_evaluation_flag",
+      "label": "Urgent central evaluation flag",
+      "rule_type": "safety_overlay",
+      "rule": "central_neurologic_red_flag_pattern == yes OR posterior(dx_central_positional_mimic) >= safety_threshold OR posterior(dx_central_vestibular_disorder) >= safety_threshold",
+      "outputs": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "posterior_evidence": false
+    },
+    {
+      "id": "mri_iac_cpa_consideration_flag",
+      "label": "MRI IAC/CPA consideration flag",
+      "rule_type": "action_overlay",
+      "rule": "retrocochlear_cpa_iac_pattern == yes OR posterior(dx_cpa_iac_retrocochlear_mimic) >= moderate_posterior OR posterior(dx_cpa_iac_tumor) >= moderate_posterior",
+      "outputs": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "posterior_evidence": false
+    },
+    {
+      "id": "canalith_repositioning_candidate_flag",
+      "label": "Canalith repositioning candidate flag",
+      "rule_type": "action_overlay",
+      "rule": "posterior(dx_pc_bppv) >= moderate_posterior OR posterior(dx_hc_bppv) >= moderate_posterior",
+      "outputs": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "posterior_evidence": false
+    }
+  ]
+}

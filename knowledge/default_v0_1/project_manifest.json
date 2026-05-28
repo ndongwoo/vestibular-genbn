@@ -1,0 +1,39 @@
+{
+  "$schema_version": "vestibular-genbn.clean-seed.v0.1",
+  "project_id": "vestibular_genbn_clean_seed",
+  "display_name": "Vestibular Generative Bayesian Network Clean Seed",
+  "version": "0.1.0",
+  "created": "2026-05-28",
+  "status": "research_seed_not_clinically_validated",
+  "intended_use": {
+    "scope": "research, education, and model development",
+    "clinical_use": "not intended for diagnosis, treatment, triage, or patient management without validation and governance"
+  },
+  "core_design": {
+    "model_family": "generative_diagnostic_bayesian_network",
+    "graph_direction": "disease_or_syndrome -> finding_pattern -> raw_observation",
+    "posterior_mode": "independent_binary_multilabel",
+    "posterior_sum_constraint": "not_normalized_to_one",
+    "candidate_set_meaning": "list of disease nodes evaluated in a given run; not a closed mutually exclusive universe",
+    "disease_nodes_are_mutually_exclusive_by_default": false,
+    "priors": "external_runtime_required",
+    "missingness": "unknown or not performed evidence is ignored unless an explicit missingness node is modeled",
+    "alternative_diagnosis_policy": "not represented as raw evidence; handled after posterior calculation by audit rules"
+  },
+  "active_base_modules": [
+    "modules/bppv_core_module.json",
+    "modules/meniere_core_module.json"
+  ],
+  "core_files": {
+    "disease_registry": "registries/disease_node_registry.json",
+    "observation_registry": "registries/global_observation_registry.json",
+    "finding_pattern_registry": "registries/global_finding_pattern_registry.json",
+    "candidate_set_config": "config/candidate_set_core_v0_1.json",
+    "inference_policy": "config/inference_policy_v0_1.json",
+    "likelihood_table": "likelihoods/bppv_meniere_seed_likelihoods.json",
+    "criteria_audit_rules": "audits/criteria_audit_rules.json",
+    "posterior_audit_rules": "audits/posterior_audit_rules.json",
+    "safety_action_rules": "audits/safety_action_rules.json",
+    "future_placeholder_module": "modules/future_placeholder_disease_module.json"
+  }
+}

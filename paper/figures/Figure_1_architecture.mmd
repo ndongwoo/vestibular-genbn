@@ -1,0 +1,33 @@
+flowchart TB
+ subgraph K["Disease-specific knowledge (modular JSON files)"]
+        K1["Observation registry"]
+        K2["Finding-pattern registry"]
+        K3["Disease-node registry"]
+        K4["Likelihood tables"]
+        K5["Audit / action rules"]
+        K6["Disease modules<br>(e.g., BPPV, Ménière, future placeholders)"]
+  end
+ subgraph P["Reusable Python components"]
+        P1["Knowledge loading"]
+        P2["Validation"]
+        P3["Derived-node evaluation"]
+        P4["Generative inference"]
+        P5["Visualization"]
+        P6["Sensitivity analysis"]
+  end
+ subgraph I["Case input"]
+        I1["Raw observations / patient data"]
+  end
+ subgraph O["Outputs"]
+        O1["Independent disease posteriors"]
+        O2["Audit / action overlay"]
+        O3["Figures / graphs / reports"]
+  end
+    K --> P1 & P4
+    P1 --> P2
+    P2 --> P3
+    I1 --> P3
+    P3 --> P4
+    P4 --> O1 & O2 & P5 & P6
+    P5 --> O3
+    P6 --> O3

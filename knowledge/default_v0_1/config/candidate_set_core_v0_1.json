@@ -1,0 +1,45 @@
+{
+  "$schema_version": "vestibular-genbn.clean-seed.v0.1",
+  "candidate_set_id": "vestibular_core_clean_seed_v0_1",
+  "version": "0.1.0",
+  "created": "2026-05-28",
+  "posterior_mode": "independent_binary_multilabel",
+  "normalization_across_disease_nodes": false,
+  "meaning": "Disease nodes to evaluate independently in this run.",
+  "active_disease_nodes": [
+    "dx_pc_bppv",
+    "dx_hc_bppv",
+    "dx_subjective_or_possible_bppv",
+    "dx_meniere_disease",
+    "dx_early_probable_meniere_spectrum",
+    "dx_cochlear_hydrops_auditory_only",
+    "dx_recurrent_low_tone_snhl",
+    "dx_central_positional_mimic",
+    "dx_cpa_iac_retrocochlear_mimic"
+  ],
+  "placeholder_disease_nodes": [
+    "dx_acute_unilateral_vestibulopathy",
+    "dx_chronic_unilateral_vestibulopathy",
+    "dx_vestibular_migraine",
+    "dx_functional_vestibular_disorder",
+    "dx_persistent_postural_perceptual_dizziness",
+    "dx_mal_de_debarquement_syndrome",
+    "dx_vestibular_paroxysmia",
+    "dx_presbyvestibulopathy",
+    "dx_bilateral_vestibulopathy",
+    "dx_hemodynamic_dizziness",
+    "dx_ototoxic_dizziness",
+    "dx_medication_induced_dizziness_non_ototoxic",
+    "dx_cpa_iac_tumor",
+    "dx_central_vestibular_disorder",
+    "dx_superior_canal_dehiscence_syndrome",
+    "dx_labyrinthitis",
+    "dx_other_unmodeled_vestibular_disorder"
+  ],
+  "default_reporting": {
+    "sort_by": "independent_posterior_descending",
+    "report_overlap": true,
+    "report_safety_overlay": true,
+    "do_not_report_as_probability_simplex": true
+  }
+}

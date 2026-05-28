@@ -1,0 +1,330 @@
+{
+  "$schema_version": "vestibular-genbn.clean-seed.v0.1",
+  "registry_id": "global_finding_pattern_registry",
+  "version": "0.1.0",
+  "created": "2026-05-28",
+  "design_policy": {
+    "shared_patterns": true,
+    "disease_specific_interpretation": "Each disease node may assign its own likelihood to the same finding pattern.",
+    "criteria_patterns": "Criteria phenotype patterns may exist but should not force disease posterior to 1.0."
+  },
+  "finding_patterns": [
+    {
+      "id": "typical_positional_history",
+      "label": "Typical brief recurrent positional vertigo history",
+      "domain": "bppv",
+      "stage": "history",
+      "rule_type": "structured_and",
+      "rule": "hx_recurrent_positional_vertigo == yes AND hx_positional_trigger == yes AND hx_brief_seconds_to_minutes == yes",
+      "components": [
+        "hx_recurrent_positional_vertigo",
+        "hx_positional_trigger",
+        "hx_brief_seconds_to_minutes"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "typical_pc_bppv_pattern",
+      "label": "Typical posterior-canal BPPV positional nystagmus pattern",
+      "domain": "bppv",
+      "stage": "bedside_exam",
+      "rule_type": "structured_and",
+      "rule": "(dix_hallpike_performed == yes) AND (dh_torsional_upbeating_nystagmus == yes OR side_lying_test_positive == yes) AND dh_duration_less_than_60s != no",
+      "components": [
+        "dix_hallpike_performed",
+        "dh_torsional_upbeating_nystagmus",
+        "side_lying_test_positive",
+        "dh_latency_present",
+        "dh_duration_less_than_60s",
+        "dh_fatigability_present",
+        "dh_reversal_on_sitting"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "typical_hc_bppv_geotropic_pattern",
+      "label": "Typical horizontal-canal geotropic BPPV pattern",
+      "domain": "bppv",
+      "stage": "bedside_exam",
+      "rule_type": "structured_and",
+      "rule": "supine_roll_test_performed == yes AND roll_test_horizontal_nystagmus == yes AND horizontal_geotropic_nystagmus == yes",
+      "components": [
+        "supine_roll_test_performed",
+        "roll_test_horizontal_nystagmus",
+        "horizontal_geotropic_nystagmus",
+        "roll_test_side_asymmetry_localizes_side"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "typical_hc_bppv_apogeotropic_pattern",
+      "label": "Typical horizontal-canal apogeotropic BPPV pattern",
+      "domain": "bppv",
+      "stage": "bedside_exam",
+      "rule_type": "structured_and",
+      "rule": "supine_roll_test_performed == yes AND roll_test_horizontal_nystagmus == yes AND horizontal_apogeotropic_nystagmus == yes",
+      "components": [
+        "supine_roll_test_performed",
+        "roll_test_horizontal_nystagmus",
+        "horizontal_apogeotropic_nystagmus",
+        "roll_test_side_asymmetry_localizes_side"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "subjective_bppv_pattern",
+      "label": "Subjective BPPV pattern without visible canal-specific nystagmus",
+      "domain": "bppv",
+      "stage": "bedside_exam",
+      "rule_type": "structured_and_not",
+      "rule": "typical_positional_history == yes AND positional_vertigo_without_visible_nystagmus == yes",
+      "components": [
+        "typical_positional_history",
+        "positional_vertigo_without_visible_nystagmus"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "central_positional_red_flag_pattern",
+      "label": "Central positional nystagmus red-flag pattern",
+      "domain": "central_safety",
+      "stage": "bedside_exam",
+      "rule_type": "weighted_or",
+      "rule": "pure_downbeat_positional_nystagmus == yes OR pure_torsional_or_pure_vertical_positional_nystagmus == yes OR positional_nystagmus_persistent_gt_60s == yes OR positional_nystagmus_no_latency == yes OR positional_nystagmus_no_fatigability == yes",
+      "components": [
+        "pure_downbeat_positional_nystagmus",
+        "pure_torsional_or_pure_vertical_positional_nystagmus",
+        "positional_nystagmus_persistent_gt_60s",
+        "positional_nystagmus_no_latency",
+        "positional_nystagmus_no_fatigability"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true,
+      "safety_relevant": true
+    },
+    {
+      "id": "md_episodic_vertigo_core",
+      "label": "MD-compatible recurrent spontaneous episodic vertigo core",
+      "domain": "meniere_spectrum",
+      "stage": "history",
+      "rule_type": "structured_and_not",
+      "rule": "hx_two_or_more_vertigo_episodes == yes AND hx_spontaneous_vertigo == yes AND hx_brief_seconds_to_minutes != yes AND orthostatic_trigger_or_syncope != yes",
+      "components": [
+        "hx_two_or_more_vertigo_episodes",
+        "hx_spontaneous_vertigo",
+        "hx_brief_seconds_to_minutes",
+        "orthostatic_trigger_or_syncope"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "md_definite_duration_pattern",
+      "label": "MD definite duration pattern",
+      "domain": "meniere_spectrum",
+      "stage": "history",
+      "rule_type": "duration_rule",
+      "rule": "hx_episode_duration_20min_to_12h == yes",
+      "components": [
+        "hx_episode_duration_20min_to_12h"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "md_probable_duration_pattern",
+      "label": "MD probable duration pattern",
+      "domain": "meniere_spectrum",
+      "stage": "history",
+      "rule_type": "duration_rule",
+      "rule": "hx_episode_duration_20min_to_24h == yes OR hx_episode_duration_20min_to_12h == yes OR hx_recurrent_episodic_dizziness_without_clear_vertigo == yes",
+      "components": [
+        "hx_episode_duration_20min_to_24h",
+        "hx_episode_duration_20min_to_12h",
+        "hx_recurrent_episodic_dizziness_without_clear_vertigo"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "md_fluctuating_aural_symptom_pattern",
+      "label": "Ipsilateral fluctuating aural symptom pattern",
+      "domain": "meniere_spectrum",
+      "stage": "history",
+      "rule_type": "structured_or_with_laterality",
+      "rule": "(hx_fluctuating_hearing_loss == yes OR hx_tinnitus_affected_ear == yes OR hx_aural_fullness_affected_ear == yes) AND affected_ear_laterality in {left,right} AND hx_aural_symptom_temporal_relation_to_vertigo != no",
+      "components": [
+        "hx_fluctuating_hearing_loss",
+        "hx_tinnitus_affected_ear",
+        "hx_aural_fullness_affected_ear",
+        "hx_aural_symptom_temporal_relation_to_vertigo",
+        "affected_ear_laterality",
+        "bilateral_aural_symptoms_or_hearing_loss_early"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "md_audiometric_low_mid_snhl_pattern",
+      "label": "Audiometric low- to mid-frequency SNHL pattern in the affected ear",
+      "domain": "meniere_spectrum",
+      "stage": "audiometry",
+      "rule_type": "audiometry_rule",
+      "rule": "audiometry_performed == yes AND audiometry_low_mid_freq_snhl_affected_ear == yes",
+      "components": [
+        "audiometry_performed",
+        "audiometry_low_mid_freq_snhl_affected_ear",
+        "audiometry_fluctuating_thresholds",
+        "audiometry_asymmetric_snhl"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "md_auditory_episodic_pattern",
+      "label": "MD-compatible auditory-episodic syndrome",
+      "domain": "meniere_spectrum",
+      "stage": "history",
+      "rule_type": "structured_and",
+      "rule": "md_episodic_vertigo_core == yes AND md_probable_duration_pattern == yes AND md_fluctuating_aural_symptom_pattern == yes",
+      "components": [
+        "md_episodic_vertigo_core",
+        "md_probable_duration_pattern",
+        "md_fluctuating_aural_symptom_pattern"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "md_definite_phenotype_pattern",
+      "label": "Definite-MD phenotype pattern before posterior audit",
+      "domain": "meniere_spectrum",
+      "stage": "audiometry",
+      "rule_type": "structured_and",
+      "rule": "md_episodic_vertigo_core == yes AND md_definite_duration_pattern == yes AND md_fluctuating_aural_symptom_pattern == yes AND md_audiometric_low_mid_snhl_pattern == yes",
+      "components": [
+        "md_episodic_vertigo_core",
+        "md_definite_duration_pattern",
+        "md_fluctuating_aural_symptom_pattern",
+        "md_audiometric_low_mid_snhl_pattern"
+      ],
+      "diagnostic_evidence": false,
+      "replace_components_at_diagnostic_layer": false,
+      "notes": "Phenotype pattern for criteria audit; not used as primary posterior evidence by default."
+    },
+    {
+      "id": "md_probable_phenotype_pattern",
+      "label": "Probable-MD phenotype pattern before posterior audit",
+      "domain": "meniere_spectrum",
+      "stage": "history",
+      "rule_type": "structured_and",
+      "rule": "md_episodic_vertigo_core == yes AND md_probable_duration_pattern == yes AND md_fluctuating_aural_symptom_pattern == yes",
+      "components": [
+        "md_episodic_vertigo_core",
+        "md_probable_duration_pattern",
+        "md_fluctuating_aural_symptom_pattern"
+      ],
+      "diagnostic_evidence": false,
+      "replace_components_at_diagnostic_layer": false,
+      "notes": "Phenotype pattern for criteria audit; not used as primary posterior evidence by default."
+    },
+    {
+      "id": "cochlear_hydrops_pattern",
+      "label": "Auditory-only fluctuating low-frequency SNHL pattern",
+      "domain": "meniere_spectrum",
+      "stage": "audiometry",
+      "rule_type": "structured_and_not",
+      "rule": "md_fluctuating_aural_symptom_pattern == yes AND md_audiometric_low_mid_snhl_pattern == yes AND md_episodic_vertigo_core != yes",
+      "components": [
+        "md_fluctuating_aural_symptom_pattern",
+        "md_audiometric_low_mid_snhl_pattern",
+        "md_episodic_vertigo_core"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "recurrent_low_tone_snhl_pattern",
+      "label": "Recurrent low-tone SNHL pattern",
+      "domain": "meniere_spectrum",
+      "stage": "audiometry",
+      "rule_type": "audiometry_history_rule",
+      "rule": "audiometry_low_mid_freq_snhl_affected_ear == yes AND audiometry_fluctuating_thresholds == yes AND md_episodic_vertigo_core != yes",
+      "components": [
+        "audiometry_low_mid_freq_snhl_affected_ear",
+        "audiometry_fluctuating_thresholds",
+        "md_episodic_vertigo_core"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "caloric_vhit_dissociation_pattern",
+      "label": "Caloric-vHIT dissociation supportive pattern",
+      "domain": "meniere_spectrum",
+      "stage": "vestibular_lab",
+      "rule_type": "supportive_test_rule",
+      "rule": "vhit_caloric_dissociation_md_like == yes OR (caloric_unilateral_weakness == yes AND vhit_normal_or_preserved == yes)",
+      "components": [
+        "vhit_caloric_dissociation_md_like",
+        "caloric_unilateral_weakness",
+        "vhit_normal_or_preserved"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "supportive_md_hydrops_test_pattern",
+      "label": "Composite supportive MD hydrops/lab/imaging pattern",
+      "domain": "meniere_spectrum",
+      "stage": "vestibular_lab",
+      "rule_type": "supportive_or",
+      "rule": "caloric_vhit_dissociation_pattern == yes OR vemp_abnormality == yes OR ecochg_abnormality == yes OR delayed_gad_mri_eh_ple == yes",
+      "components": [
+        "caloric_vhit_dissociation_pattern",
+        "vemp_abnormality",
+        "ecochg_abnormality",
+        "delayed_gad_mri_eh_ple"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "central_neurologic_red_flag_pattern",
+      "label": "Central neurologic or vascular red-flag pattern",
+      "domain": "central_safety",
+      "stage": "history_exam",
+      "rule_type": "weighted_or",
+      "rule": "focal_neurologic_or_cerebellar_signs == yes OR new_severe_headache_or_neck_pain == yes OR severe_truncal_ataxia_or_unable_to_stand == yes OR vascular_risk_or_crescendo_attacks == yes",
+      "components": [
+        "focal_neurologic_or_cerebellar_signs",
+        "new_severe_headache_or_neck_pain",
+        "severe_truncal_ataxia_or_unable_to_stand",
+        "vascular_risk_or_crescendo_attacks"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true,
+      "safety_relevant": true
+    },
+    {
+      "id": "retrocochlear_cpa_iac_pattern",
+      "label": "CPA/IAC or retrocochlear concern pattern",
+      "domain": "retrocochlear",
+      "stage": "audiometry_imaging",
+      "rule_type": "imaging_or_audiometry_rule",
+      "rule": "mri_iac_cpa_retrocochlear_lesion == yes OR audiometry_asymmetric_snhl == yes",
+      "components": [
+        "mri_iac_cpa_retrocochlear_lesion",
+        "audiometry_asymmetric_snhl"
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true,
+      "safety_relevant": true
+    }
+  ]
+}

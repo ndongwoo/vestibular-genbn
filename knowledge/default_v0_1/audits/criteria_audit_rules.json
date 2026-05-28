@@ -1,0 +1,62 @@
+{
+  "$schema_version": "vestibular-genbn.clean-seed.v0.1",
+  "layer_id": "criteria_audit_rules",
+  "version": "0.1.0",
+  "created": "2026-05-28",
+  "posterior_evidence": false,
+  "rules": [
+    {
+      "id": "barany_pc_bppv_criteria_support",
+      "label": "Posterior-canal BPPV criteria support",
+      "applies_to": "dx_pc_bppv",
+      "rule_type": "criteria_support",
+      "rule": "typical_pc_bppv_pattern == yes",
+      "outputs": [
+        "met",
+        "not_met",
+        "unknown"
+      ],
+      "posterior_evidence": false
+    },
+    {
+      "id": "barany_hc_bppv_criteria_support",
+      "label": "Horizontal-canal BPPV criteria support",
+      "applies_to": "dx_hc_bppv",
+      "rule_type": "criteria_support",
+      "rule": "typical_hc_bppv_geotropic_pattern == yes OR typical_hc_bppv_apogeotropic_pattern == yes",
+      "outputs": [
+        "met",
+        "not_met",
+        "unknown"
+      ],
+      "posterior_evidence": false
+    },
+    {
+      "id": "md_definite_criteria_support",
+      "label": "Definite Ménière disease criteria support",
+      "applies_to": "dx_meniere_disease",
+      "rule_type": "criteria_support_with_posterior_audit",
+      "rule": "md_definite_phenotype_pattern == yes AND not_better_explained_by_other_dx_for_meniere != no",
+      "outputs": [
+        "met",
+        "probable",
+        "not_met",
+        "unknown"
+      ],
+      "posterior_evidence": false
+    },
+    {
+      "id": "md_probable_criteria_support",
+      "label": "Probable Ménière disease criteria support",
+      "applies_to": "dx_early_probable_meniere_spectrum",
+      "rule_type": "criteria_support_with_posterior_audit",
+      "rule": "md_probable_phenotype_pattern == yes AND not_better_explained_by_other_dx_for_meniere != no",
+      "outputs": [
+        "met",
+        "not_met",
+        "unknown"
+      ],
+      "posterior_evidence": false
+    }
+  ]
+}

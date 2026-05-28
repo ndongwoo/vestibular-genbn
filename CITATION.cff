@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "Vestibular-GenBN: A modular generative Bayesian network framework for vestibular diagnostic knowledge engineering"
+version: "0.1.0"
+#doi: "10.5281/zenodo.TBD"
+date-released: "2026-05-28"
+authors:
+  - family-names: "Nam"
+    given-names: "Dong Woo"
+    email: "ndongwoo@gmail.com"
+license: "Apache-2.0"
+repository-code: "https://github.com/ndongwoo/vestibular-genbn"
+keywords:
+  - Bayesian network
+  - vestibular disorders
+  - dizziness
+  - clinical decision support
+  - knowledge engineering

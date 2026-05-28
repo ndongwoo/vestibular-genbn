@@ -1,0 +1,286 @@
+{
+  "$schema_version": "vestibular-genbn.clean-seed.v0.1",
+  "module_id": "future_placeholder_disease_module",
+  "display_name": "Future vestibular disease placeholders",
+  "version": "0.1.0",
+  "created": "2026-05-28",
+  "status": "placeholder_seed",
+  "posterior_mode": "independent_binary",
+  "placeholder_disease_nodes": [
+    {
+      "id": "dx_acute_unilateral_vestibulopathy",
+      "label": "Acute unilateral vestibulopathy",
+      "short_name": "AUVP",
+      "status": "placeholder",
+      "family": "acute_unilateral_vestibulopathy",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "planned_evidence_domains": [
+        "acute vestibular syndrome",
+        "spontaneous nystagmus",
+        "head impulse",
+        "neurologic red flags",
+        "vestibular laboratory tests"
+      ]
+    },
+    {
+      "id": "dx_chronic_unilateral_vestibulopathy",
+      "label": "Chronic unilateral vestibulopathy",
+      "short_name": "CUVP",
+      "status": "placeholder",
+      "family": "chronic_unilateral_vestibulopathy",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "planned_evidence_domains": [
+        "chronic imbalance",
+        "unilateral vestibular hypofunction",
+        "vHIT",
+        "caloric test",
+        "dynamic visual acuity"
+      ]
+    },
+    {
+      "id": "dx_vestibular_migraine",
+      "label": "Vestibular migraine",
+      "short_name": "VM",
+      "status": "placeholder",
+      "family": "migraine",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "planned_evidence_domains": [
+        "migraine history",
+        "photophobia",
+        "phonophobia",
+        "visual aura",
+        "attack duration",
+        "overlap with MD"
+      ]
+    },
+    {
+      "id": "dx_functional_vestibular_disorder",
+      "label": "Functional vestibular disorder",
+      "short_name": "FVD",
+      "status": "placeholder",
+      "family": "functional_dizziness",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "planned_evidence_domains": [
+        "persistent dizziness",
+        "visual motion sensitivity",
+        "postural symptoms",
+        "anxiety context",
+        "exclusion of structural vestibular deficit"
+      ]
+    },
+    {
+      "id": "dx_persistent_postural_perceptual_dizziness",
+      "label": "Persistent postural-perceptual dizziness",
+      "short_name": "PPPD/PVP",
+      "status": "placeholder",
+      "family": "functional_dizziness",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "planned_evidence_domains": [
+        "persistent non-spinning dizziness",
+        "upright posture",
+        "active/passive motion",
+        "complex visual stimuli",
+        "precipitating vestibular event"
+      ]
+    },
+    {
+      "id": "dx_mal_de_debarquement_syndrome",
+      "label": "Mal de débarquement syndrome",
+      "short_name": "MdDS",
+      "status": "placeholder",
+      "family": "mal_de_debarquement",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "planned_evidence_domains": [
+        "rocking/swaying",
+        "motion trigger",
+        "relief with passive motion",
+        "persistent duration",
+        "migraine overlap"
+      ]
+    },
+    {
+      "id": "dx_vestibular_paroxysmia",
+      "label": "Vestibular paroxysmia",
+      "short_name": "VP",
+      "status": "placeholder",
+      "family": "vestibular_paroxysmia",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "planned_evidence_domains": [
+        "brief recurrent stereotyped attacks",
+        "attack frequency",
+        "triggered by head position",
+        "response to carbamazepine/oxcarbazepine",
+        "neurovascular compression"
+      ]
+    },
+    {
+      "id": "dx_presbyvestibulopathy",
+      "label": "Presbyvestibulopathy",
+      "short_name": "PVP",
+      "status": "placeholder",
+      "family": "age_related_vestibular_loss",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "planned_evidence_domains": [
+        "age",
+        "chronic imbalance",
+        "mild bilateral vestibular hypofunction",
+        "gait instability",
+        "falls"
+      ]
+    },
+    {
+      "id": "dx_bilateral_vestibulopathy",
+      "label": "Bilateral vestibulopathy",
+      "short_name": "BVP",
+      "status": "placeholder",
+      "family": "bilateral_vestibular_loss",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "planned_evidence_domains": [
+        "oscillopsia",
+        "worse in darkness/uneven ground",
+        "bilateral vHIT",
+        "bilateral caloric weakness",
+        "rotary chair"
+      ]
+    },
+    {
+      "id": "dx_hemodynamic_dizziness",
+      "label": "Hemodynamic or orthostatic dizziness",
+      "short_name": "Hemodynamic dizziness",
+      "status": "placeholder",
+      "family": "hemodynamic",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "planned_evidence_domains": [
+        "orthostatic trigger",
+        "presyncope",
+        "syncope",
+        "blood pressure drop",
+        "arrhythmia context"
+      ]
+    },
+    {
+      "id": "dx_ototoxic_dizziness",
+      "label": "Ototoxic dizziness or vestibulotoxicity",
+      "short_name": "Ototoxic dizziness",
+      "status": "placeholder",
+      "family": "toxic_or_medication_related",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "planned_evidence_domains": [
+        "aminoglycoside exposure",
+        "chemotherapy",
+        "bilateral vestibular loss",
+        "hearing change",
+        "temporal exposure relationship"
+      ]
+    },
+    {
+      "id": "dx_medication_induced_dizziness_non_ototoxic",
+      "label": "Medication-induced dizziness beyond ototoxicity",
+      "short_name": "Medication-induced dizziness",
+      "status": "placeholder",
+      "family": "toxic_or_medication_related",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "planned_evidence_domains": [
+        "sedatives",
+        "antihypertensives",
+        "polypharmacy",
+        "temporal medication relationship",
+        "dose changes"
+      ]
+    },
+    {
+      "id": "dx_cpa_iac_tumor",
+      "label": "CPA/IAC tumor",
+      "short_name": "CPA/IAC tumor",
+      "status": "placeholder",
+      "family": "retrocochlear",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "safety_relevant": true,
+      "planned_evidence_domains": [
+        "asymmetric SNHL",
+        "unilateral tinnitus",
+        "vestibular schwannoma imaging",
+        "facial/trigeminal symptoms"
+      ]
+    },
+    {
+      "id": "dx_central_vestibular_disorder",
+      "label": "Central vestibular disorder",
+      "short_name": "Central disorder",
+      "status": "placeholder",
+      "family": "central",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "safety_relevant": true,
+      "planned_evidence_domains": [
+        "central ocular motor signs",
+        "ataxia",
+        "stroke risk",
+        "new headache/neck pain",
+        "MRI findings"
+      ]
+    },
+    {
+      "id": "dx_superior_canal_dehiscence_syndrome",
+      "label": "Superior canal dehiscence syndrome",
+      "short_name": "SCDS",
+      "status": "placeholder",
+      "family": "third_window",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "planned_evidence_domains": [
+        "sound/pressure-induced vertigo",
+        "autophony",
+        "conductive hyperacusis",
+        "VEMP",
+        "temporal bone CT"
+      ]
+    },
+    {
+      "id": "dx_labyrinthitis",
+      "label": "Labyrinthitis",
+      "short_name": "Labyrinthitis",
+      "status": "placeholder",
+      "family": "infectious_inner_ear",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "planned_evidence_domains": [
+        "acute vertigo",
+        "acute hearing loss",
+        "infection context",
+        "otitis media",
+        "MRI/lab findings"
+      ]
+    },
+    {
+      "id": "dx_other_unmodeled_vestibular_disorder",
+      "label": "Other or not-yet-modeled vestibular disorder",
+      "short_name": "Other/unmodeled",
+      "status": "placeholder",
+      "family": "open_world_uncertainty",
+      "mutually_exclusive": false,
+      "posterior_mode": "independent_binary",
+      "role": "open_world_uncertainty_indicator",
+      "planned_evidence_domains": [
+        "poor fit to modeled disorders",
+        "multiple weak nonspecific findings",
+        "substantial missingness",
+        "rare vestibular disorders"
+      ]
+    }
+  ],
+  "extension_rule": "To activate a placeholder disease, add raw observations if needed, add shared finding patterns, add disease-specific likelihood rows, and include the disease node in active_disease_nodes."
+}

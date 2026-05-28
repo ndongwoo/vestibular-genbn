@@ -1,0 +1,61 @@
+{
+  "$schema_version": "vestibular-genbn.clean-seed.v0.1",
+  "layer_id": "posterior_audit_rules",
+  "version": "0.1.0",
+  "created": "2026-05-28",
+  "posterior_evidence": false,
+  "design_policy": {
+    "computed_after_independent_posteriors": true,
+    "does_not_change_posteriors": true,
+    "purpose": "interpret coactivation, overlap, conflict, and criteria 'not better explained' clauses"
+  },
+  "threshold_defaults": {
+    "high_posterior": 0.65,
+    "moderate_posterior": 0.4,
+    "competing_explanation_threshold": 0.5,
+    "safety_threshold": 0.25
+  },
+  "rules": [
+    {
+      "id": "not_better_explained_by_other_dx_for_meniere",
+      "label": "Not better explained by another disorder for Ménière criteria audit",
+      "rule_type": "independent_posterior_comparison",
+      "index_disease_family": "meniere_spectrum",
+      "competing_disease_nodes": "all_active_nodes_excluding_index_family",
+      "rule": "no competing disease posterior >= competing_explanation_threshold AND no safety-relevant competing disease posterior >= safety_threshold",
+      "outputs": [
+        "yes",
+        "no",
+        "uncertain"
+      ],
+      "posterior_evidence": false
+    },
+    {
+      "id": "not_better_explained_by_other_dx_for_bppv",
+      "label": "Not better explained by another disorder for BPPV criteria audit",
+      "rule_type": "independent_posterior_comparison",
+      "index_disease_family": "bppv",
+      "competing_disease_nodes": "all_active_nodes_excluding_index_family",
+      "rule": "no competing disease posterior >= competing_explanation_threshold AND no safety-relevant competing disease posterior >= safety_threshold",
+      "outputs": [
+        "yes",
+        "no",
+        "uncertain"
+      ],
+      "posterior_evidence": false
+    },
+    {
+      "id": "possible_md_vm_overlap_future",
+      "label": "Possible MD-VM overlap marker",
+      "rule_type": "coactivation_marker",
+      "rule": "posterior(dx_meniere_disease OR dx_early_probable_meniere_spectrum) >= moderate_posterior AND posterior(dx_vestibular_migraine) >= moderate_posterior",
+      "outputs": [
+        "yes",
+        "no",
+        "not_evaluable"
+      ],
+      "posterior_evidence": false,
+      "status": "placeholder_until_vm_likelihoods_added"
+    }
+  ]
+}

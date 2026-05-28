@@ -1,0 +1,40 @@
+flowchart TB
+ subgraph D["Disease nodes"]
+        B1["PC-BPPV"]
+        B2["HC-BPPV"]
+        M1["Ménière disease"]
+        M2["Early / probable MD"]
+        C1["Central mimic"]
+        F0["Future disease nodes"]
+  end
+ subgraph E["Observable evidence"]
+        E1["Symptoms<br>timing / triggers / duration"]
+        E2["Bedside findings<br>positional nystagmus / red flags"]
+        E3["Audiometry<br>low-frequency SNHL / asymmetry"]
+        E4["Vestibular tests<br>caloric / vHIT / VEMP"]
+        E5["Imaging<br>hydrops / CPA-IAC lesion"]
+  end
+ subgraph P["Derived clinical features"]
+        P1["BPPV positional pattern"]
+        P2["MD auditory-episodic pattern"]
+        P3["Central red-flag pattern"]
+        P4["Retrocochlear pattern"]
+  end
+ subgraph I["Inference output"]
+        I1["Observed evidence<br>yes / no / unknown"]
+        I2["One-vs-rest posterior update"]
+        I3["Independent disease probabilities"]
+        I4["Audit / safety overlay"]
+  end
+    D --> E
+    E1 --> P1 & P2
+    E2 --> P1 & P3
+    E3 --> P2
+    E5 --> P4
+    P1 --> I1
+    P2 --> I1
+    P3 --> I1
+    P4 --> I1
+    I1 --> I2
+    I2 --> I3
+    I3 --> I4

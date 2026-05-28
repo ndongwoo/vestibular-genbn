@@ -1,0 +1,265 @@
+{
+  "$schema_version": "vestibular-genbn.clean-seed.v0.1",
+  "table_id": "bppv_meniere_seed_likelihoods",
+  "version": "0.1.0",
+  "created": "2026-05-28",
+  "posterior_mode": "independent_binary_multilabel",
+  "normalization_across_disease_nodes": false,
+  "parameterization": "tabular_bernoulli_likelihood_seed",
+  "likelihood_rows": [
+    {
+      "disease_node": "dx_pc_bppv",
+      "finding_node": "typical_positional_history",
+      "time_slice": "initial_diagnostic",
+      "p_finding_true_given_disease_true": 0.82,
+      "p_finding_true_given_disease_false": 0.18,
+      "evidence_quality": "expert_seed",
+      "use": "use_directly",
+      "notes": "History supports BPPV but is not canal-specific."
+    },
+    {
+      "disease_node": "dx_pc_bppv",
+      "finding_node": "typical_pc_bppv_pattern",
+      "time_slice": "bedside_exam",
+      "p_finding_true_given_disease_true": 0.88,
+      "p_finding_true_given_disease_false": 0.04,
+      "evidence_quality": "guideline_informed_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_pc_bppv",
+      "finding_node": "subjective_bppv_pattern",
+      "time_slice": "bedside_exam",
+      "p_finding_true_given_disease_true": 0.36,
+      "p_finding_true_given_disease_false": 0.1,
+      "evidence_quality": "expert_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_pc_bppv",
+      "finding_node": "central_positional_red_flag_pattern",
+      "time_slice": "bedside_exam",
+      "p_finding_true_given_disease_true": 0.03,
+      "p_finding_true_given_disease_false": 0.12,
+      "evidence_quality": "expert_seed",
+      "use": "negative_or_conflict_evidence"
+    },
+    {
+      "disease_node": "dx_hc_bppv",
+      "finding_node": "typical_positional_history",
+      "time_slice": "initial_diagnostic",
+      "p_finding_true_given_disease_true": 0.8,
+      "p_finding_true_given_disease_false": 0.18,
+      "evidence_quality": "expert_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_hc_bppv",
+      "finding_node": "typical_hc_bppv_geotropic_pattern",
+      "time_slice": "bedside_exam",
+      "p_finding_true_given_disease_true": 0.72,
+      "p_finding_true_given_disease_false": 0.04,
+      "evidence_quality": "guideline_informed_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_hc_bppv",
+      "finding_node": "typical_hc_bppv_apogeotropic_pattern",
+      "time_slice": "bedside_exam",
+      "p_finding_true_given_disease_true": 0.52,
+      "p_finding_true_given_disease_false": 0.04,
+      "evidence_quality": "guideline_informed_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_hc_bppv",
+      "finding_node": "central_positional_red_flag_pattern",
+      "time_slice": "bedside_exam",
+      "p_finding_true_given_disease_true": 0.03,
+      "p_finding_true_given_disease_false": 0.12,
+      "evidence_quality": "expert_seed",
+      "use": "negative_or_conflict_evidence"
+    },
+    {
+      "disease_node": "dx_subjective_or_possible_bppv",
+      "finding_node": "typical_positional_history",
+      "time_slice": "initial_diagnostic",
+      "p_finding_true_given_disease_true": 0.78,
+      "p_finding_true_given_disease_false": 0.18,
+      "evidence_quality": "expert_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_subjective_or_possible_bppv",
+      "finding_node": "subjective_bppv_pattern",
+      "time_slice": "bedside_exam",
+      "p_finding_true_given_disease_true": 0.58,
+      "p_finding_true_given_disease_false": 0.15,
+      "evidence_quality": "expert_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_central_positional_mimic",
+      "finding_node": "central_positional_red_flag_pattern",
+      "time_slice": "bedside_exam",
+      "p_finding_true_given_disease_true": 0.62,
+      "p_finding_true_given_disease_false": 0.05,
+      "evidence_quality": "expert_seed",
+      "use": "direct_plus_safety_overlay"
+    },
+    {
+      "disease_node": "dx_central_positional_mimic",
+      "finding_node": "typical_pc_bppv_pattern",
+      "time_slice": "bedside_exam",
+      "p_finding_true_given_disease_true": 0.04,
+      "p_finding_true_given_disease_false": 0.18,
+      "evidence_quality": "expert_seed",
+      "use": "negative_or_conflict_evidence"
+    },
+    {
+      "disease_node": "dx_central_positional_mimic",
+      "finding_node": "typical_hc_bppv_geotropic_pattern",
+      "time_slice": "bedside_exam",
+      "p_finding_true_given_disease_true": 0.05,
+      "p_finding_true_given_disease_false": 0.15,
+      "evidence_quality": "expert_seed",
+      "use": "negative_or_conflict_evidence"
+    },
+    {
+      "disease_node": "dx_meniere_disease",
+      "finding_node": "md_episodic_vertigo_core",
+      "time_slice": "initial_diagnostic",
+      "p_finding_true_given_disease_true": 0.85,
+      "p_finding_true_given_disease_false": 0.18,
+      "evidence_quality": "guideline_informed_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_meniere_disease",
+      "finding_node": "md_definite_duration_pattern",
+      "time_slice": "initial_diagnostic",
+      "p_finding_true_given_disease_true": 0.78,
+      "p_finding_true_given_disease_false": 0.2,
+      "evidence_quality": "guideline_informed_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_meniere_disease",
+      "finding_node": "md_fluctuating_aural_symptom_pattern",
+      "time_slice": "initial_diagnostic",
+      "p_finding_true_given_disease_true": 0.75,
+      "p_finding_true_given_disease_false": 0.22,
+      "evidence_quality": "guideline_informed_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_meniere_disease",
+      "finding_node": "md_audiometric_low_mid_snhl_pattern",
+      "time_slice": "audiometry_confirmatory",
+      "p_finding_true_given_disease_true": 0.8,
+      "p_finding_true_given_disease_false": 0.12,
+      "evidence_quality": "guideline_informed_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_meniere_disease",
+      "finding_node": "md_auditory_episodic_pattern",
+      "time_slice": "initial_diagnostic",
+      "p_finding_true_given_disease_true": 0.67,
+      "p_finding_true_given_disease_false": 0.14,
+      "evidence_quality": "expert_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_meniere_disease",
+      "finding_node": "caloric_vhit_dissociation_pattern",
+      "time_slice": "followup_supportive",
+      "p_finding_true_given_disease_true": 0.59,
+      "p_finding_true_given_disease_false": 0.17,
+      "evidence_quality": "literature_informed_seed",
+      "use": "supportive_followup"
+    },
+    {
+      "disease_node": "dx_meniere_disease",
+      "finding_node": "supportive_md_hydrops_test_pattern",
+      "time_slice": "followup_supportive",
+      "p_finding_true_given_disease_true": 0.62,
+      "p_finding_true_given_disease_false": 0.12,
+      "evidence_quality": "literature_informed_seed",
+      "use": "supportive_followup"
+    },
+    {
+      "disease_node": "dx_early_probable_meniere_spectrum",
+      "finding_node": "md_episodic_vertigo_core",
+      "time_slice": "initial_diagnostic",
+      "p_finding_true_given_disease_true": 0.7,
+      "p_finding_true_given_disease_false": 0.2,
+      "evidence_quality": "expert_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_early_probable_meniere_spectrum",
+      "finding_node": "md_probable_duration_pattern",
+      "time_slice": "initial_diagnostic",
+      "p_finding_true_given_disease_true": 0.76,
+      "p_finding_true_given_disease_false": 0.24,
+      "evidence_quality": "guideline_informed_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_early_probable_meniere_spectrum",
+      "finding_node": "md_fluctuating_aural_symptom_pattern",
+      "time_slice": "initial_diagnostic",
+      "p_finding_true_given_disease_true": 0.62,
+      "p_finding_true_given_disease_false": 0.22,
+      "evidence_quality": "expert_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_early_probable_meniere_spectrum",
+      "finding_node": "md_audiometric_low_mid_snhl_pattern",
+      "time_slice": "audiometry_confirmatory",
+      "p_finding_true_given_disease_true": 0.45,
+      "p_finding_true_given_disease_false": 0.12,
+      "evidence_quality": "expert_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_cochlear_hydrops_auditory_only",
+      "finding_node": "cochlear_hydrops_pattern",
+      "time_slice": "audiometry_confirmatory",
+      "p_finding_true_given_disease_true": 0.74,
+      "p_finding_true_given_disease_false": 0.11,
+      "evidence_quality": "expert_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_recurrent_low_tone_snhl",
+      "finding_node": "recurrent_low_tone_snhl_pattern",
+      "time_slice": "audiometry_confirmatory",
+      "p_finding_true_given_disease_true": 0.72,
+      "p_finding_true_given_disease_false": 0.15,
+      "evidence_quality": "expert_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_cpa_iac_retrocochlear_mimic",
+      "finding_node": "retrocochlear_cpa_iac_pattern",
+      "time_slice": "imaging_or_exclusion",
+      "p_finding_true_given_disease_true": 0.65,
+      "p_finding_true_given_disease_false": 0.06,
+      "evidence_quality": "expert_seed",
+      "use": "direct_plus_action_overlay"
+    },
+    {
+      "disease_node": "dx_central_positional_mimic",
+      "finding_node": "central_neurologic_red_flag_pattern",
+      "time_slice": "initial_diagnostic",
+      "p_finding_true_given_disease_true": 0.55,
+      "p_finding_true_given_disease_false": 0.06,
+      "evidence_quality": "expert_seed",
+      "use": "direct_plus_safety_overlay"
+    }
+  ],
+  "calibration_note": "Seed parameters require empirical calibration before clinical use."
+}

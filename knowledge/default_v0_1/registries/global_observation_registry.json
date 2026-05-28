@@ -1,0 +1,785 @@
+{
+  "$schema_version": "vestibular-genbn.clean-seed.v0.1",
+  "registry_id": "global_observation_registry",
+  "version": "0.1.0",
+  "created": "2026-05-28",
+  "design_policy": {
+    "single_source_of_truth": true,
+    "observation_reuse": "Raw observations should be shared across disease modules whenever possible.",
+    "unknown_handling": "unknown is not equivalent to no"
+  },
+  "raw_observation_nodes": [
+    {
+      "id": "hx_recurrent_vertigo_or_dizziness",
+      "label": "Recurrent vertigo or dizziness episodes",
+      "group": "episode_history",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "hx_two_or_more_vertigo_episodes",
+      "label": "At least two episodes of vertigo or dizziness",
+      "group": "episode_history",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "hx_spontaneous_vertigo",
+      "label": "Spontaneous vertigo attacks not primarily positional or orthostatic",
+      "group": "episode_history",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "hx_brief_seconds_to_minutes",
+      "label": "Brief attacks lasting seconds to minutes",
+      "group": "episode_history",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "hx_positional_trigger",
+      "label": "Vertigo or dizziness triggered by head position change relative to gravity",
+      "group": "episode_history",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "hx_recurrent_positional_vertigo",
+      "label": "Recurrent positional vertigo",
+      "group": "episode_history",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "hx_episode_duration_20min_to_12h",
+      "label": "Episode duration 20 minutes to 12 hours",
+      "group": "episode_duration",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "hx_episode_duration_20min_to_24h",
+      "label": "Episode duration 20 minutes to 24 hours",
+      "group": "episode_duration",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "hx_recurrent_episodic_dizziness_without_clear_vertigo",
+      "label": "Recurrent episodic dizziness without clear spinning vertigo",
+      "group": "episode_history",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "hx_continuous_vertigo_hours_days",
+      "label": "Continuous vertigo lasting hours to days rather than brief positional attacks",
+      "group": "episode_history",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "orthostatic_trigger_or_syncope",
+      "label": "Orthostatic trigger, presyncope, syncope, or loss of consciousness",
+      "group": "hemodynamic_screen",
+      "stage": "history_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "dix_hallpike_performed",
+      "label": "Dix-Hallpike test performed",
+      "group": "positional_testing",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "dh_torsional_upbeating_nystagmus",
+      "label": "Torsional upbeating nystagmus on Dix-Hallpike",
+      "group": "positional_testing",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "dh_reversal_on_sitting",
+      "label": "Nystagmus reverses when returning to sitting after Dix-Hallpike",
+      "group": "positional_testing",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "dh_latency_present",
+      "label": "Latency before positional nystagmus onset",
+      "group": "positional_testing",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "dh_duration_less_than_60s",
+      "label": "Dix-Hallpike nystagmus duration less than 60 seconds",
+      "group": "positional_testing",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "dh_fatigability_present",
+      "label": "Fatigability on repeated Dix-Hallpike testing",
+      "group": "positional_testing",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "side_lying_test_positive",
+      "label": "Side-lying test positive for posterior-canal BPPV pattern",
+      "group": "positional_testing",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "supine_roll_test_performed",
+      "label": "Supine roll test performed",
+      "group": "positional_testing",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "roll_test_horizontal_nystagmus",
+      "label": "Horizontal nystagmus on supine roll test",
+      "group": "positional_testing",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "horizontal_geotropic_nystagmus",
+      "label": "Geotropic horizontal nystagmus on roll test",
+      "group": "positional_testing",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "horizontal_apogeotropic_nystagmus",
+      "label": "Apogeotropic horizontal nystagmus on roll test",
+      "group": "positional_testing",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "roll_test_side_asymmetry_localizes_side",
+      "label": "Roll-test intensity asymmetry localizes the affected side",
+      "group": "positional_testing",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "positional_vertigo_without_visible_nystagmus",
+      "label": "Positional vertigo without visible positional nystagmus",
+      "group": "positional_testing",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "positional_nystagmus_persistent_gt_60s",
+      "label": "Positional nystagmus persistent for more than 60 seconds",
+      "group": "central_positional_screen",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "pure_downbeat_positional_nystagmus",
+      "label": "Pure downbeat positional nystagmus",
+      "group": "central_positional_screen",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "pure_torsional_or_pure_vertical_positional_nystagmus",
+      "label": "Pure torsional or pure vertical positional nystagmus",
+      "group": "central_positional_screen",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "positional_nystagmus_no_fatigability",
+      "label": "Positional nystagmus without fatigability",
+      "group": "central_positional_screen",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "positional_nystagmus_no_latency",
+      "label": "Positional nystagmus without latency",
+      "group": "central_positional_screen",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "hx_fluctuating_hearing_loss",
+      "label": "Fluctuating hearing loss in the affected ear",
+      "group": "aural_symptoms",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "hx_tinnitus_affected_ear",
+      "label": "Tinnitus in the affected ear",
+      "group": "aural_symptoms",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "hx_aural_fullness_affected_ear",
+      "label": "Aural fullness in the affected ear",
+      "group": "aural_symptoms",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "hx_aural_symptom_temporal_relation_to_vertigo",
+      "label": "Aural symptoms occur before, during, or after vertigo episodes",
+      "group": "aural_symptoms",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "affected_ear_laterality",
+      "label": "Affected ear laterality for auditory symptoms",
+      "group": "aural_symptoms",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "left",
+        "right",
+        "bilateral",
+        "undetermined",
+        "unknown"
+      ]
+    },
+    {
+      "id": "bilateral_aural_symptoms_or_hearing_loss_early",
+      "label": "Early bilateral aural symptoms or bilateral hearing loss",
+      "group": "aural_symptoms",
+      "stage": "history_audiometry",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "audiometry_performed",
+      "label": "Pure-tone audiometry performed",
+      "group": "audiometry",
+      "stage": "audiometry",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "audiometry_low_mid_freq_snhl_affected_ear",
+      "label": "Audiometrically documented low- to mid-frequency SNHL in the affected ear",
+      "group": "audiometry",
+      "stage": "audiometry",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "audiometry_fluctuating_thresholds",
+      "label": "Documented fluctuation in hearing thresholds over time",
+      "group": "audiometry",
+      "stage": "audiometry",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "audiometry_asymmetric_snhl",
+      "label": "Asymmetric sensorineural hearing loss",
+      "group": "audiometry",
+      "stage": "audiometry",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "audiometry_single_normal_audiogram",
+      "label": "Single normal audiogram in an MD-like presentation",
+      "group": "audiometry",
+      "stage": "audiometry",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "audiometry_flat_or_high_frequency_snhl_pattern",
+      "label": "Flat or high-frequency SNHL pattern",
+      "group": "audiometry",
+      "stage": "audiometry",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "caloric_unilateral_weakness",
+      "label": "Unilateral caloric weakness",
+      "group": "vestibular_lab",
+      "stage": "vestibular_lab",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "vhit_normal_or_preserved",
+      "label": "Normal or relatively preserved vHIT",
+      "group": "vestibular_lab",
+      "stage": "vestibular_lab",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "vhit_caloric_dissociation_md_like",
+      "label": "Reduced caloric response with relatively preserved vHIT",
+      "group": "vestibular_lab",
+      "stage": "vestibular_lab",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "vemp_abnormality",
+      "label": "Abnormal VEMP compatible with endolymphatic hydrops or vestibular dysfunction",
+      "group": "vestibular_lab",
+      "stage": "vestibular_lab",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "ecochg_abnormality",
+      "label": "Abnormal electrocochleography compatible with endolymphatic hydrops",
+      "group": "audiovestibular_lab",
+      "stage": "vestibular_lab",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "delayed_gad_mri_eh_ple",
+      "label": "Delayed-gadolinium inner-ear MRI showing endolymphatic hydrops plus increased perilymphatic enhancement",
+      "group": "imaging",
+      "stage": "imaging",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "mri_iac_cpa_retrocochlear_lesion",
+      "label": "MRI evidence of IAC/CPA/retrocochlear lesion",
+      "group": "imaging",
+      "stage": "imaging",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "migraine_history",
+      "label": "History of migraine",
+      "group": "migraine_screen",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "migraine_features_during_vestibular_episodes",
+      "label": "Migraine features during vestibular episodes",
+      "group": "migraine_screen",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "photophobia_or_phonophobia",
+      "label": "Photophobia or phonophobia during vestibular episodes",
+      "group": "migraine_screen",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "visual_aura",
+      "label": "Visual aura during vestibular episodes",
+      "group": "migraine_screen",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "focal_neurologic_or_cerebellar_signs",
+      "label": "Focal neurologic or cerebellar signs",
+      "group": "central_safety",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "new_severe_headache_or_neck_pain",
+      "label": "New severe headache or neck pain",
+      "group": "central_safety",
+      "stage": "history_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "severe_truncal_ataxia_or_unable_to_stand",
+      "label": "Severe truncal ataxia or inability to stand unaided",
+      "group": "central_safety",
+      "stage": "bedside_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "vascular_risk_or_crescendo_attacks",
+      "label": "Recent crescendo attacks or substantial vascular risk context",
+      "group": "central_safety",
+      "stage": "history_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "third_window_symptoms_or_conductive_mimic",
+      "label": "Sound/pressure-induced vestibular symptoms or conductive/mixed third-window mimic evidence",
+      "group": "third_window_screen",
+      "stage": "history_audiometry",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "acute_infectious_inner_ear_context",
+      "label": "Acute infectious inner-ear or middle-ear context",
+      "group": "infectious_screen",
+      "stage": "history_exam",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "autoimmune_or_known_inner_ear_cause",
+      "label": "Known autoimmune, traumatic, genetic, or other inner-ear cause better explaining symptoms",
+      "group": "exclusion_screen",
+      "stage": "history_lab",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "ototoxic_exposure",
+      "label": "Exposure to vestibulotoxic or ototoxic medication",
+      "group": "medication_exposure",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "non_ototoxic_dizziness_medication_exposure",
+      "label": "Medication exposure or dose change plausibly causing dizziness without direct ototoxicity",
+      "group": "medication_exposure",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "polypharmacy_or_sedating_medications",
+      "label": "Polypharmacy or sedating medications relevant to dizziness",
+      "group": "medication_exposure",
+      "stage": "history",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    {
+      "id": "response_to_canalith_repositioning",
+      "label": "Symptomatic improvement after canalith repositioning maneuver",
+      "group": "followup_response",
+      "stage": "followup",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "not_yet_observed",
+        "unknown"
+      ]
+    },
+    {
+      "id": "followup_response_to_md_therapy",
+      "label": "Symptomatic improvement after MD-directed therapy at follow-up",
+      "group": "followup_response",
+      "stage": "followup",
+      "value_type": "categorical",
+      "states": [
+        "yes",
+        "no",
+        "not_yet_observed",
+        "unknown"
+      ]
+    }
+  ]
+}

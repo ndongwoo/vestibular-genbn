@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vestibular-genbn"
+version = "0.1.0"
+description = "A modular generative Bayesian network framework for vestibular diagnostic knowledge engineering"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [
+  {name = "Dong Woo Nam", email = "ndongwoo@gmail.com"}
+]
+keywords = [
+  "Bayesian network",
+  "vestibular disorders",
+  "dizziness",
+  "clinical decision support",
+  "knowledge engineering"
+]
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "pydantic>=2.5",
+  "jsonschema>=4.19",
+  "networkx>=3.1",
+  "matplotlib>=3.7",
+  "click>=8.1",
+  "rich>=13.0",
+  "pyyaml>=6.0"
+]
+
+[project.optional-dependencies]
+app = ["streamlit>=1.32", "plotly>=5.18"]
+dev = ["pytest>=7.0", "pytest-cov", "ruff", "black", "mypy", "jupyter"]
+
+[project.scripts]
+vestibular-genbn = "vestibular_genbn.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+vestibular_genbn = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true

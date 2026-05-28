@@ -1,0 +1,10 @@
+{
+  "id": "dx_new_disease",
+  "label": "New disease",
+  "short_name": "NEW",
+  "status": "placeholder",
+  "family": "new_family",
+  "mutually_exclusive": false,
+  "posterior_mode": "independent_binary",
+  "planned_evidence_domains": []
+}

@@ -1,0 +1,9 @@
+{
+  "disease_node": "dx_new_disease",
+  "finding_node": "new_finding_pattern",
+  "time_slice": "initial_diagnostic",
+  "p_finding_true_given_disease_true": 0.7,
+  "p_finding_true_given_disease_false": 0.2,
+  "evidence_quality": "expert_seed",
+  "use": "use_directly"
+}

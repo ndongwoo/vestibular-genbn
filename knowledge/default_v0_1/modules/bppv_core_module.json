@@ -1,0 +1,49 @@
+{
+  "$schema_version": "vestibular-genbn.clean-seed.v0.1",
+  "module_id": "bppv_core_module",
+  "display_name": "BPPV core module",
+  "version": "0.1.0",
+  "created": "2026-05-28",
+  "status": "active_base_seed",
+  "posterior_mode": "independent_binary",
+  "disease_nodes": [
+    "dx_pc_bppv",
+    "dx_hc_bppv",
+    "dx_subjective_or_possible_bppv",
+    "dx_central_positional_mimic"
+  ],
+  "primary_raw_observation_nodes": [
+  "hx_recurrent_positional_vertigo",
+  "hx_positional_trigger",
+  "hx_brief_seconds_to_minutes",
+  "dix_hallpike_performed",
+  "dh_torsional_upbeating_nystagmus",
+  "dh_duration_less_than_60s",
+  "dh_latency_present",
+  "dh_fatigability_present",
+  "dh_reversal_on_sitting",
+  "side_lying_test_positive",
+  "supine_roll_test_performed",
+  "roll_test_horizontal_nystagmus",
+  "horizontal_geotropic_nystagmus",
+  "horizontal_apogeotropic_nystagmus",
+  "roll_test_side_asymmetry_localizes_side",
+  "positional_vertigo_without_visible_nystagmus"
+  ],
+  "primary_finding_patterns": [
+    "typical_positional_history",
+    "typical_pc_bppv_pattern",
+    "typical_hc_bppv_geotropic_pattern",
+    "typical_hc_bppv_apogeotropic_pattern",
+    "subjective_bppv_pattern",
+    "central_positional_red_flag_pattern"
+  ],
+  "criteria_audit_rules": [
+    "barany_pc_bppv_criteria_support",
+    "barany_hc_bppv_criteria_support"
+  ],
+  "action_rules": [
+    "canalith_repositioning_candidate_flag",
+    "urgent_central_evaluation_flag"
+  ]
+}

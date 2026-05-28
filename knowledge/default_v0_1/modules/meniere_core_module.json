@@ -1,0 +1,50 @@
+{
+  "$schema_version": "vestibular-genbn.clean-seed.v0.1",
+  "module_id": "meniere_core_module",
+  "display_name": "Ménière-spectrum core module",
+  "version": "0.1.0",
+  "created": "2026-05-28",
+  "status": "active_base_seed",
+  "posterior_mode": "independent_binary",
+  "disease_nodes": [
+    "dx_meniere_disease",
+    "dx_early_probable_meniere_spectrum",
+    "dx_cochlear_hydrops_auditory_only",
+    "dx_recurrent_low_tone_snhl",
+    "dx_cpa_iac_retrocochlear_mimic"
+  ],
+  "primary_raw_observation_nodes": [
+    "hx_two_or_more_vertigo_episodes",
+    "hx_spontaneous_vertigo",
+    "hx_episode_duration_20min_to_12h",
+    "hx_episode_duration_20min_to_24h",
+    "hx_fluctuating_hearing_loss",
+    "hx_tinnitus_affected_ear",
+    "hx_aural_fullness_affected_ear",
+    "hx_aural_symptom_temporal_relation_to_vertigo",
+    "affected_ear_laterality",
+    "audiometry_performed",
+    "audiometry_low_mid_freq_snhl_affected_ear",
+    "audiometry_fluctuating_thresholds",
+    "audiometry_asymmetric_snhl"
+  ],
+  "primary_finding_patterns": [
+    "md_episodic_vertigo_core",
+    "md_definite_duration_pattern",
+    "md_probable_duration_pattern",
+    "md_fluctuating_aural_symptom_pattern",
+    "md_audiometric_low_mid_snhl_pattern",
+    "md_auditory_episodic_pattern",
+    "cochlear_hydrops_pattern",
+    "recurrent_low_tone_snhl_pattern",
+    "retrocochlear_cpa_iac_pattern"
+  ],
+  "criteria_audit_rules": [
+    "md_definite_criteria_support",
+    "md_probable_criteria_support"
+  ],
+  "action_rules": [
+    "mri_iac_cpa_consideration_flag",
+    "urgent_central_evaluation_flag"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "new_finding_pattern",
+  "label": "New finding pattern",
+  "domain": "new_family",
+  "stage": "history",
+  "rule_type": "structured_and",
+  "rule": "raw_observation_a == yes AND raw_observation_b == yes",
+  "components": [
+    "raw_observation_a",
+    "raw_observation_b"
+  ],
+  "diagnostic_evidence": true,
+  "replace_components_at_diagnostic_layer": true
+}

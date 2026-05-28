@@ -1,0 +1,9 @@
+case_id,hx_recurrent_positional_vertigo,hx_positional_trigger,hx_brief_seconds_to_minutes,dix_hallpike_performed,dh_torsional_upbeating_nystagmus,dh_duration_less_than_60s,supine_roll_test_performed,roll_test_horizontal_nystagmus,horizontal_geotropic_nystagmus,positional_vertigo_without_visible_nystagmus,pure_downbeat_positional_nystagmus,positional_nystagmus_persistent_gt_60s,new_severe_headache_or_neck_pain,hx_two_or_more_vertigo_episodes,hx_spontaneous_vertigo,hx_episode_duration_20min_to_12h,hx_episode_duration_20min_to_24h,hx_fluctuating_hearing_loss,hx_tinnitus_affected_ear,hx_aural_fullness_affected_ear,hx_aural_symptom_temporal_relation_to_vertigo,affected_ear_laterality,audiometry_performed,audiometry_low_mid_freq_snhl_affected_ear,audiometry_asymmetric_snhl
+S01_typical_pc_bppv,yes,yes,yes,yes,yes,yes,,,,,,,,,,,,,,,,,,,
+S02_typical_hc_bppv_geotropic,yes,yes,yes,,,,yes,yes,yes,,,,,,,,,,,,,,,,
+S03_subjective_bppv,yes,yes,yes,,,,,,,yes,,,,,,,,,,,,,,,
+S04_central_positional_red_flag,yes,yes,,,,,,,,,yes,yes,yes,,,,,,,,,,,,
+S05_definite_like_meniere,,,,,,,,,,,,,,yes,yes,yes,yes,yes,yes,yes,yes,left,yes,yes,
+S06_probable_or_early_meniere,,,,,,,,,,,,,,yes,yes,,yes,,yes,yes,yes,right,,,
+S07_retrocochlear_asymmetric_snhl_flag,,,,,,,,,,,,,,,,,,,yes,,,right,yes,,yes
+S08_mixed_bppv_md_features,yes,yes,yes,yes,yes,,,,,,,,,yes,yes,,yes,,yes,,,left,,,

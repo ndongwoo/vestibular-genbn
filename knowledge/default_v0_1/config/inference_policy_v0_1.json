@@ -1,0 +1,40 @@
+{
+  "$schema_version": "vestibular-genbn.clean-seed.v0.1",
+  "policy_id": "inference_policy_v0_1",
+  "version": "0.1.0",
+  "created": "2026-05-28",
+  "posterior_mode": "independent_binary_multilabel",
+  "mathematical_policy": {
+    "for_each_disease_node": "posterior_odds_d = prior_odds_d * product(LR_e_for_d for observed evidence e)",
+    "binary_finding_lr_positive": "P(finding=true | disease=true) / P(finding=true | disease=false)",
+    "binary_finding_lr_negative": "(1 - P(finding=true | disease=true)) / (1 - P(finding=true | disease=false))",
+    "normalization_across_diseases": "never",
+    "ranking": "allowed as sorting independent disease posteriors; not a probability simplex"
+  },
+  "candidate_set_policy": {
+    "active_candidate_set": "defines which disease nodes are evaluated",
+    "adding_new_diseases": "append disease node and likelihood rows without renormalizing existing disease posteriors",
+    "overlap_allowed": true,
+    "coactivation_interpretation": "multiple high posteriors may represent overlap, comorbidity, mimicry, or insufficient discrimination"
+  },
+  "evidence_policy": {
+    "raw_observations": "patient-level clinical observations",
+    "finding_patterns": "derived evidence patterns computed from raw observations",
+    "disease_likelihoods": "one-vs-rest likelihood parameters for each disease node",
+    "criteria_audit": "deterministic or semi-deterministic criteria support labels after evidence derivation",
+    "posterior_audit": "interpretation of competing or coactivated independent posteriors",
+    "action_rules": "safety and workflow recommendations; not posterior evidence"
+  },
+  "double_counting_policy": {
+    "use_raw_and_derived_together": false,
+    "rule": "If a derived finding pattern is used as diagnostic evidence, suppress its raw components from the same disease likelihood product.",
+    "criteria_outputs_as_evidence": false,
+    "action_outputs_as_evidence": false
+  },
+  "missingness_policy": {
+    "not_performed_is_negative": false,
+    "not_documented_is_absent": false,
+    "unknown_evidence_is_ignored": true,
+    "explicit_missingness_nodes_allowed": true
+  }
+}
