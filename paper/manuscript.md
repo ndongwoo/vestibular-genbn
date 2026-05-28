@@ -308,5 +308,5 @@ During the preparation of this work and the associated software, the authors use
 
 [5] Smith AM, Katz DS, Niemeyer KE, Chue Hong N, FORCE11 Software Citation Working Group. Software citation principles. PeerJ Computer Science. 2016;2:e86. doi:10.7717/peerj-cs.86.
 
-[6] Nam D. Vestibular-GenBN: An open-source framework for modular generative Bayesian networks in vestibular diagnostic knowledge engineering. Version 0.1.1. Zenodo; 2026. doi: 10.5281/zenodo.20427725.
+[6] Nam DW. Vestibular-GenBN: An open-source framework for modular generative Bayesian networks in vestibular diagnostic knowledge engineering. Version 0.1.1. Zenodo; 2026. doi: 10.5281/zenodo.20427725.
  
