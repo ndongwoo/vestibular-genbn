@@ -1,6 +1,8 @@
 # Vestibular-GenBN
 
-Vestibular-GenBN is an open-source Python seed framework for modular generative Bayesian
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20427725.svg)](https://doi.org/10.5281/zenodo.20427725)
+
+**Vestibular-GenBN** is an open-source Python seed framework for modular generative Bayesian
 diagnostic networks in vestibular medicine.
 
 The project is designed for research, education, and transparent clinical knowledge engineering.
