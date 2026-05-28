@@ -23,8 +23,8 @@ Bayesian network; Generative model; Vestibular disorders; Dizziness; Clinical de
 
 | **Nr** | **Code  metadata description**                               | **Metadata**                                                 |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| C1     | Current code version                                         | v0.1.0                                                       |
-| C2     | Permanent link to  code/repository used for this code version | https://github.com/ndongwoo/vestibular-genbn;  archived version: archived release DOI to be added after archiving v0.1.0 |
+| C1     | Current code version                                         | v0.1.1                                                       |
+| C2     | Permanent link to  code/repository used for this code version | https://github.com/ndongwoo/vestibular-genbn; archived version: https://doi.org/ 10.5281/zenodo.20427725 |
 | C3     | Legal code license                                           | Apache License 2.0                                           |
 | C4     | Code versioning system used                                  | git                                                          |
 | C5     | Software code languages,  tools and services used            | Python 3.10+, JSON, YAML;  NumPy, pandas, Pydantic, jsonschema, NetworkX, matplotlib, Click, Rich,  PyYAML; optional Streamlit and Plotly; pytest, pytest-cov, ruff, black, mypy,  and Jupyter for development/testing; GitHub and Zenodo for version control  and archival release |
@@ -278,7 +278,7 @@ No patient-level or clinical research dataset was used in this article. Syntheti
 
 ## Code availability 
 
-Source code is available at https://github.com/ndongwoo/vestibular-genbn. An archived snapshot of the release will be made available through Zenodo before submission.
+Source code is available at https://github.com/ndongwoo/vestibular-genbn. The archived version for this release is https://doi.org/10.5281/zenodo.20427725.
 
  
 
@@ -308,6 +308,5 @@ During the preparation of this work and the associated software, the authors use
 
 [5] Smith AM, Katz DS, Niemeyer KE, Chue Hong N, FORCE11 Software Citation Working Group. Software citation principles. PeerJ Computer Science. 2016;2:e86. doi:10.7717/peerj-cs.86.
 
-[6] Nam D. Vestibular-GenBN: An open-source framework for modular generative Bayesian networks in vestibular diagnostic knowledge engineering. Version 0.1.0. Zenodo; 2026. doi: to be inserted after archiving.
-
+[6] Nam D. Vestibular-GenBN: An open-source framework for modular generative Bayesian networks in vestibular diagnostic knowledge engineering. Version 0.1.1. Zenodo; 2026. doi: 10.5281/zenodo.20427725.
  
