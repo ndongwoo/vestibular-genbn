@@ -19,10 +19,28 @@
     },
     {
       "disease_node": "dx_pc_bppv",
-      "finding_node": "typical_pc_bppv_pattern",
+      "finding_node": "pc_bppv_positional_phenotype_support_weak",
       "time_slice": "bedside_exam",
-      "p_finding_true_given_disease_true": 0.88,
+      "p_finding_true_given_disease_true": 0.65,
+      "p_finding_true_given_disease_false": 0.06,
+      "evidence_quality": "expert_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_pc_bppv",
+      "finding_node": "pc_bppv_positional_phenotype_support_moderate",
+      "time_slice": "bedside_exam",
+      "p_finding_true_given_disease_true": 0.80,
       "p_finding_true_given_disease_false": 0.04,
+      "evidence_quality": "guideline_informed_seed",
+      "use": "use_directly"
+    },
+    {
+      "disease_node": "dx_pc_bppv",
+      "finding_node": "pc_bppv_positional_phenotype_support_strong",
+      "time_slice": "bedside_exam",
+      "p_finding_true_given_disease_true": 0.90,
+      "p_finding_true_given_disease_false": 0.02,
       "evidence_quality": "guideline_informed_seed",
       "use": "use_directly"
     },

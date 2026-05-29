@@ -17,6 +17,13 @@ def validate_bundle(bundle: Any) -> None:
     disease_ids = _ids(bundle.disease_nodes)
     observation_ids = _ids(bundle.observation_nodes)
     finding_ids = _ids(bundle.finding_patterns)
+    
+    # Add level node IDs from exclusive graded support groups to finding_ids for validation
+    for finding in bundle.finding_patterns:
+        if finding.get("group_type") == "exclusive_graded_support":
+            for level in finding.get("levels", []):
+                if "node" in level:
+                    finding_ids.add(level["node"])
 
     for disease in bundle.disease_nodes:
         for field in ("id", "label", "status", "family", "posterior_mode"):

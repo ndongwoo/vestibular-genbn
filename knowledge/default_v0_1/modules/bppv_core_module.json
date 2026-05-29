@@ -32,6 +32,7 @@
   ],
   "primary_finding_patterns": [
     "typical_positional_history",
+    "pc_bppv_positional_phenotype_support",
     "typical_pc_bppv_pattern",
     "typical_hc_bppv_geotropic_pattern",
     "typical_hc_bppv_apogeotropic_pattern",

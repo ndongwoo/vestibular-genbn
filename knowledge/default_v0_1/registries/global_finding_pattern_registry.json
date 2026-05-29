@@ -325,6 +325,32 @@
       "diagnostic_evidence": true,
       "replace_components_at_diagnostic_layer": true,
       "safety_relevant": true
+    },
+    {
+      "id": "pc_bppv_positional_phenotype_support",
+      "label": "PC-BPPV positional phenotype support (graded)",
+      "domain": "bppv",
+      "stage": "bedside_exam",
+      "group_type": "exclusive_graded_support",
+      "levels": [
+        {
+          "level": "strong",
+          "node": "pc_bppv_positional_phenotype_support_strong",
+          "rule": "dh_torsional_upbeating_nystagmus == yes AND hx_positional_trigger == yes AND dh_duration_less_than_60s == yes AND (dh_latency_present == yes OR dh_fatigability_present == yes OR dh_reversal_on_sitting == yes)"
+        },
+        {
+          "level": "moderate",
+          "node": "pc_bppv_positional_phenotype_support_moderate",
+          "rule": "dh_torsional_upbeating_nystagmus == yes AND (hx_positional_trigger == yes OR dh_duration_less_than_60s == yes OR dh_latency_present == yes OR dh_fatigability_present == yes OR dh_reversal_on_sitting == yes OR side_lying_test_positive == yes)"
+        },
+        {
+          "level": "weak",
+          "node": "pc_bppv_positional_phenotype_support_weak",
+          "rule": "dh_torsional_upbeating_nystagmus == yes OR side_lying_test_positive == yes"
+        }
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
     }
   ]
 }

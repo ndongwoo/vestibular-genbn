@@ -33,7 +33,7 @@
       "id": "canalith_repositioning_candidate_flag",
       "label": "Canalith repositioning candidate flag",
       "rule_type": "action_overlay",
-      "rule": "posterior(dx_pc_bppv) >= moderate_posterior OR posterior(dx_hc_bppv) >= moderate_posterior",
+      "rule": "pc_bppv_positional_phenotype_support_moderate == yes OR pc_bppv_positional_phenotype_support_strong == yes OR posterior(dx_pc_bppv) >= moderate_posterior OR posterior(dx_hc_bppv) >= moderate_posterior",
       "outputs": [
         "yes",
         "no",
