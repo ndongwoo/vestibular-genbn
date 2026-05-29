@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it using the metadata below."
 title: "Vestibular-GenBN: A modular generative Bayesian network framework for vestibular diagnostic knowledge engineering"
 version: "0.1.2"
-doi: "10.5281/zenodo.20427725"
-date-released: "2026-05-28"
+doi: "10.5281/zenodo.20451790"
+date-released: "2026-05-30"
 authors:
   - family-names: "Nam"
     given-names: "Dong Woo"
