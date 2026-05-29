@@ -49,3 +49,6 @@ temp/
 
 # For paper only
 scripts/
+
+# qwen
+.qwen/

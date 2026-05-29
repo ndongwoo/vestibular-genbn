@@ -29,9 +29,25 @@ def validate_bundle(bundle: Any) -> None:
                 errors.append(f"raw observation missing {field}: {observation}")
 
     for finding in bundle.finding_patterns:
-        for field in ("id", "label", "rule_type", "rule", "components", "diagnostic_evidence"):
-            if field not in finding:
-                errors.append(f"finding pattern missing {field}: {finding}")
+        # Check for group-type patterns
+        group_type = finding.get("group_type")
+        if group_type == "exclusive_graded_support":
+            # For exclusive graded support groups, don't require rule field but require levels
+            for field in ("id", "label", "group_type", "levels", "diagnostic_evidence"):
+                if field not in finding:
+                    errors.append(f"finding pattern missing {field}: {finding}")
+            # Validate levels structure
+            if "levels" in finding:
+                for i, level in enumerate(finding["levels"]):
+                    required_level_fields = ("level", "node", "rule")
+                    for field in required_level_fields:
+                        if field not in level:
+                            errors.append(f"level {i} missing {field}: {level}")
+        else:
+            # Standard pattern - require rule field
+            for field in ("id", "label", "rule_type", "rule", "components", "diagnostic_evidence"):
+                if field not in finding:
+                    errors.append(f"finding pattern missing {field}: {finding}")
         for component in finding.get("components", []):
             if component not in observation_ids and component not in finding_ids:
                 errors.append(f"finding {finding.get('id')} references unknown component {component}")
