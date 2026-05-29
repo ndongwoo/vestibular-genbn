@@ -1,5 +1,5 @@
 case_id,rank,disease_node,prior,posterior,n_contributions,normalized_across_diseases,urgent_central_evaluation_flag,mri_iac_cpa_consideration_flag,canalith_repositioning_candidate_flag
-S01_typical_pc_bppv,1,dx_pc_bppv,0.1,0.9175991861648016,2,False,no,no,yes
+S01_typical_pc_bppv,1,dx_pc_bppv,0.1,0.9100998890122086,2,False,no,no,yes
 S01_typical_pc_bppv,2,dx_hc_bppv,0.1,0.3305785123966943,1,False,no,no,yes
 S01_typical_pc_bppv,3,dx_subjective_or_possible_bppv,0.1,0.3250000000000001,1,False,no,no,yes
 S01_typical_pc_bppv,4,dx_cochlear_hydrops_auditory_only,0.1,0.10000000000000003,0,False,no,no,yes
@@ -8,7 +8,7 @@ S01_typical_pc_bppv,6,dx_recurrent_low_tone_snhl,0.1,0.10000000000000003,0,False
 S01_typical_pc_bppv,7,dx_early_probable_meniere_spectrum,0.1,0.04000000000000001,1,False,no,no,yes
 S01_typical_pc_bppv,8,dx_central_positional_mimic,0.1,0.024096385542168686,1,False,no,no,yes
 S01_typical_pc_bppv,9,dx_meniere_disease,0.1,0.007738849022090899,2,False,no,no,yes
-S02_typical_hc_bppv_geotropic,1,dx_hc_bppv,0.1,0.898876404494382,2,False,no,no,yes
+S02_typical_hc_bppv_geotropic,1,dx_hc_bppv,0.1,0.9569377990430623,2,False,no,no,yes
 S02_typical_hc_bppv_geotropic,2,dx_pc_bppv,0.1,0.3360655737704919,1,False,no,no,yes
 S02_typical_hc_bppv_geotropic,3,dx_subjective_or_possible_bppv,0.1,0.3250000000000001,1,False,no,no,yes
 S02_typical_hc_bppv_geotropic,4,dx_cochlear_hydrops_auditory_only,0.1,0.10000000000000003,0,False,no,no,yes
@@ -62,12 +62,3 @@ S07_retrocochlear_asymmetric_snhl_flag,6,dx_meniere_disease,0.1,0.10000000000000
 S07_retrocochlear_asymmetric_snhl_flag,7,dx_pc_bppv,0.1,0.10000000000000003,0,False,no,yes,no
 S07_retrocochlear_asymmetric_snhl_flag,8,dx_recurrent_low_tone_snhl,0.1,0.10000000000000003,0,False,no,yes,no
 S07_retrocochlear_asymmetric_snhl_flag,9,dx_subjective_or_possible_bppv,0.1,0.10000000000000003,0,False,no,yes,no
-S08_mixed_bppv_md_features,1,dx_pc_bppv,0.1,0.3360655737704919,1,False,no,no,no
-S08_mixed_bppv_md_features,2,dx_hc_bppv,0.1,0.3305785123966943,1,False,no,no,no
-S08_mixed_bppv_md_features,3,dx_subjective_or_possible_bppv,0.1,0.3250000000000001,1,False,no,no,no
-S08_mixed_bppv_md_features,4,dx_early_probable_meniere_spectrum,0.1,0.11656441717791417,2,False,no,no,no
-S08_mixed_bppv_md_features,5,dx_central_positional_mimic,0.1,0.10000000000000003,0,False,no,no,no
-S08_mixed_bppv_md_features,6,dx_cochlear_hydrops_auditory_only,0.1,0.10000000000000003,0,False,no,no,no
-S08_mixed_bppv_md_features,7,dx_cpa_iac_retrocochlear_mimic,0.1,0.10000000000000003,0,False,no,no,no
-S08_mixed_bppv_md_features,8,dx_recurrent_low_tone_snhl,0.1,0.10000000000000003,0,False,no,no,no
-S08_mixed_bppv_md_features,9,dx_meniere_disease,0.1,0.007738849022090899,2,False,no,no,no

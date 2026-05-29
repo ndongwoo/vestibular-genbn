@@ -13,17 +13,17 @@ E-mail address: [ndongwoo@gmail.com](mailto:ndongwoo@gmail.com) (D.W. Nam).
 
 ## Abstract
 
-Vestibular-GenBN is an open-source Python framework for constructing modular generative Bayesian networks for vestibular diagnostic knowledge engineering. The software separates disease-specific clinical knowledge from reusable inference code by representing clinical knowledge as a JSON bundle containing disease-node registries, raw observation registries, derived finding-pattern definitions, likelihood tables, criteria-audit rules, safety/action rules, and disease modules. Unlike prediction-oriented diagnostic models that directly map symptoms and test results to diagnosis nodes, Vestibular-GenBN uses a generative modeling pattern in which disease states give rise to symptoms, bedside findings, audiometric findings, vestibular test results, imaging findings, and derived clinical features. Inference updates each disease node independently using observed evidence; disease posteriors are computed as one-vs-rest or multi-label probabilities and are not normalized to sum to one across candidate diagnoses. The package provides knowledge-bundle loading, validation, derived-node evaluation, posterior-odds inference, batch execution, audit/action overlays, visualization, sensitivity analysis, synthetic examples, unit tests, a command-line interface, and an optional Streamlit demonstration interface. Version 0.1.0 includes active worked examples for benign paroxysmal positional vertigo and Ménière-spectrum disorders. The package is intended for research, education, and reproducible clinical knowledge engineering, not for unvalidated clinical decision-making.
+Vestibular-GenBN is an open-source Python framework for constructing modular generative Bayesian networks for vestibular diagnostic knowledge engineering. The software separates disease-specific clinical knowledge from reusable inference code by representing disease nodes, observations, derived finding patterns, likelihood parameters, criteria-audit rules, and action overlays in JSON knowledge bundles. Unlike prediction-oriented diagnostic models, the framework uses a disease-to-finding structure and updates each candidate disease node independently as a one-vs-rest posterior, allowing overlapping or comorbid vestibular disorders to be represented without forcing probabilities to sum to one. The package provides knowledge-bundle validation, derived-node evaluation, posterior-odds inference, batch execution, visualization, sensitivity analysis, unit tests, a command-line interface, and an optional Streamlit demonstration interface. Version 0.1.2 includes worked examples for benign paroxysmal positional vertigo and Ménière-spectrum disorders. Vestibular-GenBN is intended for research, education, and reproducible clinical knowledge engineering, not for unvalidated clinical decision-making.
 
 ## Keywords 
 
-Bayesian network; Generative model; Vestibular disorders; Dizziness; Clinical decision support; Knowledge engineering
+Bayesian network; Vestibular disorders; Dizziness; Clinical decision support
 
 ## Metadata 
 
 | **Nr** | **Code  metadata description**                               | **Metadata**                                                 |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| C1     | Current code version                                         | v0.1.1                                                       |
+| C1     | Current code version                                         | v0.1.2                                                       |
 | C2     | Permanent link to  code/repository used for this code version | https://github.com/ndongwoo/vestibular-genbn; archived version: https://doi.org/ 10.5281/zenodo.20427725 |
 | C3     | Legal code license                                           | Apache License 2.0                                           |
 | C4     | Code versioning system used                                  | git                                                          |
@@ -36,14 +36,13 @@ Bayesian network; Generative model; Vestibular disorders; Dizziness; Clinical de
 
 ## 1. Motivation and significance
 
-Dizziness and vertigo diagnosis requires integration of heterogeneous clinical evidence, including symptom timing and triggers, positional nystagmus, audiometry, vestibular laboratory tests, imaging findings, neurological red flags, and longitudinal clinical context. Consensus diagnostic criteria are clinically useful, but they can be difficult to operationalize when information is incomplete, when test results are unavailable at an early visit, or when overlapping syndromes coexist. Purely data-driven diagnostic models may also be difficult to train in low-data clinical domains and may not clearly disclose how disease-specific assumptions, formal diagnostic criteria, and literature-derived evidence are being used.
+Dizziness and vertigo diagnosis requires integration of heterogeneous clinical evidence, including symptom timing and triggers, positional nystagmus, audiometry, vestibular laboratory tests, imaging findings, neurological red flags, and longitudinal clinical context [1]. Consensus diagnostic criteria are clinically useful, but they can be difficult to operationalize when information is incomplete, when test results are unavailable at an early visit, or when overlapping syndromes coexist. Purely data-driven diagnostic models may also be difficult to train in low-data clinical domains and may not clearly disclose how disease-specific assumptions, formal diagnostic criteria, and literature-derived evidence are being used.
 
-Bayesian network modeling provides a transparent framework for representing uncertainty, missing observations, conditional dependencies, and diagnostic overlap [1,2]. In many diagnostic applications, however, models are built in a prediction-oriented direction, with symptoms and test results pointing directly toward diagnosis nodes. This structure is intuitive for classification, but it can blur the distinction between disease states, observable manifestations, engineered diagnostic features, and deterministic criteria fulfillment. It may also make it difficult to incorporate disease-specific finding distributions, likelihood ratios, sensitivity/specificity estimates, false-negative test behavior, and uncertainty in the availability of clinical observations.
+Bayesian network modeling provides a transparent framework for representing uncertainty, missing observations, conditional dependencies, and diagnostic overlap [2, 3]. In many diagnostic applications, however, models are built in a prediction-oriented direction, with symptoms and test results pointing directly toward diagnosis nodes. This structure is intuitive for classification, but it can blur the distinction between disease states, observable manifestations, engineered diagnostic features, and deterministic criteria fulfillment. It may also make it difficult to incorporate disease-specific finding distributions, likelihood ratios, sensitivity/specificity estimates, false-negative test behavior, and uncertainty in the availability of clinical observations.
 
 Vestibular-GenBN was developed to provide a reusable seed framework for generative diagnostic Bayesian networks in vestibular medicine. In this design, disease nodes generate symptoms, bedside findings, audiovestibular test results, imaging findings, exclusion features, and derived clinical observations. Inference proceeds in the reverse direction: observed findings are used to update the probability of each disease node. This disease-to-finding structure is intended to support transparent literature-based parameterization, modular disease expansion, explicit handling of missing evidence, and separation between probabilistic inference and deterministic criteria audit.
 
-The initial software release is research infrastructure rather than a validated clinical decision-support system. It demonstrates how vestibular disease knowledge can be encoded in JSON files, validated, executed, visualized, tested, and subjected to sensitivity analysis using common inference code. The first active worked modules focus on representative vestibular disorders with different diagnostic structures: benign paroxysmal positional vertigo (BPPV), a positional/nystagmus-driven disorder, and Ménière-spectrum disorders, which involve episodic audio-vestibular and audiometric evidence [3,4]. Additional vestibular disorders are represented through the same extensible registry-based design and can be activated in future versions without rewriting the core inference engine.
-
+The initial software release is research infrastructure rather than a validated clinical decision-support system. It demonstrates how vestibular disease knowledge can be encoded in JSON files, validated, executed, visualized, tested, and subjected to sensitivity analysis using common inference code. The first active worked modules focus on representative vestibular disorders with different diagnostic structures: benign paroxysmal positional vertigo (BPPV), a positional/nystagmus-driven disorder, and Ménière-spectrum disorders, which involve episodic audio-vestibular and audiometric evidence. Additional vestibular disorders are represented through the same extensible registry-based design and can be activated in future versions without rewriting the core inference engine.
  
 
 ## 2. Software description
@@ -52,37 +51,23 @@ The initial software release is research infrastructure rather than a validated 
 
 Vestibular-GenBN separates disease-specific clinical knowledge from reusable inference logic. Clinical knowledge is stored as a modular JSON knowledge bundle, whereas the Python package handles bundle loading, internal-reference validation, derived-node evaluation, posterior-odds inference, batch execution, audit/action overlays, network visualization, and sensitivity analysis. The same knowledge bundle can be used through the Python API, command-line interface, tests, batch examples, documentation, and an optional Streamlit demonstration interface.
 
+The core workflow is as follows: (i) load a JSON knowledge bundle; (ii) validate disease-node, observation-node, finding-node, likelihood-row, and audit-rule references; (iii) accept a synthetic or user-defined case as raw observation values; (iv) evaluate deterministic derived finding patterns from raw observations; (v) update each disease node independently using observed evidence; and (vi) return one-vs-rest disease posteriors, ranked outputs, evidence-contribution summaries, criteria-audit results, safety/action overlays, network exports, and sensitivity-analysis results. The overall architecture and information flow are summarized in Figure 1.
+
 The framework treats candidate diseases as disease nodes to be evaluated, not as a closed mutually exclusive diagnostic universe. Accordingly, disease probabilities are computed as independent binary or multi-label posteriors and are not constrained to sum to one across candidate diagnoses. This behavior is important in vestibular medicine because overlapping syndromes, comorbid disorders, and partially observed presentations are common.
 
-**Figure 1.** Simplified architecture of Vestibular-GenBN. Disease-specific knowledge is stored in modular JSON files, whereas reusable Python components implement validation, derived-node evaluation, generative inference, visualization, and sensitivity analysis.
-
-The framework supports a graded supportive phenotype layer for representing correlated observations. In the current release, this mechanism is implemented for PC-BPPV: positional findings are aggregated into mutually exclusive weak, moderate, and strong phenotype-support nodes that serve as posterior evidence for `dx_pc_bppv`. This avoids treating correlated positional findings as independent evidence while preserving the generative disease-to-phenotype interpretation. Formal diagnostic criteria are implemented separately as deterministic audit outputs and are not used as posterior likelihood evidence.
+The framework supports a graded supportive phenotype layer for representing correlated observations. In the current release, the BPPV module implements this mechanism for both posterior-canal and horizontal-canal BPPV by aggregating canal-specific positional findings into mutually exclusive weak, moderate, and strong phenotype-support nodes. These graded support nodes serve as posterior evidence for `dx_pc_bppv` and `dx_hc_bppv`, respectively, reducing inappropriate double counting of correlated positional findings while preserving the generative disease-to-phenotype interpretation. Ménière-spectrum disorders currently retain the existing pattern-node evidence structure. Formal diagnostic criteria are implemented separately as deterministic audit outputs and are not used as posterior likelihood evidence.
 
 ## 2.2 Node taxonomy and modeling pattern
 
-The framework defines five main information layers:
+The framework uses five main registries: disease nodes, raw observation nodes, derived finding-pattern nodes, likelihood rows, and audit/action outputs. Disease nodes represent candidate disorders; raw observations represent case-level inputs such as symptoms, examination findings, audiometry, vestibular tests, imaging findings, and red flags; derived nodes aggregate clinically related observations into interpretable finding patterns; likelihood rows encode disease-specific finding distributions as P(finding | disease) and P(finding | not disease); and audit/action outputs provide criteria support labels, safety alerts, or workflow recommendations without overriding posterior inference.
 
-**1.** **Disease nodes:** latent or target disorder states, such as posterior-canal BPPV, horizontal-canal BPPV, subjective or possible BPPV, Ménière disease, early/probable Ménière-spectrum disorder, cochlear hydrops, recurrent low-tone sensorineural hearing loss, central positional mimic, and CPA/IAC retrocochlear mimic. Placeholder nodes are also registered for other vestibular disorders, such as vestibular migraine and persistent postural-perceptual dizziness, to demonstrate how additional modules can be activated without changing the inference engine.
-
-**2.** **Raw observation nodes:** patient-level observations such as symptom duration, positional triggers, nystagmus patterns, auditory symptoms, audiometric findings, vestibular laboratory results, imaging findings, medication exposures, and neurological red flags.
-
-**3.** **Derived finding-pattern nodes:** intermediate clinical constructs computed from raw observations, such as typical positional history, posterior-canal BPPV pattern, horizontal-canal BPPV pattern, Ménière-compatible auditory-episodic pattern, audiometric low/mid-frequency sensorineural hearing loss pattern, central positional red-flag pattern, and retrocochlear concern pattern. Most derived nodes are binary/unknown rule-based patterns, while the PC-BPPV module additionally demonstrates mutually exclusive weak/moderate/strong phenotype-support nodes for posterior inference.
-
-**4.** **Likelihood rows:** disease-specific estimates of finding distributions, represented as seed values for P(finding | disease) and P(finding | ¬disease). These values support one-vs-rest posterior updating and are designed to be inspectable and replaceable during future calibration.
-
-**5.** **Audit and action outputs:** criteria support labels, posterior-comparison rules, safety alerts, and workflow recommendations. These outputs interpret inference results but do not themselves force a disease posterior to one or define a disease node deterministically.
-
-The preferred modeling pattern places disease nodes upstream of clinical findings. Raw observations may activate derived finding patterns, but these derived nodes are treated as engineered observations rather than final diagnostic labels. This distinction is important because deterministic criteria fulfillment and probabilistic diagnostic inference serve different purposes. Criteria-relevant features can be represented and audited, but criteria support is not treated as synonymous with the latent disease node.
-
-For example, the BPPV module distinguishes posterior-canal and horizontal-canal BPPV as separate disease nodes because they generate different canal-specific positional findings. These findings are encoded as JSON finding-pattern rules and linked to disease-specific likelihood rows. At the reporting layer, the software can also support a broader BPPV-spectrum interpretation when either subtype is plausible. This preserves subtype-specific evidence structure while allowing clinically meaningful grouped interpretation. An example of this generative network structure is visualized in Figure 2.
+The preferred modeling pattern places disease nodes upstream of clinical findings. Raw observations may activate derived finding patterns, and these patterns are then used as evidence for one-vs-rest posterior updating. Deterministic criteria fulfillment is handled separately as an audit layer rather than being treated as synonymous with the latent disease node. This separation allows the same framework to preserve probabilistic inference, criteria-based interpretation, and safety/action recommendations as distinct outputs. An example of this generative network structure is visualized in Figure 2.
 
 **Figure 2**. Example network visualization. Disease nodes generate observable symptoms, bedside findings, audiometric findings, vestibular test results, and derived clinical features. Inference uses observed evidence to update one-vs-rest disease probabilities.
 
-Criteria-audit outputs are separated from probabilistic posterior inference. For example, Bárány-style criteria support nodes are deterministic audit outputs rather than posterior likelihood evidence. Action-oriented flags, such as canalith repositioning candidacy, may use posterior thresholds and moderate/strong PC-BPPV phenotype support but remain separate from disease posterior computation.
-
 ## 2.3 Generative diagnostic inference
 
-In a generative diagnostic network, each disease node defines the expected distribution of findings under that disease. For a disease node D and a set of observed findings F={f_1, …, F_k }, inference can be expressed conceptually as:
+In a generative diagnostic network, each disease node defines the expected distribution of findings under that disease. For a disease node D and a set of observed findings F={f_1, …, F_k}, inference can be expressed conceptually as:
 
 P(D | F) ∝ P(D) × P(F | D).
 
@@ -90,31 +75,21 @@ For executable one-vs-rest inference, Vestibular-GenBN uses a posterior-odds upd
 
 odds(D | F) = odds(D) × ∏ LR_i
 
-where each likelihood ratio compares the probability of the observed finding state under the disease with the probability of that finding state under the complement of the disease. For a binary finding f_i:
+where each likelihood ratio compares the probability of the observed finding state under the disease with the probability of that finding state under the complement of the disease [4].
 
-LR_i+ = P(f_i = yes | D) / P(f_i = yes | not D)
-
-and
-
-LR_i− = [1 − P(f_i = yes | D)] / [1 − P(f_i = yes | not D)].
-
-Observed yes values contribute positive-evidence likelihood ratios, observed no values contribute negative-evidence likelihood ratios, and unknown values are omitted from the likelihood product by default. This policy prevents unperformed tests, unavailable audiometry, missing imaging, or undocumented symptoms from being incorrectly treated as absent.
+Observed yes values contribute positive-evidence likelihood ratios, observed no values contribute negative-evidence likelihood ratios, and unknown values are omitted from the likelihood product by default [1]. This policy prevents unperformed tests, unavailable audiometry, missing imaging, or undocumented symptoms from being incorrectly treated as absent.
 
 Clinical findings are often correlated. Vestibular-GenBN therefore supports derived finding patterns and structured module design to reduce inappropriate double counting. Strongly related raw observations can be grouped into clinically interpretable derived constructs before contributing to disease-level inference. The software also supports evidence annotations and sensitivity-analysis ranges, allowing uncertain parameters to be inspected and varied.
 
 Prior probabilities are supplied separately from disease-specific finding distributions. This allows future use of age-, sex-, referral-setting-, or population-specific priors without hard-coding those priors into disease modules. When external prior tables are unavailable, the framework can use neutral or conservative priors for demonstration purposes. Such outputs should be interpreted as model-behavior examples rather than calibrated clinical probabilities.
 
- 
-
 ## 2.4 Derived nodes, criteria audit, and action overlays
 
-Derived nodes transform raw clinical observations into auditable clinical constructs. Examples include a typical positional history pattern, posterior-canal positional nystagmus pattern, horizontal-canal positional nystagmus pattern, recurrent spontaneous episodic vertigo pattern, low/mid-frequency cochlear pattern, central red-flag pattern, and retrocochlear concern pattern. Derived nodes are deterministic in the initial seed implementation, although the architecture allows future probabilistic extensions.
+Derived nodes transform raw clinical observations into auditable clinical constructs. Examples include positional nystagmus patterns, episodic audio-vestibular patterns, cochlear audiometric patterns, central red-flag patterns, and retrocochlear concern patterns. Derived nodes are deterministic in the initial seed implementation, although the architecture allows future probabilistic extensions.
 
 The framework allows diagnostic criteria to inform the design of derived features, but it does not require deterministic criteria fulfillment to be treated as the final diagnosis. Formal criteria often combine symptom timing, test findings, certainty levels, and exclusion rules. Encoding all criteria directly as diagnostic outputs can make a model brittle when evidence is missing. By contrast, Vestibular-GenBN can represent criteria-relevant features as findings generated by disease states, use them probabilistically during inference, and then apply criteria support rules as an audit layer.
 
 Safety and action overlays are also separated from posterior inference. Central red-flag patterns, retrocochlear concern patterns, and workflow recommendations such as urgent central evaluation or MRI IAC/CPA consideration are computed as interpretive outputs. They do not overwrite independent disease posterior probabilities.
-
- 
 
 ## 2.5 Software functionalities
 
@@ -124,136 +99,54 @@ For reproducible demonstrations, the package can execute synthetic or user-suppl
 
 ## 2.6 Interfaces and sample usage
 
-The package can be used programmatically or from the command line. The following example illustrates a typical local installation and execution workflow.
-
- 
+The package can be used programmatically or from the command line.
 
 ```bash
-# Installation
-git clone https://github.com/ndongwoo/vestibular-genbn.git
-cd vestibular-genbn
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip setuptools wheel
-pip install -e ".[dev]"
-
 # Validate the default knowledge bundle
 vestibular-genbn validate knowledge/default_v0_1
-
 # Run synthetic cases
 vestibular-genbn run --case-file examples/synthetic_cases.csv --knowledge knowledge/default_v0_1 --output examples/output_core_v0_1.csv
-
-# Run the example script
-python examples/run_examples.py
-
-# Run tests
-python -m pytest
-
-# Optional interactive demonstration
-pip install -e ".[app]"
-python -m streamlit run app/streamlit_app.py
 ```
 
-
-
-Programmatic use follows the same workflow: load the knowledge bundle, provide case-level observations, evaluate derived features, and inspect disease-level posteriors and evidence contributions.
-
-
-
-```python
-from vestibular_genbn import load_knowledge_bundle
-from vestibular_genbn.inference import run_case
-from vestibular_genbn.audit import summarize_audits
-
-bundle = load_knowledge_bundle("knowledge/default_v0_1")
-
-case = {
-    "case_id": "demo_pc_bppv",
-    "hx_recurrent_positional_vertigo": "yes",
-    "hx_positional_trigger": "yes",
-    "hx_brief_seconds_to_minutes": "yes",
-    "dix_hallpike_performed": "yes",
-    "dh_torsional_upbeating_nystagmus": "yes",
-    "dh_duration_less_than_60s": "yes",
-}
-
-result = run_case(bundle, case)
-audits = summarize_audits(bundle, result)
-
-for posterior in result["disease_posteriors"]:
-    print(posterior.disease_node, posterior.posterior)
-
-print(audits)
-
-```
-
-
-
-The optional Streamlit interface provides a JSON-driven case editor that reads observation states from the global observation registry. Binary observations are entered as `unknown`, `yes`, or `no`, preserving the distinction between unobserved and explicitly absent findings.
-
+Full installation instructions, Python API examples, test commands, and the optional Streamlit demonstration are provided in the repository documentation.
  
 
 ## 3. Illustrative examples
 
-The initial release includes eight synthetic demonstration cases designed to show model behavior, derived-node activation, missing-evidence handling, safety/action overlays, and independent one-vs-rest posterior updating. These cases are not intended to estimate diagnostic accuracy, discrimination, calibration, or clinical utility. They provide reproducible examples for software testing and for illustrating how the active BPPV and Ménière-spectrum modules respond to different evidence patterns.
+The initial release includes seven synthetic demonstration cases designed to show model behavior, derived-node activation, missing-evidence handling, safety/action overlays, and independent one-vs-rest posterior updating. These cases are not intended to estimate diagnostic accuracy, discrimination, calibration, or clinical utility. They provide reproducible examples for software testing and for illustrating how the active BPPV and Ménière-spectrum modules respond to different evidence patterns.
 
-The demonstration cases include typical posterior-canal BPPV, typical horizontal-canal BPPV with geotropic nystagmus, subjective or possible BPPV, a central positional red-flag pattern, definite-like Ménière disease, probable or early Ménière-spectrum disease, retrocochlear/asymmetric SNHL concern, and mixed BPPV/Ménière-spectrum evidence. Other vestibular disorders are represented as placeholder disease nodes for future module development and are not treated as calibrated worked examples in version 0.1.0. The execution results and main behaviors of these synthetic cases are summarized in Table 1.
+The demonstration cases include typical posterior-canal BPPV, typical horizontal-canal BPPV with geotropic nystagmus, subjective or possible BPPV, a central positional red-flag pattern, definite-like Ménière disease, probable or early Ménière-spectrum disease, and retrocochlear/asymmetric SNHL concern. Other vestibular disorders are represented as placeholder disease nodes for future module development and are not treated as calibrated worked examples in version 0.1.2. The execution results and main behaviors of these synthetic cases are summarized in Table 1.
 
  
 
 | **Case** | **Expected  pattern**                          | **Top-ranked  disease node**       | **Grouped  interpretation**    | **Posterior** | **Main behavior**                                            |
 | -------- | ---------------------------------------------- | ---------------------------------- | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | S01      | Typical  posterior-canal BPPV                  | dx_pc_bppv                         | BPPV spectrum                  | 0.910         | PC-BPPV node  dominant; canalith repositioning candidate flag positive |
-| S02      | Typical  horizontal-canal BPPV, geotropic type | dx_hc_bppv                         | BPPV spectrum                  | 0.899         | HC-BPPV node  dominant; canalith repositioning candidate flag positive |
+| S02      | Typical  horizontal-canal BPPV, geotropic type | dx_hc_bppv                         | BPPV spectrum                  | 0.957         | HC-BPPV node  dominant; canalith repositioning candidate flag positive |
 | S03      | Subjective or  possible BPPV                   | dx_subjective_or_possible_bppv     | BPPV spectrum                  | 0.651         | Subjective/possible  BPPV ranks highest; repositioning candidate flag positive |
 | S04      | Central  positional red-flag pattern           | dx_central_positional_mimic        | Central  positional mimic      | 0.927         | Central  positional mimic dominates; urgent central-evaluation flag positive |
 | S05      | Definite-like  Ménière disease pattern         | dx_meniere_disease                 | Ménière-spectrum               | 0.908         | Ménière disease  dominates with strong episodic, auditory, and audiometric evidence |
 | S06      | Probable or early  Ménière-spectrum pattern    | dx_early_probable_meniere_spectrum | Ménière-spectrum               | 0.498         | Early/probable  Ménière-spectrum node exceeds definite MD    |
 | S07      | Retrocochlear/asymmetric  SNHL concern         | dx_cpa_iac_retrocochlear_mimic     | Retrocochlear  mimic           | 0.546         | CPA/IAC retrocochlear  mimic ranks highest; MRI-consideration flag positive |
-| S08      | Mixed BPPV and  Ménière-spectrum evidence      | dx_pc_bppv                         | Mixed,  low-confidence pattern | 0.910         | Partial BPPV and  Ménière-spectrum evidence produces low-to-moderate independent posteriors  rather than a forced single diagnosis |
 
 **Table 1**. Output from synthetic demonstration cases. The table summarizes the case identifier, intended pattern, top-ranked disease node or grouped interpretation, posterior probability, and principal behavior. Disease probabilities are computed as one-vs-rest posteriors and are not constrained to sum to one across candidate diseases. These examples demonstrate software behavior and are not intended to estimate clinical performance.
 
- 
-
-## 3.1. BPPV worked example
-
-The BPPV module illustrates how subtype-specific positional vertigo can be represented in the knowledge-bundle architecture. Posterior-canal and horizontal-canal BPPV are encoded as separate disease nodes because they are linked to different canal-specific finding-pattern rules. The raw observations, such as positional triggers and positional nystagmus findings, are transformed into deterministic derived finding patterns. Most of these derived patterns are binary/unknown rule-based patterns, while the PC-BPPV module demonstrates mutually exclusive weak/moderate/strong phenotype-support nodes for posterior inference. These derived patterns are then mapped to disease-specific likelihood rows and update independent disease posteriors.
-
-This implementation makes the relationship between bedside observations and posterior updates inspectable. A typical posterior-canal case activates a typical positional history pattern and a posterior-canal BPPV pattern, whereas a subjective case may activate the positional-history pattern without a canal-specific nystagmus pattern. Central positional red flags are represented as safety-relevant findings that can activate a central mimic posterior and an urgent-evaluation overlay rather than simply serving as absence of BPPV. The PC-BPPV module's mutually exclusive graded support nodes ensure that correlated positional findings are not treated as independent evidence, reducing false-positive posterior updating while preserving the generative disease-to-phenotype interpretation.
-
- 
-
-## 3.2. Ménière-spectrum worked example
-
-The Ménière-spectrum module demonstrates how episodic audio-vestibular evidence can be represented in the same JSON structure. Raw observations describing episode recurrence, spontaneous vertigo, duration windows, fluctuating auditory symptoms, laterality, and audiometry are transformed into derived finding patterns such as an auditory-episodic pattern or low/mid-frequency sensorineural hearing loss pattern. These finding patterns update the independent posteriors for Ménière disease and early/probable Ménière-spectrum disease.
-
+The BPPV examples demonstrate subtype-specific posterior updating for posterior-canal, horizontal-canal, subjective/possible BPPV, and central positional mimic patterns [5-7]. The Ménière-spectrum examples demonstrate how episodic vestibular symptoms, fluctuating auditory symptoms, and audiometric patterns can be encoded using the same registry–finding–likelihood structure [8, 9]. These examples are intended to demonstrate software behavior, not diagnostic accuracy or calibration.
 Criteria-relevant features are represented as derived patterns and audit outputs rather than deterministic disease labels. This allows the software to report independent disease posteriors, criteria-support labels, and action flags separately. Future modules, such as vestibular migraine or functional dizziness, can be added by extending the observation registry, finding-pattern registry, likelihood table, and active candidate set without changing the inference engine.
-
  
 
 ## 4. Impact
 
-Vestibular-GenBN provides reusable research software for constructing, inspecting, and executing modular generative Bayesian networks in a knowledge-rich but data-limited clinical domain. Its primary contribution is not a validated diagnostic model, but a software framework that makes disease-specific assumptions, evidence mappings, probability parameters, derived features, missingness rules, audit logic, and sensitivity ranges explicit and reproducible.
+Vestibular-GenBN provides reusable research software for constructing, inspecting, and executing modular generative Bayesian networks in a knowledge-rich but data-limited clinical domain. Its main contribution is not a validated diagnostic model, but an executable framework that makes disease-specific assumptions, evidence mappings, likelihood parameters, missingness rules, derived features, audit logic, and sensitivity ranges explicit and reproducible.
 
-The framework addresses a common barrier in knowledge-engineered diagnostic modeling: disease-specific clinical knowledge is often embedded directly in analysis scripts, making models difficult to inspect, extend, compare, or reuse. Vestibular-GenBN separates this knowledge from the inference engine. Disease knowledge is encoded in JSON files, whereas the Python package provides common tools for bundle loading, validation, derived-node evaluation, independent posterior inference, batch execution, visualization, audit/action overlays, and sensitivity analysis. This separation allows investigators to add, revise, or compare disease modules without rewriting the core software.
+The framework addresses a common limitation of knowledge-engineered diagnostic models: clinical knowledge is often embedded directly in analysis scripts, making models difficult to inspect, revise, compare, or reuse. Vestibular-GenBN separates disease knowledge from inference code by storing disease nodes, observation registries, derived finding patterns, likelihood rows, criteria-audit rules, and action overlays in JSON knowledge bundles. This design allows investigators to update parameters, add disease modules, compare alternative assumptions, and examine the effect of missing evidence without rewriting the core software.
 
-The software can support several reproducible research workflows. First, researchers can encode literature-anchored or expert-seeded disease-finding relationships in a transparent module format. Second, they can test how alternative parameter choices, prior assumptions, or derived-node definitions affect posterior probabilities. Third, they can examine the effect of missing observations by running the same case with different levels of available evidence. Fourth, they can compare disease modules or grouped diagnostic interpretations while preserving subtype-specific evidence structures. These workflows are difficult to standardize when diagnostic logic is implemented only as ad hoc scripts or narrative criteria.
-
-Although the default knowledge bundle targets vestibular disorders, the same registry–finding–likelihood–audit architecture could be reused in other knowledge-rich diagnostic domains in which evidence is incomplete, criteria-based, and partly literature-anchored. The initial vestibular examples therefore serve both as executable worked modules and as templates for broader diagnostic knowledge engineering.
-
-Before any clinical deployment, fixed-model validation, disease-specific calibration, external validation, prospective evaluation, workflow testing, governance review, and regulatory assessment would be required. Its immediate value is as an open, executable, and extensible framework for reproducible diagnostic knowledge engineering.
-
+Although the default release focuses on vestibular disorders, the same registry–finding–likelihood–audit architecture could be adapted to other diagnostic domains in which evidence is incomplete, criteria-based, and partly literature-anchored. Before clinical deployment, disease-specific calibration, external validation, prospective evaluation, workflow testing, governance review, and regulatory assessment would be required. Its immediate value is therefore as an open and extensible platform for reproducible diagnostic knowledge engineering rather than as a clinical decision-making tool.
 
 
 ## 5. Conclusions
 
 Vestibular-GenBN provides an open-source framework for constructing modular generative Bayesian networks for vestibular diagnostic knowledge engineering. The software separates disease-specific clinical knowledge from reusable inference logic, supports JSON-based knowledge bundles, evaluates derived clinical features, performs independent one-vs-rest disease posterior inference, and provides tools for batch execution, audit/action overlays, visualization, and sensitivity analysis. The initial worked examples demonstrate how representative vestibular disorders can be encoded in a transparent and extensible framework.
-
-## Limitations
-
-Only the PC-BPPV module currently uses the mutually exclusive graded phenotype-support mechanism. HC-BPPV and Ménière disease remain implemented with the existing pattern-node evidence structure in this release. Extending graded phenotype support to these modules is planned for future versions.
-
  
 
 ## Acknowledgments
@@ -276,8 +169,7 @@ No patient-level or clinical research dataset was used in this article. Syntheti
 
 ## Code availability 
 
-Source code is available at https://github.com/ndongwoo/vestibular-genbn. The archived version for this release is https://doi.org/10.5281/zenodo.20427725.
-
+Source code is available at https://github.com/ndongwoo/vestibular-genbn. The archived version for this release is available through Zenodo [10].
  
 
 ## CRediT authorship contribution statement
@@ -296,15 +188,14 @@ During the preparation of this work and the associated software, the authors use
 
 ## References
 
-[1] Pearl J. Probabilistic reasoning in intelligent systems: networks of plausible inference. San Francisco: Morgan Kaufmann; 1988.
-
-[2] Koller D, Friedman N. Probabilistic graphical models: principles and techniques. Cambridge, MA: MIT Press; 2009.
-
-[3] Bhattacharyya N, Gubbels SP, Schwartz SR, Edlow JA, El-Kashlan H, Fife T, et al. Clinical practice guideline: benign paroxysmal positional vertigo (update). Otolaryngology-Head and Neck Surgery. 2017;156(3_suppl):S1-S47. doi:10.1177/0194599816689667.
-
-[4] Lopez-Escamez JA, Carey J, Chung WH, Goebel JA, Magnusson M, Mandalà M, et al. Diagnostic criteria for Menière's disease. Journal of Vestibular Research. 2015;25(1):1-7. doi:10.3233/VES-150549.
-
-[5] Smith AM, Katz DS, Niemeyer KE, Chue Hong N, FORCE11 Software Citation Working Group. Software citation principles. PeerJ Computer Science. 2016;2:e86. doi:10.7717/peerj-cs.86.
-
-[6] Nam DW. Vestibular-GenBN: An open-source framework for modular generative Bayesian networks in vestibular diagnostic knowledge engineering. Version 0.1.1. Zenodo; 2026. doi: 10.5281/zenodo.20427725.
+[1] Lin JH, Haug PJ. Exploiting missing clinical data in Bayesian network modeling for predicting medical problems. J Biomed Inform. 2008;41(1):1-14.
+[2] Pearl J. Probabilistic Reasoning in Intelligent Systems: Networks of Plausible Inference. San Mateo, CA: Morgan Kaufmann; 1988.
+[3] Polotskaya K, Muñoz-Valencia CS, Rabasa A, Quesada-Rico JA, Orozco-Beltrán D, Barber X. Bayesian Networks for the Diagnosis and Prognosis of Diseases: A Scoping Review. Machine Learning and Knowledge Extraction. 2024;6(2):1243-62.
+[4] Bours MJ. Bayes' rule in diagnosis. J Clin Epidemiol. 2021;131:158-60.
+[5] von Brevern M, Bertholon P, Brandt T, Fife T, Imai T, Nuti D, et al. Benign paroxysmal positional vertigo: Diagnostic criteria. J Vestib Res. 2015;25(3-4):105-17.
+[6] Bhattacharyya N, Gubbels SP, Schwartz SR, Edlow JA, El-Kashlan H, Fife T, et al. Clinical Practice Guideline: Benign Paroxysmal Positional Vertigo (Update). Otolaryngol Head Neck Surg. 2017;156(3_suppl):S1-S47.
+[7] Macdonald NK, Kaski D, Saman Y, Al-Shaikh Sulaiman A, Anwer A, Bamiou DE. Central Positional Nystagmus: A Systematic Literature Review. Front Neurol. 2017;8:141.
+[8] Lopez-Escamez JA, Carey J, Chung WH, Goebel JA, Magnusson M, Mandala M, et al. Diagnostic criteria for Meniere's disease. J Vestib Res. 2015;25(1):1-7.
+[9] Basura GJ, Adams ME, Monfared A, Schwartz SR, Antonelli PJ, Burkard R, et al. Clinical Practice Guideline: Meniere's Disease. Otolaryngol Head Neck Surg. 2020;162(2_suppl):S1-S55.
+[10] Nam DW. Vestibular-GenBN: An open-source framework for modular generative Bayesian networks in vestibular diagnostic knowledge engineering. Version 0.1.2 [software]. Zenodo; 2026. https://doi.org/10.5281/zenodo.20427725.
  

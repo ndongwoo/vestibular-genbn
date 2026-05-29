@@ -36,10 +36,16 @@ def summarize_audits(bundle: Any, result: dict[str, Any]) -> dict[str, Any]:
     # Check for PC-BPPV phenotype support
     pc_bppv_moderate = values.get("pc_bppv_positional_phenotype_support_moderate", "no") == "yes"
     pc_bppv_strong = values.get("pc_bppv_positional_phenotype_support_strong", "no") == "yes"
-    
+
+    # Check for HC-BPPV phenotype support
+    hc_bppv_moderate = values.get("hc_bppv_roll_test_phenotype_support_moderate", "no") == "yes"
+    hc_bppv_strong = values.get("hc_bppv_roll_test_phenotype_support_strong", "no") == "yes"
+
     repositioning = (
         pc_bppv_moderate
         or pc_bppv_strong
+        or hc_bppv_moderate
+        or hc_bppv_strong
         or post.get("dx_pc_bppv", 0.0) >= moderate
         or post.get("dx_hc_bppv", 0.0) >= moderate
     )

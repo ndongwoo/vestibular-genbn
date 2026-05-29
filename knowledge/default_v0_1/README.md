@@ -1,4 +1,4 @@
-# Vestibular Generative BN Clean Seed v0.1.0
+# Vestibular Generative BN Clean Seed v0.1.2
 
 This package is a clean starting point for a vestibular generative Bayesian network project.
 

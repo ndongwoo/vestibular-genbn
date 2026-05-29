@@ -351,6 +351,32 @@
       ],
       "diagnostic_evidence": true,
       "replace_components_at_diagnostic_layer": true
+    },
+    {
+      "id": "hc_bppv_roll_test_phenotype_support",
+      "label": "HC-BPPV roll-test phenotype support (graded)",
+      "domain": "bppv",
+      "stage": "bedside_exam",
+      "group_type": "exclusive_graded_support",
+      "levels": [
+        {
+          "level": "strong",
+          "node": "hc_bppv_roll_test_phenotype_support_strong",
+          "rule": "supine_roll_test_performed == yes AND roll_test_horizontal_nystagmus == yes AND (horizontal_geotropic_nystagmus == yes OR horizontal_apogeotropic_nystagmus == yes)"
+        },
+        {
+          "level": "moderate",
+          "node": "hc_bppv_roll_test_phenotype_support_moderate",
+          "rule": "roll_test_horizontal_nystagmus == yes AND (horizontal_geotropic_nystagmus == yes OR horizontal_apogeotropic_nystagmus == yes)"
+        },
+        {
+          "level": "weak",
+          "node": "hc_bppv_roll_test_phenotype_support_weak",
+          "rule": "roll_test_horizontal_nystagmus == yes OR horizontal_geotropic_nystagmus == yes OR horizontal_apogeotropic_nystagmus == yes"
+        }
+      ],
+      "diagnostic_evidence": true,
+      "replace_components_at_diagnostic_layer": true
     }
   ]
 }

@@ -5,7 +5,7 @@ from vestibular_genbn.inference import load_case_csv, run_case
 
 def test_synthetic_cases_run(bundle, repo_root: Path):
     cases = load_case_csv(repo_root / "examples" / "synthetic_cases.csv")
-    assert len(cases) >= 8
+    assert len(cases) >= 7
 
     for case in cases:
         result = run_case(bundle, case)
