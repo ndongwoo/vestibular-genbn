@@ -17,6 +17,11 @@ validation, governance, and regulatory review.
 - Candidate sets define which disease nodes are evaluated in a run.
 - BPPV and Ménière-spectrum disorders are included as active base examples.
 - Additional vestibular disorders are included as placeholders for future activation.
+- The framework supports mutually exclusive graded phenotype support groups for representing correlated observations.
+
+## Architecture overview
+
+Vestibular-GenBN separates probabilistic phenotype support from deterministic criteria audit. In the current implementation, PC-BPPV positional findings are aggregated into mutually exclusive weak, moderate, and strong phenotype-support nodes using a strong > moderate > weak priority cascade. These graded support nodes are used as posterior evidence for `dx_pc_bppv`, while strict criteria and action flags remain separate audit outputs. Other modules, including HC-BPPV and Ménière disease, currently retain the existing pattern-node evidence structure and can be extended to graded support in future releases.
 
 ## Repository layout
 

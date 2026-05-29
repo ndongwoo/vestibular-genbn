@@ -33,6 +33,16 @@ def run_case(
     priors = dict(priors or _default_priors(bundle))
     values = evaluate_findings(bundle, raw_case)
 
+    # Build a mapping to identify which finding nodes belong to exclusive graded support groups
+    finding_to_group = {}
+    for finding in bundle.finding_patterns:
+        group_type = finding.get("group_type")
+        if group_type == "exclusive_graded_support":
+            group_id = finding["id"]
+            levels = finding.get("levels", [])
+            for level in levels:
+                finding_to_group[level["node"]] = group_id
+
     active = set(bundle.active_disease_ids)
     rows_by_disease: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for row in bundle.likelihood_rows:
@@ -52,6 +62,14 @@ def run_case(
             observed = values.get(finding, "unknown")
             if observed not in {"yes", "no"}:
                 continue
+
+            # Skip likelihood updates for inactive levels in exclusive graded support groups
+            # In such groups, "no" values are structural outputs from the priority cascade, not true absence of disease support
+            if finding in finding_to_group:
+                # This finding is a level of an exclusive graded support group
+                # Skip if the value is "no" (inactive level)
+                if observed == "no":
+                    continue
 
             lr = lr_for_observation(
                 row["p_finding_true_given_disease_true"],

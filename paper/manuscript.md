@@ -48,21 +48,17 @@ The initial software release is research infrastructure rather than a validated 
 
 ## 2. Software description
 
-## 2.1 Software architecture 
+## 2.1 Software architecture
 
 Vestibular-GenBN separates disease-specific clinical knowledge from reusable inference logic. Clinical knowledge is stored as a modular JSON knowledge bundle, whereas the Python package handles bundle loading, internal-reference validation, derived-node evaluation, posterior-odds inference, batch execution, audit/action overlays, network visualization, and sensitivity analysis. The same knowledge bundle can be used through the Python API, command-line interface, tests, batch examples, documentation, and an optional Streamlit demonstration interface.
 
-The core workflow is as follows: (i) load a JSON knowledge bundle; (ii) validate disease-node, observation-node, finding-node, likelihood-row, and audit-rule references; (iii) accept a synthetic or user-defined case as raw observation values; (iv) evaluate deterministic derived finding patterns from raw observations; (v) update each disease node independently using observed evidence; and (vi) return one-vs-rest disease posteriors, ranked outputs, evidence-contribution summaries, criteria-audit results, safety/action overlays, network exports, and sensitivity-analysis results. The overall architecture and information flow are summarized in Figure 1.
-
 The framework treats candidate diseases as disease nodes to be evaluated, not as a closed mutually exclusive diagnostic universe. Accordingly, disease probabilities are computed as independent binary or multi-label posteriors and are not constrained to sum to one across candidate diagnoses. This behavior is important in vestibular medicine because overlapping syndromes, comorbid disorders, and partially observed presentations are common.
-
-​                
 
 **Figure 1.** Simplified architecture of Vestibular-GenBN. Disease-specific knowledge is stored in modular JSON files, whereas reusable Python components implement validation, derived-node evaluation, generative inference, visualization, and sensitivity analysis.
 
- 
+The framework supports a graded supportive phenotype layer for representing correlated observations. In the current release, this mechanism is implemented for PC-BPPV: positional findings are aggregated into mutually exclusive weak, moderate, and strong phenotype-support nodes that serve as posterior evidence for `dx_pc_bppv`. This avoids treating correlated positional findings as independent evidence while preserving the generative disease-to-phenotype interpretation. Formal diagnostic criteria are implemented separately as deterministic audit outputs and are not used as posterior likelihood evidence.
 
-## 2.2 Node taxonomy and modeling pattern 
+## 2.2 Node taxonomy and modeling pattern
 
 The framework defines five main information layers:
 
@@ -70,7 +66,7 @@ The framework defines five main information layers:
 
 **2.** **Raw observation nodes:** patient-level observations such as symptom duration, positional triggers, nystagmus patterns, auditory symptoms, audiometric findings, vestibular laboratory results, imaging findings, medication exposures, and neurological red flags.
 
-**3.** **Derived finding-pattern nodes:** intermediate clinical constructs computed from raw observations, such as typical positional history, posterior-canal BPPV pattern, horizontal-canal BPPV pattern, Ménière-compatible auditory-episodic pattern, audiometric low/mid-frequency sensorineural hearing loss pattern, central positional red-flag pattern, and retrocochlear concern pattern.
+**3.** **Derived finding-pattern nodes:** intermediate clinical constructs computed from raw observations, such as typical positional history, posterior-canal BPPV pattern, horizontal-canal BPPV pattern, Ménière-compatible auditory-episodic pattern, audiometric low/mid-frequency sensorineural hearing loss pattern, central positional red-flag pattern, and retrocochlear concern pattern. Most derived nodes are binary/unknown rule-based patterns, while the PC-BPPV module additionally demonstrates mutually exclusive weak/moderate/strong phenotype-support nodes for posterior inference.
 
 **4.** **Likelihood rows:** disease-specific estimates of finding distributions, represented as seed values for P(finding | disease) and P(finding | ¬disease). These values support one-vs-rest posterior updating and are designed to be inspectable and replaceable during future calibration.
 
@@ -80,11 +76,9 @@ The preferred modeling pattern places disease nodes upstream of clinical finding
 
 For example, the BPPV module distinguishes posterior-canal and horizontal-canal BPPV as separate disease nodes because they generate different canal-specific positional findings. These findings are encoded as JSON finding-pattern rules and linked to disease-specific likelihood rows. At the reporting layer, the software can also support a broader BPPV-spectrum interpretation when either subtype is plausible. This preserves subtype-specific evidence structure while allowing clinically meaningful grouped interpretation. An example of this generative network structure is visualized in Figure 2.
 
-
-
 **Figure 2**. Example network visualization. Disease nodes generate observable symptoms, bedside findings, audiometric findings, vestibular test results, and derived clinical features. Inference uses observed evidence to update one-vs-rest disease probabilities.
 
- 
+Criteria-audit outputs are separated from probabilistic posterior inference. For example, Bárány-style criteria support nodes are deterministic audit outputs rather than posterior likelihood evidence. Action-oriented flags, such as canalith repositioning candidacy, may use posterior thresholds and moderate/strong PC-BPPV phenotype support but remain separate from disease posterior computation.
 
 ## 2.3 Generative diagnostic inference
 
@@ -209,14 +203,14 @@ The demonstration cases include typical posterior-canal BPPV, typical horizontal
 
 | **Case** | **Expected  pattern**                          | **Top-ranked  disease node**       | **Grouped  interpretation**    | **Posterior** | **Main behavior**                                            |
 | -------- | ---------------------------------------------- | ---------------------------------- | ------------------------------ | ------------- | ------------------------------------------------------------ |
-| S01      | Typical  posterior-canal BPPV                  | dx_pc_bppv                         | BPPV spectrum                  | 0.918         | PC-BPPV node  dominant; canalith repositioning candidate flag positive |
+| S01      | Typical  posterior-canal BPPV                  | dx_pc_bppv                         | BPPV spectrum                  | 0.910         | PC-BPPV node  dominant; canalith repositioning candidate flag positive |
 | S02      | Typical  horizontal-canal BPPV, geotropic type | dx_hc_bppv                         | BPPV spectrum                  | 0.899         | HC-BPPV node  dominant; canalith repositioning candidate flag positive |
 | S03      | Subjective or  possible BPPV                   | dx_subjective_or_possible_bppv     | BPPV spectrum                  | 0.651         | Subjective/possible  BPPV ranks highest; repositioning candidate flag positive |
 | S04      | Central  positional red-flag pattern           | dx_central_positional_mimic        | Central  positional mimic      | 0.927         | Central  positional mimic dominates; urgent central-evaluation flag positive |
 | S05      | Definite-like  Ménière disease pattern         | dx_meniere_disease                 | Ménière-spectrum               | 0.908         | Ménière disease  dominates with strong episodic, auditory, and audiometric evidence |
 | S06      | Probable or early  Ménière-spectrum pattern    | dx_early_probable_meniere_spectrum | Ménière-spectrum               | 0.498         | Early/probable  Ménière-spectrum node exceeds definite MD    |
 | S07      | Retrocochlear/asymmetric  SNHL concern         | dx_cpa_iac_retrocochlear_mimic     | Retrocochlear  mimic           | 0.546         | CPA/IAC retrocochlear  mimic ranks highest; MRI-consideration flag positive |
-| S08      | Mixed BPPV and  Ménière-spectrum evidence      | dx_pc_bppv                         | Mixed,  low-confidence pattern | 0.336         | Partial BPPV and  Ménière-spectrum evidence produces low-to-moderate independent posteriors  rather than a forced single diagnosis |
+| S08      | Mixed BPPV and  Ménière-spectrum evidence      | dx_pc_bppv                         | Mixed,  low-confidence pattern | 0.910         | Partial BPPV and  Ménière-spectrum evidence produces low-to-moderate independent posteriors  rather than a forced single diagnosis |
 
 **Table 1**. Output from synthetic demonstration cases. The table summarizes the case identifier, intended pattern, top-ranked disease node or grouped interpretation, posterior probability, and principal behavior. Disease probabilities are computed as one-vs-rest posteriors and are not constrained to sum to one across candidate diseases. These examples demonstrate software behavior and are not intended to estimate clinical performance.
 
@@ -224,9 +218,9 @@ The demonstration cases include typical posterior-canal BPPV, typical horizontal
 
 ## 3.1. BPPV worked example
 
-The BPPV module illustrates how subtype-specific positional vertigo can be represented in the knowledge-bundle architecture. Posterior-canal and horizontal-canal BPPV are encoded as separate disease nodes because they are linked to different canal-specific finding-pattern rules. The raw observations, such as positional triggers and positional nystagmus findings, are transformed into deterministic derived finding patterns. These derived patterns are then mapped to disease-specific likelihood rows and update independent disease posteriors.
+The BPPV module illustrates how subtype-specific positional vertigo can be represented in the knowledge-bundle architecture. Posterior-canal and horizontal-canal BPPV are encoded as separate disease nodes because they are linked to different canal-specific finding-pattern rules. The raw observations, such as positional triggers and positional nystagmus findings, are transformed into deterministic derived finding patterns. Most of these derived patterns are binary/unknown rule-based patterns, while the PC-BPPV module demonstrates mutually exclusive weak/moderate/strong phenotype-support nodes for posterior inference. These derived patterns are then mapped to disease-specific likelihood rows and update independent disease posteriors.
 
-This implementation makes the relationship between bedside observations and posterior updates inspectable. A typical posterior-canal case activates a typical positional history pattern and a posterior-canal BPPV pattern, whereas a subjective case may activate the positional-history pattern without a canal-specific nystagmus pattern. Central positional red flags are represented as safety-relevant findings that can activate a central mimic posterior and an urgent-evaluation overlay rather than simply serving as absence of BPPV.
+This implementation makes the relationship between bedside observations and posterior updates inspectable. A typical posterior-canal case activates a typical positional history pattern and a posterior-canal BPPV pattern, whereas a subjective case may activate the positional-history pattern without a canal-specific nystagmus pattern. Central positional red flags are represented as safety-relevant findings that can activate a central mimic posterior and an urgent-evaluation overlay rather than simply serving as absence of BPPV. The PC-BPPV module's mutually exclusive graded support nodes ensure that correlated positional findings are not treated as independent evidence, reducing false-positive posterior updating while preserving the generative disease-to-phenotype interpretation.
 
  
 
@@ -255,6 +249,10 @@ Before any clinical deployment, fixed-model validation, disease-specific calibra
 ## 5. Conclusions
 
 Vestibular-GenBN provides an open-source framework for constructing modular generative Bayesian networks for vestibular diagnostic knowledge engineering. The software separates disease-specific clinical knowledge from reusable inference logic, supports JSON-based knowledge bundles, evaluates derived clinical features, performs independent one-vs-rest disease posterior inference, and provides tools for batch execution, audit/action overlays, visualization, and sensitivity analysis. The initial worked examples demonstrate how representative vestibular disorders can be encoded in a transparent and extensible framework.
+
+## Limitations
+
+Only the PC-BPPV module currently uses the mutually exclusive graded phenotype-support mechanism. HC-BPPV and Ménière disease remain implemented with the existing pattern-node evidence structure in this release. Extending graded phenotype support to these modules is planned for future versions.
 
  
 
