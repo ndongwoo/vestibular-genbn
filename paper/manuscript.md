@@ -13,7 +13,7 @@ E-mail address: [ndongwoo@gmail.com](mailto:ndongwoo@gmail.com) (D.W. Nam).
 
 ## Abstract
 
-Vestibular-GenBN is an open-source Python framework for constructing modular generative Bayesian networks for vestibular diagnostic knowledge engineering. The software separates disease-specific clinical knowledge from reusable inference code by representing disease nodes, observations, derived finding patterns, likelihood parameters, criteria-audit rules, and action overlays in JSON knowledge bundles. Unlike prediction-oriented diagnostic models, the framework uses a disease-to-finding structure and updates each candidate disease node independently as a one-vs-rest posterior, allowing overlapping or comorbid vestibular disorders to be represented without forcing probabilities to sum to one. The package provides knowledge-bundle validation, derived-node evaluation, posterior-odds inference, batch execution, visualization, sensitivity analysis, unit tests, a command-line interface, and an optional Streamlit demonstration interface. Version 0.1.2 includes worked examples for benign paroxysmal positional vertigo and Ménière-spectrum disorders. Vestibular-GenBN is intended for research, education, and reproducible clinical knowledge engineering, not for unvalidated clinical decision-making.
+Vestibular-GenBN is an open-source Python framework for constructing modular generative Bayesian networks for vestibular diagnostic knowledge engineering. The software separates disease-specific clinical knowledge from reusable inference code by representing disease nodes, observations, derived finding patterns, likelihood parameters, criteria-audit rules, and action overlays in JSON knowledge bundles. Unlike prediction-oriented diagnostic models, the framework uses a disease-to-finding structure and updates each candidate disease node independently as a one-vs-rest posterior, allowing overlapping or comorbid vestibular disorders to be represented without forcing probabilities to sum to one. The package provides knowledge-bundle validation, derived-node evaluation, posterior-odds inference, batch execution, visualization, sensitivity analysis, unit tests, a command-line interface, and an optional Streamlit demonstration interface. Version 0.1.3 includes worked examples for benign paroxysmal positional vertigo and Ménière-spectrum disorders. Vestibular-GenBN is intended for research, education, and reproducible clinical knowledge engineering, not for unvalidated clinical decision-making.
 
 ## Keywords 
 
@@ -23,7 +23,7 @@ Bayesian network; Vestibular disorders; Dizziness; Clinical decision support
 
 | **Nr** | **Code  metadata description**                               | **Metadata**                                                 |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| C1     | Current code version                                         | v0.1.2                                                       |
+| C1     | Current code version                                         | v0.1.3                                                       |
 | C2     | Permanent link to  code/repository used for this code version | https://github.com/ndongwoo/vestibular-genbn; archived version: https://doi.org/10.5281/zenodo.20451790 |
 | C3     | Legal code license                                           | Apache License 2.0                                           |
 | C4     | Code versioning system used                                  | git                                                          |
@@ -115,7 +115,7 @@ Full installation instructions, Python API examples, test commands, and the opti
 
 The initial release includes seven synthetic demonstration cases designed to show model behavior, derived-node activation, missing-evidence handling, safety/action overlays, and independent one-vs-rest posterior updating. These cases are not intended to estimate diagnostic accuracy, discrimination, calibration, or clinical utility. They provide reproducible examples for software testing and for illustrating how the active BPPV and Ménière-spectrum modules respond to different evidence patterns.
 
-The demonstration cases include typical posterior-canal BPPV, typical horizontal-canal BPPV with geotropic nystagmus, subjective or possible BPPV, a central positional red-flag pattern, definite-like Ménière disease, probable or early Ménière-spectrum disease, and retrocochlear/asymmetric SNHL concern. Other vestibular disorders are represented as placeholder disease nodes for future module development and are not treated as calibrated worked examples in version 0.1.2. The execution results and main behaviors of these synthetic cases are summarized in Table 1.
+The demonstration cases include typical posterior-canal BPPV, typical horizontal-canal BPPV with geotropic nystagmus, subjective or possible BPPV, a central positional red-flag pattern, definite-like Ménière disease, probable or early Ménière-spectrum disease, and retrocochlear/asymmetric SNHL concern. Other vestibular disorders are represented as placeholder disease nodes for future module development and are not treated as calibrated worked examples in version 0.1.3. The execution results and main behaviors of these synthetic cases are summarized in Table 1.
 
  
 
@@ -197,5 +197,5 @@ During the preparation of this work and the associated software, the authors use
 [7] Macdonald NK, Kaski D, Saman Y, Al-Shaikh Sulaiman A, Anwer A, Bamiou DE. Central Positional Nystagmus: A Systematic Literature Review. Front Neurol. 2017;8:141.
 [8] Lopez-Escamez JA, Carey J, Chung WH, Goebel JA, Magnusson M, Mandala M, et al. Diagnostic criteria for Meniere's disease. J Vestib Res. 2015;25(1):1-7.
 [9] Basura GJ, Adams ME, Monfared A, Schwartz SR, Antonelli PJ, Burkard R, et al. Clinical Practice Guideline: Meniere's Disease. Otolaryngol Head Neck Surg. 2020;162(2_suppl):S1-S55.
-[10] Nam DW. Vestibular-GenBN: An open-source framework for modular generative Bayesian networks in vestibular diagnostic knowledge engineering. Version 0.1.2 [software]. Zenodo; 2026. https://doi.org/10.5281/zenodo.20451790.
+[10] Nam DW. Vestibular-GenBN: An open-source framework for modular generative Bayesian networks in vestibular diagnostic knowledge engineering. Version 0.1.3 [software]. Zenodo; 2026. https://doi.org/10.5281/zenodo.20451790.
  

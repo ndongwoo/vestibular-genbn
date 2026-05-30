@@ -9,11 +9,19 @@ from .knowledge_loader import load_knowledge_bundle
 from .inference import load_case_csv, run_case, flatten_result
 from .audit import summarize_audits
 from .visualization import export_mermaid
+from . import __version__
 
 
 @click.group()
+@click.version_option(version=__version__)
 def main() -> None:
     """Vestibular-GenBN command-line interface."""
+
+
+@main.command()
+def version() -> None:
+    """Display the version of Vestibular-GenBN."""
+    click.echo(__version__)
 
 
 @main.command()

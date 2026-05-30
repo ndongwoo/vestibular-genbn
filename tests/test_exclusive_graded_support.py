@@ -60,6 +60,7 @@ def test_ordinary_binary_behavior_unchanged():
     }
 
     result = run_case(bundle, case)
+    assert "disease_posteriors" in result
 
     # Should not have a particularly high posterior for any disease
     # since central_positional_red_flag_pattern is negative evidence for all diseases

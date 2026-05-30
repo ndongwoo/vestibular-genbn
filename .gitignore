@@ -52,3 +52,6 @@ scripts/
 
 # qwen
 .qwen/
+
+DEVELOPMENT.md
+examples/output_core_v0_1.csv

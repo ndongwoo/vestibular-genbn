@@ -49,9 +49,8 @@ def evaluate_exclusive_graded_support_group(finding: dict[str, Any], values: dic
     """Evaluate an exclusive graded support group."""
     # For exclusive graded support, evaluate in order of strength
     # strong first, then moderate, then weak
-    group_id = finding["id"]
     levels = finding.get("levels", [])
-    
+
     # Initialize all levels as "no"
     for level in levels:
         level_id = level["node"]

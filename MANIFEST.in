@@ -1,0 +1,7 @@
+recursive-include src *.py
+recursive-include knowledge *
+recursive-include examples *
+recursive-include paper *
+include CITATION.cff
+include README.md
+include LICENSE

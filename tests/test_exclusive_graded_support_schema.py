@@ -1,6 +1,4 @@
-from vestibular_genbn.derived_nodes import evaluate_exclusive_graded_support_group, evaluate_findings
-from vestibular_genbn.knowledge_loader import load_knowledge_bundle
-from pathlib import Path
+from vestibular_genbn.derived_nodes import evaluate_exclusive_graded_support_group
 
 
 def test_evaluate_exclusive_graded_support_group_direct():
