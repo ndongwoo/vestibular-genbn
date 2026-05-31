@@ -6,7 +6,12 @@ import json
 import click
 
 from .knowledge_loader import load_knowledge_bundle
-from .inference import load_case_csv, run_case, flatten_result
+from .inference import (
+    load_case_csv,
+    run_case,
+    flatten_result,
+    result_to_detailed_dict,
+)
 from .audit import summarize_audits
 from .visualization import export_mermaid
 from . import __version__
@@ -40,7 +45,9 @@ def validate(knowledge: Path) -> None:
 
 @main.command()
 @click.option("--case-file", required=True, type=click.Path(exists=True, path_type=Path))
-@click.option("--knowledge", required=True, type=click.Path(exists=True, file_okay=False, path_type=Path))
+@click.option(
+    "--knowledge", required=True, type=click.Path(exists=True, file_okay=False, path_type=Path)
+)
 @click.option("--output", required=False, type=click.Path(path_type=Path))
 @click.option("--json-output", is_flag=True, help="Print JSON result instead of table-like rows.")
 def run(case_file: Path, knowledge: Path, output: Path | None, json_output: bool) -> None:
@@ -54,23 +61,7 @@ def run(case_file: Path, knowledge: Path, output: Path | None, json_output: bool
     for case in cases:
         result = run_case(bundle, case)
         audits = summarize_audits(bundle, result)
-        json_results.append(
-            {
-                "case_id": result["case_id"],
-                "posterior_sum": result["posterior_sum"],
-                "normalized_across_diseases": result["normalized_across_diseases"],
-                "disease_posteriors": [
-                    {
-                        "disease_node": p.disease_node,
-                        "prior": p.prior,
-                        "posterior": p.posterior,
-                        "n_contributions": len(p.contributions),
-                    }
-                    for p in result["disease_posteriors"]
-                ],
-                "audits": audits,
-            }
-        )
+        json_results.append(result_to_detailed_dict(bundle, result, case, audits=audits))
 
         for row in flatten_result(result):
             row.update(audits)

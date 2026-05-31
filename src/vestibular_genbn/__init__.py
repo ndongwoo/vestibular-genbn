@@ -8,7 +8,7 @@ from .knowledge_loader import KnowledgeBundle, load_knowledge_bundle
 from .inference import run_case, run_cases
 from .posterior import DiseasePosterior
 
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 
 __all__ = [
     "KnowledgeBundle",

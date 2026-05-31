@@ -1,0 +1,1287 @@
+[
+  {
+    "case_id": "S01_typical_pc_bppv",
+    "raw_inputs": {
+      "hx_recurrent_positional_vertigo": "yes",
+      "hx_positional_trigger": "yes",
+      "hx_brief_seconds_to_minutes": "yes",
+      "dix_hallpike_performed": "yes",
+      "dh_torsional_upbeating_nystagmus": "yes",
+      "dh_duration_less_than_60s": "yes"
+    },
+    "evaluated_finding_values": {
+      "typical_positional_history": "yes",
+      "typical_pc_bppv_pattern": "yes",
+      "typical_hc_bppv_geotropic_pattern": "unknown",
+      "typical_hc_bppv_apogeotropic_pattern": "unknown",
+      "subjective_bppv_pattern": "unknown",
+      "central_positional_red_flag_pattern": "unknown",
+      "md_episodic_vertigo_core": "no",
+      "md_definite_duration_pattern": "unknown",
+      "md_probable_duration_pattern": "unknown",
+      "md_fluctuating_aural_symptom_pattern": "unknown",
+      "md_audiometric_low_mid_snhl_pattern": "unknown",
+      "md_auditory_episodic_pattern": "no",
+      "md_definite_phenotype_pattern": "no",
+      "md_probable_phenotype_pattern": "no",
+      "cochlear_hydrops_pattern": "unknown",
+      "recurrent_low_tone_snhl_pattern": "unknown",
+      "caloric_vhit_dissociation_pattern": "unknown",
+      "supportive_md_hydrops_test_pattern": "unknown",
+      "central_neurologic_red_flag_pattern": "unknown",
+      "retrocochlear_cpa_iac_pattern": "unknown",
+      "pc_bppv_positional_phenotype_support": "unknown",
+      "pc_bppv_positional_phenotype_support_strong": "no",
+      "pc_bppv_positional_phenotype_support_moderate": "yes",
+      "pc_bppv_positional_phenotype_support_weak": "no",
+      "hc_bppv_roll_test_phenotype_support": "unknown",
+      "hc_bppv_roll_test_phenotype_support_strong": "no",
+      "hc_bppv_roll_test_phenotype_support_moderate": "no",
+      "hc_bppv_roll_test_phenotype_support_weak": "no"
+    },
+    "posterior_sum": 1.9375136359731626,
+    "normalized_across_diseases": false,
+    "disease_posteriors": [
+      {
+        "rank": 1,
+        "disease_node": "dx_pc_bppv",
+        "prior": 0.1,
+        "posterior": 0.9100998890122086,
+        "log_odds": 2.31485518558586,
+        "n_contributions": 2,
+        "contributions": [
+          {
+            "finding_node": "typical_positional_history",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.82,
+            "p_finding_true_given_disease_false": 0.18,
+            "likelihood_ratio": 4.555555555555555,
+            "log_likelihood_ratio": 1.5163474893680884,
+            "use": "use_directly"
+          },
+          {
+            "finding_node": "pc_bppv_positional_phenotype_support_moderate",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.8,
+            "p_finding_true_given_disease_false": 0.04,
+            "likelihood_ratio": 20.0,
+            "log_likelihood_ratio": 2.995732273553991,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "disease_node": "dx_hc_bppv",
+        "prior": 0.1,
+        "posterior": 0.3305785123966943,
+        "log_odds": -0.7055697005585022,
+        "n_contributions": 1,
+        "contributions": [
+          {
+            "finding_node": "typical_positional_history",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.8,
+            "p_finding_true_given_disease_false": 0.18,
+            "likelihood_ratio": 4.444444444444445,
+            "log_likelihood_ratio": 1.491654876777717,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "disease_node": "dx_subjective_or_possible_bppv",
+        "prior": 0.1,
+        "posterior": 0.3250000000000001,
+        "log_odds": -0.7308875085427919,
+        "n_contributions": 1,
+        "contributions": [
+          {
+            "finding_node": "typical_positional_history",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.78,
+            "p_finding_true_given_disease_false": 0.18,
+            "likelihood_ratio": 4.333333333333334,
+            "log_likelihood_ratio": 1.4663370687934272,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 4,
+        "disease_node": "dx_cochlear_hydrops_auditory_only",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 5,
+        "disease_node": "dx_cpa_iac_retrocochlear_mimic",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 6,
+        "disease_node": "dx_recurrent_low_tone_snhl",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 7,
+        "disease_node": "dx_early_probable_meniere_spectrum",
+        "prior": 0.1,
+        "posterior": 0.04000000000000001,
+        "log_odds": -3.1780538303479453,
+        "n_contributions": 1,
+        "contributions": [
+          {
+            "finding_node": "md_episodic_vertigo_core",
+            "observed_value": "no",
+            "p_finding_true_given_disease_true": 0.7,
+            "p_finding_true_given_disease_false": 0.2,
+            "likelihood_ratio": 0.37500000000000006,
+            "log_likelihood_ratio": -0.9808292530117261,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 8,
+        "disease_node": "dx_central_positional_mimic",
+        "prior": 0.1,
+        "posterior": 0.024096385542168686,
+        "log_odds": -3.701301974112493,
+        "n_contributions": 1,
+        "contributions": [
+          {
+            "finding_node": "typical_pc_bppv_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.04,
+            "p_finding_true_given_disease_false": 0.18,
+            "likelihood_ratio": 0.22222222222222224,
+            "log_likelihood_ratio": -1.504077396776274,
+            "use": "negative_or_conflict_evidence"
+          }
+        ]
+      },
+      {
+        "rank": 9,
+        "disease_node": "dx_meniere_disease",
+        "prior": 0.1,
+        "posterior": 0.007738849022090899,
+        "log_odds": -4.8537333582852895,
+        "n_contributions": 2,
+        "contributions": [
+          {
+            "finding_node": "md_episodic_vertigo_core",
+            "observed_value": "no",
+            "p_finding_true_given_disease_true": 0.85,
+            "p_finding_true_given_disease_false": 0.18,
+            "likelihood_ratio": 0.1829268292682927,
+            "log_likelihood_ratio": -1.6986690461620428,
+            "use": "use_directly"
+          },
+          {
+            "finding_node": "md_auditory_episodic_pattern",
+            "observed_value": "no",
+            "p_finding_true_given_disease_true": 0.67,
+            "p_finding_true_given_disease_false": 0.14,
+            "likelihood_ratio": 0.3837209302325581,
+            "log_likelihood_ratio": -0.9578397347870276,
+            "use": "use_directly"
+          }
+        ]
+      }
+    ],
+    "audit_action_flags": {
+      "urgent_central_evaluation_flag": "no",
+      "mri_iac_cpa_consideration_flag": "no",
+      "canalith_repositioning_candidate_flag": "yes"
+    }
+  },
+  {
+    "case_id": "S02_typical_hc_bppv_geotropic",
+    "raw_inputs": {
+      "hx_recurrent_positional_vertigo": "yes",
+      "hx_positional_trigger": "yes",
+      "hx_brief_seconds_to_minutes": "yes",
+      "supine_roll_test_performed": "yes",
+      "roll_test_horizontal_nystagmus": "yes",
+      "horizontal_geotropic_nystagmus": "yes"
+    },
+    "evaluated_finding_values": {
+      "typical_positional_history": "yes",
+      "typical_pc_bppv_pattern": "unknown",
+      "typical_hc_bppv_geotropic_pattern": "yes",
+      "typical_hc_bppv_apogeotropic_pattern": "unknown",
+      "subjective_bppv_pattern": "unknown",
+      "central_positional_red_flag_pattern": "unknown",
+      "md_episodic_vertigo_core": "no",
+      "md_definite_duration_pattern": "unknown",
+      "md_probable_duration_pattern": "unknown",
+      "md_fluctuating_aural_symptom_pattern": "unknown",
+      "md_audiometric_low_mid_snhl_pattern": "unknown",
+      "md_auditory_episodic_pattern": "no",
+      "md_definite_phenotype_pattern": "no",
+      "md_probable_phenotype_pattern": "no",
+      "cochlear_hydrops_pattern": "unknown",
+      "recurrent_low_tone_snhl_pattern": "unknown",
+      "caloric_vhit_dissociation_pattern": "unknown",
+      "supportive_md_hydrops_test_pattern": "unknown",
+      "central_neurologic_red_flag_pattern": "unknown",
+      "retrocochlear_cpa_iac_pattern": "unknown",
+      "pc_bppv_positional_phenotype_support": "unknown",
+      "pc_bppv_positional_phenotype_support_strong": "no",
+      "pc_bppv_positional_phenotype_support_moderate": "no",
+      "pc_bppv_positional_phenotype_support_weak": "no",
+      "hc_bppv_roll_test_phenotype_support": "unknown",
+      "hc_bppv_roll_test_phenotype_support_strong": "yes",
+      "hc_bppv_roll_test_phenotype_support_moderate": "no",
+      "hc_bppv_roll_test_phenotype_support_weak": "no"
+    },
+    "posterior_sum": 2.001456507549931,
+    "normalized_across_diseases": false,
+    "disease_posteriors": [
+      {
+        "rank": 1,
+        "disease_node": "dx_hc_bppv",
+        "prior": 0.1,
+        "posterior": 0.9569377990430623,
+        "log_odds": 3.101092789211817,
+        "n_contributions": 2,
+        "contributions": [
+          {
+            "finding_node": "hc_bppv_roll_test_phenotype_support_strong",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.9,
+            "p_finding_true_given_disease_false": 0.02,
+            "likelihood_ratio": 45.0,
+            "log_likelihood_ratio": 3.8066624897703196,
+            "use": "use_directly"
+          },
+          {
+            "finding_node": "typical_positional_history",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.8,
+            "p_finding_true_given_disease_false": 0.18,
+            "likelihood_ratio": 4.444444444444445,
+            "log_likelihood_ratio": 1.491654876777717,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "disease_node": "dx_pc_bppv",
+        "prior": 0.1,
+        "posterior": 0.3360655737704919,
+        "log_odds": -0.6808770879681307,
+        "n_contributions": 1,
+        "contributions": [
+          {
+            "finding_node": "typical_positional_history",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.82,
+            "p_finding_true_given_disease_false": 0.18,
+            "likelihood_ratio": 4.555555555555555,
+            "log_likelihood_ratio": 1.5163474893680884,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "disease_node": "dx_subjective_or_possible_bppv",
+        "prior": 0.1,
+        "posterior": 0.3250000000000001,
+        "log_odds": -0.7308875085427919,
+        "n_contributions": 1,
+        "contributions": [
+          {
+            "finding_node": "typical_positional_history",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.78,
+            "p_finding_true_given_disease_false": 0.18,
+            "likelihood_ratio": 4.333333333333334,
+            "log_likelihood_ratio": 1.4663370687934272,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 4,
+        "disease_node": "dx_cochlear_hydrops_auditory_only",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 5,
+        "disease_node": "dx_cpa_iac_retrocochlear_mimic",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 6,
+        "disease_node": "dx_recurrent_low_tone_snhl",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 7,
+        "disease_node": "dx_early_probable_meniere_spectrum",
+        "prior": 0.1,
+        "posterior": 0.04000000000000001,
+        "log_odds": -3.1780538303479453,
+        "n_contributions": 1,
+        "contributions": [
+          {
+            "finding_node": "md_episodic_vertigo_core",
+            "observed_value": "no",
+            "p_finding_true_given_disease_true": 0.7,
+            "p_finding_true_given_disease_false": 0.2,
+            "likelihood_ratio": 0.37500000000000006,
+            "log_likelihood_ratio": -0.9808292530117261,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 8,
+        "disease_node": "dx_central_positional_mimic",
+        "prior": 0.1,
+        "posterior": 0.035714285714285726,
+        "log_odds": -3.2958368660043287,
+        "n_contributions": 1,
+        "contributions": [
+          {
+            "finding_node": "typical_hc_bppv_geotropic_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.05,
+            "p_finding_true_given_disease_false": 0.15,
+            "likelihood_ratio": 0.33333333333333337,
+            "log_likelihood_ratio": -1.0986122886681096,
+            "use": "negative_or_conflict_evidence"
+          }
+        ]
+      },
+      {
+        "rank": 9,
+        "disease_node": "dx_meniere_disease",
+        "prior": 0.1,
+        "posterior": 0.007738849022090899,
+        "log_odds": -4.8537333582852895,
+        "n_contributions": 2,
+        "contributions": [
+          {
+            "finding_node": "md_episodic_vertigo_core",
+            "observed_value": "no",
+            "p_finding_true_given_disease_true": 0.85,
+            "p_finding_true_given_disease_false": 0.18,
+            "likelihood_ratio": 0.1829268292682927,
+            "log_likelihood_ratio": -1.6986690461620428,
+            "use": "use_directly"
+          },
+          {
+            "finding_node": "md_auditory_episodic_pattern",
+            "observed_value": "no",
+            "p_finding_true_given_disease_true": 0.67,
+            "p_finding_true_given_disease_false": 0.14,
+            "likelihood_ratio": 0.3837209302325581,
+            "log_likelihood_ratio": -0.9578397347870276,
+            "use": "use_directly"
+          }
+        ]
+      }
+    ],
+    "audit_action_flags": {
+      "urgent_central_evaluation_flag": "no",
+      "mri_iac_cpa_consideration_flag": "no",
+      "canalith_repositioning_candidate_flag": "yes"
+    }
+  },
+  {
+    "case_id": "S03_subjective_bppv",
+    "raw_inputs": {
+      "hx_recurrent_positional_vertigo": "yes",
+      "hx_positional_trigger": "yes",
+      "hx_brief_seconds_to_minutes": "yes",
+      "positional_vertigo_without_visible_nystagmus": "yes"
+    },
+    "evaluated_finding_values": {
+      "typical_positional_history": "yes",
+      "typical_pc_bppv_pattern": "unknown",
+      "typical_hc_bppv_geotropic_pattern": "unknown",
+      "typical_hc_bppv_apogeotropic_pattern": "unknown",
+      "subjective_bppv_pattern": "yes",
+      "central_positional_red_flag_pattern": "unknown",
+      "md_episodic_vertigo_core": "no",
+      "md_definite_duration_pattern": "unknown",
+      "md_probable_duration_pattern": "unknown",
+      "md_fluctuating_aural_symptom_pattern": "unknown",
+      "md_audiometric_low_mid_snhl_pattern": "unknown",
+      "md_auditory_episodic_pattern": "no",
+      "md_definite_phenotype_pattern": "no",
+      "md_probable_phenotype_pattern": "no",
+      "cochlear_hydrops_pattern": "unknown",
+      "recurrent_low_tone_snhl_pattern": "unknown",
+      "caloric_vhit_dissociation_pattern": "unknown",
+      "supportive_md_hydrops_test_pattern": "unknown",
+      "central_neurologic_red_flag_pattern": "unknown",
+      "retrocochlear_cpa_iac_pattern": "unknown",
+      "pc_bppv_positional_phenotype_support": "unknown",
+      "pc_bppv_positional_phenotype_support_strong": "no",
+      "pc_bppv_positional_phenotype_support_moderate": "no",
+      "pc_bppv_positional_phenotype_support_weak": "no",
+      "hc_bppv_roll_test_phenotype_support": "unknown",
+      "hc_bppv_roll_test_phenotype_support_strong": "no",
+      "hc_bppv_roll_test_phenotype_support_moderate": "no",
+      "hc_bppv_roll_test_phenotype_support_weak": "no"
+    },
+    "posterior_sum": 2.074547481057627,
+    "normalized_across_diseases": false,
+    "disease_posteriors": [
+      {
+        "rank": 1,
+        "disease_node": "dx_subjective_or_possible_bppv",
+        "prior": 0.1,
+        "posterior": 0.650560828300259,
+        "log_odds": 0.6215053009014173,
+        "n_contributions": 2,
+        "contributions": [
+          {
+            "finding_node": "typical_positional_history",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.78,
+            "p_finding_true_given_disease_false": 0.18,
+            "likelihood_ratio": 4.333333333333334,
+            "log_likelihood_ratio": 1.4663370687934272,
+            "use": "use_directly"
+          },
+          {
+            "finding_node": "subjective_bppv_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.58,
+            "p_finding_true_given_disease_false": 0.15,
+            "likelihood_ratio": 3.8666666666666667,
+            "log_likelihood_ratio": 1.3523928094442093,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "disease_node": "dx_pc_bppv",
+        "prior": 0.1,
+        "posterior": 0.6456692913385826,
+        "log_odds": 0.6000567574939335,
+        "n_contributions": 2,
+        "contributions": [
+          {
+            "finding_node": "typical_positional_history",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.82,
+            "p_finding_true_given_disease_false": 0.18,
+            "likelihood_ratio": 4.555555555555555,
+            "log_likelihood_ratio": 1.5163474893680884,
+            "use": "use_directly"
+          },
+          {
+            "finding_node": "subjective_bppv_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.36,
+            "p_finding_true_given_disease_false": 0.1,
+            "likelihood_ratio": 3.5999999999999996,
+            "log_likelihood_ratio": 1.2809338454620642,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "disease_node": "dx_hc_bppv",
+        "prior": 0.1,
+        "posterior": 0.3305785123966943,
+        "log_odds": -0.7055697005585022,
+        "n_contributions": 1,
+        "contributions": [
+          {
+            "finding_node": "typical_positional_history",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.8,
+            "p_finding_true_given_disease_false": 0.18,
+            "likelihood_ratio": 4.444444444444445,
+            "log_likelihood_ratio": 1.491654876777717,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 4,
+        "disease_node": "dx_central_positional_mimic",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 5,
+        "disease_node": "dx_cochlear_hydrops_auditory_only",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 6,
+        "disease_node": "dx_cpa_iac_retrocochlear_mimic",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 7,
+        "disease_node": "dx_recurrent_low_tone_snhl",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 8,
+        "disease_node": "dx_early_probable_meniere_spectrum",
+        "prior": 0.1,
+        "posterior": 0.04000000000000001,
+        "log_odds": -3.1780538303479453,
+        "n_contributions": 1,
+        "contributions": [
+          {
+            "finding_node": "md_episodic_vertigo_core",
+            "observed_value": "no",
+            "p_finding_true_given_disease_true": 0.7,
+            "p_finding_true_given_disease_false": 0.2,
+            "likelihood_ratio": 0.37500000000000006,
+            "log_likelihood_ratio": -0.9808292530117261,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 9,
+        "disease_node": "dx_meniere_disease",
+        "prior": 0.1,
+        "posterior": 0.007738849022090899,
+        "log_odds": -4.8537333582852895,
+        "n_contributions": 2,
+        "contributions": [
+          {
+            "finding_node": "md_episodic_vertigo_core",
+            "observed_value": "no",
+            "p_finding_true_given_disease_true": 0.85,
+            "p_finding_true_given_disease_false": 0.18,
+            "likelihood_ratio": 0.1829268292682927,
+            "log_likelihood_ratio": -1.6986690461620428,
+            "use": "use_directly"
+          },
+          {
+            "finding_node": "md_auditory_episodic_pattern",
+            "observed_value": "no",
+            "p_finding_true_given_disease_true": 0.67,
+            "p_finding_true_given_disease_false": 0.14,
+            "likelihood_ratio": 0.3837209302325581,
+            "log_likelihood_ratio": -0.9578397347870276,
+            "use": "use_directly"
+          }
+        ]
+      }
+    ],
+    "audit_action_flags": {
+      "urgent_central_evaluation_flag": "no",
+      "mri_iac_cpa_consideration_flag": "no",
+      "canalith_repositioning_candidate_flag": "yes"
+    }
+  },
+  {
+    "case_id": "S04_central_positional_red_flag",
+    "raw_inputs": {
+      "hx_recurrent_positional_vertigo": "yes",
+      "hx_positional_trigger": "yes",
+      "pure_downbeat_positional_nystagmus": "yes",
+      "positional_nystagmus_persistent_gt_60s": "yes",
+      "new_severe_headache_or_neck_pain": "yes"
+    },
+    "evaluated_finding_values": {
+      "typical_positional_history": "unknown",
+      "typical_pc_bppv_pattern": "unknown",
+      "typical_hc_bppv_geotropic_pattern": "unknown",
+      "typical_hc_bppv_apogeotropic_pattern": "unknown",
+      "subjective_bppv_pattern": "unknown",
+      "central_positional_red_flag_pattern": "yes",
+      "md_episodic_vertigo_core": "unknown",
+      "md_definite_duration_pattern": "unknown",
+      "md_probable_duration_pattern": "unknown",
+      "md_fluctuating_aural_symptom_pattern": "unknown",
+      "md_audiometric_low_mid_snhl_pattern": "unknown",
+      "md_auditory_episodic_pattern": "unknown",
+      "md_definite_phenotype_pattern": "unknown",
+      "md_probable_phenotype_pattern": "unknown",
+      "cochlear_hydrops_pattern": "unknown",
+      "recurrent_low_tone_snhl_pattern": "unknown",
+      "caloric_vhit_dissociation_pattern": "unknown",
+      "supportive_md_hydrops_test_pattern": "unknown",
+      "central_neurologic_red_flag_pattern": "yes",
+      "retrocochlear_cpa_iac_pattern": "unknown",
+      "pc_bppv_positional_phenotype_support": "unknown",
+      "pc_bppv_positional_phenotype_support_strong": "no",
+      "pc_bppv_positional_phenotype_support_moderate": "no",
+      "pc_bppv_positional_phenotype_support_weak": "no",
+      "hc_bppv_roll_test_phenotype_support": "unknown",
+      "hc_bppv_roll_test_phenotype_support_strong": "no",
+      "hc_bppv_roll_test_phenotype_support_moderate": "no",
+      "hc_bppv_roll_test_phenotype_support_weak": "no"
+    },
+    "posterior_sum": 1.5806844888366631,
+    "normalized_across_diseases": false,
+    "disease_posteriors": [
+      {
+        "rank": 1,
+        "disease_node": "dx_central_positional_mimic",
+        "prior": 0.1,
+        "posterior": 0.9266304347826088,
+        "log_odds": 2.5360456112791883,
+        "n_contributions": 2,
+        "contributions": [
+          {
+            "finding_node": "central_positional_red_flag_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.62,
+            "p_finding_true_given_disease_false": 0.05,
+            "likelihood_ratio": 12.399999999999999,
+            "log_likelihood_ratio": 2.517696472610991,
+            "use": "direct_plus_safety_overlay"
+          },
+          {
+            "finding_node": "central_neurologic_red_flag_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.55,
+            "p_finding_true_given_disease_false": 0.06,
+            "likelihood_ratio": 9.166666666666668,
+            "log_likelihood_ratio": 2.215573716004416,
+            "use": "direct_plus_safety_overlay"
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "disease_node": "dx_cochlear_hydrops_auditory_only",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 3,
+        "disease_node": "dx_cpa_iac_retrocochlear_mimic",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 4,
+        "disease_node": "dx_early_probable_meniere_spectrum",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 5,
+        "disease_node": "dx_meniere_disease",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 6,
+        "disease_node": "dx_recurrent_low_tone_snhl",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 7,
+        "disease_node": "dx_subjective_or_possible_bppv",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 8,
+        "disease_node": "dx_hc_bppv",
+        "prior": 0.1,
+        "posterior": 0.027027027027027032,
+        "log_odds": -3.58351893845611,
+        "n_contributions": 1,
+        "contributions": [
+          {
+            "finding_node": "central_positional_red_flag_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.03,
+            "p_finding_true_given_disease_false": 0.12,
+            "likelihood_ratio": 0.25,
+            "log_likelihood_ratio": -1.3862943611198906,
+            "use": "negative_or_conflict_evidence"
+          }
+        ]
+      },
+      {
+        "rank": 9,
+        "disease_node": "dx_pc_bppv",
+        "prior": 0.1,
+        "posterior": 0.027027027027027032,
+        "log_odds": -3.58351893845611,
+        "n_contributions": 1,
+        "contributions": [
+          {
+            "finding_node": "central_positional_red_flag_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.03,
+            "p_finding_true_given_disease_false": 0.12,
+            "likelihood_ratio": 0.25,
+            "log_likelihood_ratio": -1.3862943611198906,
+            "use": "negative_or_conflict_evidence"
+          }
+        ]
+      }
+    ],
+    "audit_action_flags": {
+      "urgent_central_evaluation_flag": "yes",
+      "mri_iac_cpa_consideration_flag": "no",
+      "canalith_repositioning_candidate_flag": "no"
+    }
+  },
+  {
+    "case_id": "S05_definite_like_meniere",
+    "raw_inputs": {
+      "hx_two_or_more_vertigo_episodes": "yes",
+      "hx_spontaneous_vertigo": "yes",
+      "hx_episode_duration_20min_to_12h": "yes",
+      "hx_episode_duration_20min_to_24h": "yes",
+      "hx_fluctuating_hearing_loss": "yes",
+      "hx_tinnitus_affected_ear": "yes",
+      "hx_aural_fullness_affected_ear": "yes",
+      "hx_aural_symptom_temporal_relation_to_vertigo": "yes",
+      "affected_ear_laterality": "left",
+      "audiometry_performed": "yes",
+      "audiometry_low_mid_freq_snhl_affected_ear": "yes"
+    },
+    "evaluated_finding_values": {
+      "typical_positional_history": "unknown",
+      "typical_pc_bppv_pattern": "unknown",
+      "typical_hc_bppv_geotropic_pattern": "unknown",
+      "typical_hc_bppv_apogeotropic_pattern": "unknown",
+      "subjective_bppv_pattern": "unknown",
+      "central_positional_red_flag_pattern": "unknown",
+      "md_episodic_vertigo_core": "unknown",
+      "md_definite_duration_pattern": "yes",
+      "md_probable_duration_pattern": "yes",
+      "md_fluctuating_aural_symptom_pattern": "yes",
+      "md_audiometric_low_mid_snhl_pattern": "yes",
+      "md_auditory_episodic_pattern": "unknown",
+      "md_definite_phenotype_pattern": "unknown",
+      "md_probable_phenotype_pattern": "unknown",
+      "cochlear_hydrops_pattern": "unknown",
+      "recurrent_low_tone_snhl_pattern": "unknown",
+      "caloric_vhit_dissociation_pattern": "unknown",
+      "supportive_md_hydrops_test_pattern": "unknown",
+      "central_neurologic_red_flag_pattern": "unknown",
+      "retrocochlear_cpa_iac_pattern": "unknown",
+      "pc_bppv_positional_phenotype_support": "unknown",
+      "pc_bppv_positional_phenotype_support_strong": "no",
+      "pc_bppv_positional_phenotype_support_moderate": "no",
+      "pc_bppv_positional_phenotype_support_weak": "no",
+      "hc_bppv_roll_test_phenotype_support": "unknown",
+      "hc_bppv_roll_test_phenotype_support_strong": "no",
+      "hc_bppv_roll_test_phenotype_support_moderate": "no",
+      "hc_bppv_roll_test_phenotype_support_weak": "no"
+    },
+    "posterior_sum": 2.3958865220660677,
+    "normalized_across_diseases": false,
+    "disease_posteriors": [
+      {
+        "rank": 1,
+        "disease_node": "dx_meniere_disease",
+        "prior": 0.1,
+        "posterior": 0.9078212290502793,
+        "log_odds": 2.2873176208632575,
+        "n_contributions": 3,
+        "contributions": [
+          {
+            "finding_node": "md_definite_duration_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.78,
+            "p_finding_true_given_disease_false": 0.2,
+            "likelihood_ratio": 3.9,
+            "log_likelihood_ratio": 1.3609765531356006,
+            "use": "use_directly"
+          },
+          {
+            "finding_node": "md_fluctuating_aural_symptom_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.75,
+            "p_finding_true_given_disease_false": 0.22,
+            "likelihood_ratio": 3.409090909090909,
+            "log_likelihood_ratio": 1.2264456601779945,
+            "use": "use_directly"
+          },
+          {
+            "finding_node": "md_audiometric_low_mid_snhl_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.8,
+            "p_finding_true_given_disease_false": 0.12,
+            "likelihood_ratio": 6.666666666666667,
+            "log_likelihood_ratio": 1.8971199848858813,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "disease_node": "dx_early_probable_meniere_spectrum",
+        "prior": 0.1,
+        "posterior": 0.7880652930157881,
+        "log_odds": 1.3133027042712617,
+        "n_contributions": 3,
+        "contributions": [
+          {
+            "finding_node": "md_probable_duration_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.76,
+            "p_finding_true_given_disease_false": 0.24,
+            "likelihood_ratio": 3.166666666666667,
+            "log_likelihood_ratio": 1.1526795099383855,
+            "use": "use_directly"
+          },
+          {
+            "finding_node": "md_fluctuating_aural_symptom_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.62,
+            "p_finding_true_given_disease_false": 0.22,
+            "likelihood_ratio": 2.8181818181818183,
+            "log_likelihood_ratio": 1.0360919316867758,
+            "use": "use_directly"
+          },
+          {
+            "finding_node": "md_audiometric_low_mid_snhl_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.45,
+            "p_finding_true_given_disease_false": 0.12,
+            "likelihood_ratio": 3.7500000000000004,
+            "log_likelihood_ratio": 1.3217558399823195,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "disease_node": "dx_central_positional_mimic",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 4,
+        "disease_node": "dx_cochlear_hydrops_auditory_only",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 5,
+        "disease_node": "dx_cpa_iac_retrocochlear_mimic",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 6,
+        "disease_node": "dx_hc_bppv",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 7,
+        "disease_node": "dx_pc_bppv",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 8,
+        "disease_node": "dx_recurrent_low_tone_snhl",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 9,
+        "disease_node": "dx_subjective_or_possible_bppv",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      }
+    ],
+    "audit_action_flags": {
+      "urgent_central_evaluation_flag": "no",
+      "mri_iac_cpa_consideration_flag": "no",
+      "canalith_repositioning_candidate_flag": "no"
+    }
+  },
+  {
+    "case_id": "S06_probable_or_early_meniere",
+    "raw_inputs": {
+      "hx_two_or_more_vertigo_episodes": "yes",
+      "hx_spontaneous_vertigo": "yes",
+      "hx_episode_duration_20min_to_24h": "yes",
+      "hx_tinnitus_affected_ear": "yes",
+      "hx_aural_fullness_affected_ear": "yes",
+      "hx_aural_symptom_temporal_relation_to_vertigo": "yes",
+      "affected_ear_laterality": "right"
+    },
+    "evaluated_finding_values": {
+      "typical_positional_history": "unknown",
+      "typical_pc_bppv_pattern": "unknown",
+      "typical_hc_bppv_geotropic_pattern": "unknown",
+      "typical_hc_bppv_apogeotropic_pattern": "unknown",
+      "subjective_bppv_pattern": "unknown",
+      "central_positional_red_flag_pattern": "unknown",
+      "md_episodic_vertigo_core": "unknown",
+      "md_definite_duration_pattern": "unknown",
+      "md_probable_duration_pattern": "yes",
+      "md_fluctuating_aural_symptom_pattern": "yes",
+      "md_audiometric_low_mid_snhl_pattern": "unknown",
+      "md_auditory_episodic_pattern": "unknown",
+      "md_definite_phenotype_pattern": "unknown",
+      "md_probable_phenotype_pattern": "unknown",
+      "cochlear_hydrops_pattern": "unknown",
+      "recurrent_low_tone_snhl_pattern": "unknown",
+      "caloric_vhit_dissociation_pattern": "unknown",
+      "supportive_md_hydrops_test_pattern": "unknown",
+      "central_neurologic_red_flag_pattern": "unknown",
+      "retrocochlear_cpa_iac_pattern": "unknown",
+      "pc_bppv_positional_phenotype_support": "unknown",
+      "pc_bppv_positional_phenotype_support_strong": "no",
+      "pc_bppv_positional_phenotype_support_moderate": "no",
+      "pc_bppv_positional_phenotype_support_weak": "no",
+      "hc_bppv_roll_test_phenotype_support": "unknown",
+      "hc_bppv_roll_test_phenotype_support_strong": "no",
+      "hc_bppv_roll_test_phenotype_support_moderate": "no",
+      "hc_bppv_roll_test_phenotype_support_weak": "no"
+    },
+    "posterior_sum": 1.4726120033812344,
+    "normalized_across_diseases": false,
+    "disease_posteriors": [
+      {
+        "rank": 1,
+        "disease_node": "dx_early_probable_meniere_spectrum",
+        "prior": 0.1,
+        "posterior": 0.4978867286559595,
+        "log_odds": -0.008453135711057769,
+        "n_contributions": 2,
+        "contributions": [
+          {
+            "finding_node": "md_probable_duration_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.76,
+            "p_finding_true_given_disease_false": 0.24,
+            "likelihood_ratio": 3.166666666666667,
+            "log_likelihood_ratio": 1.1526795099383855,
+            "use": "use_directly"
+          },
+          {
+            "finding_node": "md_fluctuating_aural_symptom_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.62,
+            "p_finding_true_given_disease_false": 0.22,
+            "likelihood_ratio": 2.8181818181818183,
+            "log_likelihood_ratio": 1.0360919316867758,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "disease_node": "dx_meniere_disease",
+        "prior": 0.1,
+        "posterior": 0.27472527472527475,
+        "log_odds": -0.9707789171582246,
+        "n_contributions": 1,
+        "contributions": [
+          {
+            "finding_node": "md_fluctuating_aural_symptom_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.75,
+            "p_finding_true_given_disease_false": 0.22,
+            "likelihood_ratio": 3.409090909090909,
+            "log_likelihood_ratio": 1.2264456601779945,
+            "use": "use_directly"
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "disease_node": "dx_central_positional_mimic",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 4,
+        "disease_node": "dx_cochlear_hydrops_auditory_only",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 5,
+        "disease_node": "dx_cpa_iac_retrocochlear_mimic",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 6,
+        "disease_node": "dx_hc_bppv",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 7,
+        "disease_node": "dx_pc_bppv",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 8,
+        "disease_node": "dx_recurrent_low_tone_snhl",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 9,
+        "disease_node": "dx_subjective_or_possible_bppv",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      }
+    ],
+    "audit_action_flags": {
+      "urgent_central_evaluation_flag": "no",
+      "mri_iac_cpa_consideration_flag": "no",
+      "canalith_repositioning_candidate_flag": "no"
+    }
+  },
+  {
+    "case_id": "S07_retrocochlear_asymmetric_snhl_flag",
+    "raw_inputs": {
+      "hx_tinnitus_affected_ear": "yes",
+      "affected_ear_laterality": "right",
+      "audiometry_performed": "yes",
+      "audiometry_asymmetric_snhl": "yes"
+    },
+    "evaluated_finding_values": {
+      "typical_positional_history": "unknown",
+      "typical_pc_bppv_pattern": "unknown",
+      "typical_hc_bppv_geotropic_pattern": "unknown",
+      "typical_hc_bppv_apogeotropic_pattern": "unknown",
+      "subjective_bppv_pattern": "unknown",
+      "central_positional_red_flag_pattern": "unknown",
+      "md_episodic_vertigo_core": "unknown",
+      "md_definite_duration_pattern": "unknown",
+      "md_probable_duration_pattern": "unknown",
+      "md_fluctuating_aural_symptom_pattern": "unknown",
+      "md_audiometric_low_mid_snhl_pattern": "unknown",
+      "md_auditory_episodic_pattern": "unknown",
+      "md_definite_phenotype_pattern": "unknown",
+      "md_probable_phenotype_pattern": "unknown",
+      "cochlear_hydrops_pattern": "unknown",
+      "recurrent_low_tone_snhl_pattern": "unknown",
+      "caloric_vhit_dissociation_pattern": "unknown",
+      "supportive_md_hydrops_test_pattern": "unknown",
+      "central_neurologic_red_flag_pattern": "unknown",
+      "retrocochlear_cpa_iac_pattern": "yes",
+      "pc_bppv_positional_phenotype_support": "unknown",
+      "pc_bppv_positional_phenotype_support_strong": "no",
+      "pc_bppv_positional_phenotype_support_moderate": "no",
+      "pc_bppv_positional_phenotype_support_weak": "no",
+      "hc_bppv_roll_test_phenotype_support": "unknown",
+      "hc_bppv_roll_test_phenotype_support_strong": "no",
+      "hc_bppv_roll_test_phenotype_support_moderate": "no",
+      "hc_bppv_roll_test_phenotype_support_weak": "no"
+    },
+    "posterior_sum": 1.3462184873949583,
+    "normalized_across_diseases": false,
+    "disease_posteriors": [
+      {
+        "rank": 1,
+        "disease_node": "dx_cpa_iac_retrocochlear_mimic",
+        "prior": 0.1,
+        "posterior": 0.546218487394958,
+        "log_odds": 0.18540322333136317,
+        "n_contributions": 1,
+        "contributions": [
+          {
+            "finding_node": "retrocochlear_cpa_iac_pattern",
+            "observed_value": "yes",
+            "p_finding_true_given_disease_true": 0.65,
+            "p_finding_true_given_disease_false": 0.06,
+            "likelihood_ratio": 10.833333333333334,
+            "log_likelihood_ratio": 2.3826278006675823,
+            "use": "direct_plus_action_overlay"
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "disease_node": "dx_central_positional_mimic",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 3,
+        "disease_node": "dx_cochlear_hydrops_auditory_only",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 4,
+        "disease_node": "dx_early_probable_meniere_spectrum",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 5,
+        "disease_node": "dx_hc_bppv",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 6,
+        "disease_node": "dx_meniere_disease",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 7,
+        "disease_node": "dx_pc_bppv",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 8,
+        "disease_node": "dx_recurrent_low_tone_snhl",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      },
+      {
+        "rank": 9,
+        "disease_node": "dx_subjective_or_possible_bppv",
+        "prior": 0.1,
+        "posterior": 0.10000000000000003,
+        "log_odds": -2.197224577336219,
+        "n_contributions": 0,
+        "contributions": []
+      }
+    ],
+    "audit_action_flags": {
+      "urgent_central_evaluation_flag": "no",
+      "mri_iac_cpa_consideration_flag": "yes",
+      "canalith_repositioning_candidate_flag": "no"
+    }
+  }
+]

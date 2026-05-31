@@ -28,7 +28,7 @@ def evaluate_findings(bundle: Any, raw_case: dict[str, Any]) -> dict[str, Any]:
             # Skip already processed exclusive graded support groups
             if finding.get("group_type") == "exclusive_graded_support":
                 continue
-                
+
             old = values.get(finding["id"], "unknown")
             try:
                 result = evaluate_rule(finding["rule"], values)
@@ -45,7 +45,9 @@ def evaluate_findings(bundle: Any, raw_case: dict[str, Any]) -> dict[str, Any]:
     return values
 
 
-def evaluate_exclusive_graded_support_group(finding: dict[str, Any], values: dict[str, Any]) -> None:
+def evaluate_exclusive_graded_support_group(
+    finding: dict[str, Any], values: dict[str, Any]
+) -> None:
     """Evaluate an exclusive graded support group."""
     # For exclusive graded support, evaluate in order of strength
     # strong first, then moderate, then weak
@@ -55,20 +57,20 @@ def evaluate_exclusive_graded_support_group(finding: dict[str, Any], values: dic
     for level in levels:
         level_id = level["node"]
         values[level_id] = "no"
-    
+
     # Evaluate strong first
     strong_level = None
     for level in levels:
         if level["level"] == "strong":
             strong_level = level
             break
-            
+
     if strong_level:
         try:
             strong_result = evaluate_rule(strong_level["rule"], values)
         except Exception:
             strong_result = None
-            
+
         if strong_result is True:
             values[strong_level["node"]] = "yes"
             # Set moderate and weak to "no" since strong overrides them
@@ -76,20 +78,20 @@ def evaluate_exclusive_graded_support_group(finding: dict[str, Any], values: dic
                 if level["level"] in ("moderate", "weak"):
                     values[level["node"]] = "no"
             return
-    
+
     # Evaluate moderate if strong is not true
     moderate_level = None
     for level in levels:
         if level["level"] == "moderate":
             moderate_level = level
             break
-            
+
     if moderate_level:
         try:
             moderate_result = evaluate_rule(moderate_level["rule"], values)
         except Exception:
             moderate_result = None
-            
+
         if moderate_result is True:
             values[moderate_level["node"]] = "yes"
             # Set weak to "no" since moderate overrides it
@@ -97,22 +99,22 @@ def evaluate_exclusive_graded_support_group(finding: dict[str, Any], values: dic
                 if level["level"] == "weak":
                     values[level["node"]] = "no"
             return
-            
+
     # Evaluate weak if neither strong nor moderate are true
     weak_level = None
     for level in levels:
         if level["level"] == "weak":
             weak_level = level
             break
-            
+
     if weak_level:
         try:
             weak_result = evaluate_rule(weak_level["rule"], values)
         except Exception:
             weak_result = None
-            
+
         if weak_result is True:
             values[weak_level["node"]] = "yes"
             return
-            
+
     # If none are true, all levels are "no" (already set above)

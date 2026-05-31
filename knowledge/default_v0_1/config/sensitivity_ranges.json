@@ -1,0 +1,79 @@
+{
+  "schema_version": "sensitivity_ranges_v0_1",
+  "analysis_type": "one_way_likelihood_sensitivity",
+  "description": "Seed one-way sensitivity ranges for selected Vestibular-GenBN likelihood parameters. The current implementation varies p1 = P(finding=true | disease=true) while holding p0 = P(finding=true | disease=false) fixed at the seed value.",
+  "parameters": [
+    {
+      "id": "pc_bppv_positional_history_p1",
+      "disease_node": "dx_pc_bppv",
+      "finding_node": "typical_positional_history",
+      "parameter": "p_finding_true_given_disease_true",
+      "default": 0.82,
+      "p0_fixed_at": 0.18,
+      "p1_values": [0.72, 0.82, 0.9],
+      "evidence_quality": "expert_seed",
+      "recommended_case_ids": ["S01_typical_pc_bppv", "S03_subjective_bppv"],
+      "rationale": "Typical positional history supports BPPV but is not canal-specific; a moderate range is used to reflect uncertainty in history-only diagnostic information."
+    },
+    {
+      "id": "pc_bppv_moderate_support_p1",
+      "disease_node": "dx_pc_bppv",
+      "finding_node": "pc_bppv_positional_phenotype_support_moderate",
+      "parameter": "p_finding_true_given_disease_true",
+      "default": 0.8,
+      "p0_fixed_at": 0.04,
+      "p1_values": [0.7, 0.8, 0.9],
+      "evidence_quality": "guideline_informed_seed",
+      "recommended_case_ids": ["S01_typical_pc_bppv"],
+      "rationale": "Moderate posterior-canal BPPV phenotype support is a canal-specific bedside pattern, but the seed value should remain editable and sensitivity-tested."
+    },
+    {
+      "id": "hc_bppv_strong_support_p1",
+      "disease_node": "dx_hc_bppv",
+      "finding_node": "hc_bppv_roll_test_phenotype_support_strong",
+      "parameter": "p_finding_true_given_disease_true",
+      "default": 0.9,
+      "p0_fixed_at": 0.02,
+      "p1_values": [0.8, 0.9, 0.95],
+      "evidence_quality": "guideline_informed_seed",
+      "recommended_case_ids": ["S02_typical_hc_bppv_geotropic"],
+      "rationale": "Strong horizontal-canal BPPV roll-test phenotype support is highly disease-compatible; a conservative high-range sensitivity check is provided."
+    },
+    {
+      "id": "md_audiometric_low_mid_snhl_p1",
+      "disease_node": "dx_meniere_disease",
+      "finding_node": "md_audiometric_low_mid_snhl_pattern",
+      "parameter": "p_finding_true_given_disease_true",
+      "default": 0.8,
+      "p0_fixed_at": 0.12,
+      "p1_values": [0.7, 0.8, 0.9],
+      "evidence_quality": "guideline_informed_seed",
+      "recommended_case_ids": ["S05_definite_like_meniere"],
+      "rationale": "Audiometric low- to mid-frequency sensorineural hearing loss is a key supportive phenotype for definite-like Meniere disease in the demonstration bundle."
+    },
+    {
+      "id": "md_calo_vhit_dissociation_p1",
+      "disease_node": "dx_meniere_disease",
+      "finding_node": "caloric_vhit_dissociation_pattern",
+      "parameter": "p_finding_true_given_disease_true",
+      "default": 0.59,
+      "p0_fixed_at": 0.17,
+      "p1_values": [0.45, 0.59, 0.7],
+      "evidence_quality": "literature_informed_seed",
+      "recommended_case_ids": ["S05_definite_like_meniere"],
+      "rationale": "Caloric-vHIT dissociation is modeled as supportive follow-up evidence; a broader range reflects setting- and protocol-dependent variability."
+    },
+    {
+      "id": "retrocochlear_pattern_p1",
+      "disease_node": "dx_cpa_iac_retrocochlear_mimic",
+      "finding_node": "retrocochlear_cpa_iac_pattern",
+      "parameter": "p_finding_true_given_disease_true",
+      "default": 0.65,
+      "p0_fixed_at": 0.06,
+      "p1_values": [0.5, 0.65, 0.8],
+      "evidence_quality": "expert_seed",
+      "recommended_case_ids": ["S07_retrocochlear_asymmetric_snhl_flag"],
+      "rationale": "The retrocochlear/CPA-IAC pattern is used as direct posterior support plus an action overlay; sensitivity analysis should test uncertainty in this seed likelihood."
+    }
+  ]
+}

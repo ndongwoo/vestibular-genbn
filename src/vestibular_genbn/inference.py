@@ -85,12 +85,8 @@ def run_case(
                 EvidenceContribution(
                     finding_node=finding,
                     observed_value=observed,
-                    p_finding_true_given_disease_true=row[
-                        "p_finding_true_given_disease_true"
-                    ],
-                    p_finding_true_given_disease_false=row[
-                        "p_finding_true_given_disease_false"
-                    ],
+                    p_finding_true_given_disease_true=row["p_finding_true_given_disease_true"],
+                    p_finding_true_given_disease_false=row["p_finding_true_given_disease_false"],
                     likelihood_ratio=lr,
                     log_likelihood_ratio=log_lr,
                     use=row.get("use", "use_directly"),
@@ -115,6 +111,89 @@ def run_case(
         "disease_posteriors": posteriors,
         "posterior_sum": sum(p.posterior for p in posteriors),
         "normalized_across_diseases": False,
+    }
+
+
+def _clean_observed_raw_inputs(raw_case: dict[str, Any]) -> dict[str, Any]:
+    """Return non-empty raw inputs for compact detailed JSON output."""
+
+    out: dict[str, Any] = {}
+    for key, value in raw_case.items():
+        if key in {"case_id", "id"}:
+            continue
+        if value is None:
+            continue
+        if isinstance(value, str) and value.strip() == "":
+            continue
+        out[key] = value
+    return out
+
+
+def _finding_node_ids(bundle: Any) -> list[str]:
+    """Return finding node IDs, including levels inside exclusive graded groups."""
+
+    ids: list[str] = []
+    seen: set[str] = set()
+
+    for finding in bundle.finding_patterns:
+        finding_id = finding.get("id")
+        if finding_id and finding_id not in seen:
+            ids.append(finding_id)
+            seen.add(finding_id)
+
+        for level in finding.get("levels", []):
+            level_node = level.get("node")
+            if level_node and level_node not in seen:
+                ids.append(level_node)
+                seen.add(level_node)
+
+    return ids
+
+
+def result_to_detailed_dict(
+    bundle: Any,
+    result: dict[str, Any],
+    raw_case: dict[str, Any],
+    *,
+    audits: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Serialize a case result with raw inputs, derived findings, and LR contributions."""
+
+    values = result["values"]
+
+    return {
+        "case_id": result["case_id"],
+        "raw_inputs": _clean_observed_raw_inputs(raw_case),
+        "evaluated_finding_values": {
+            finding_id: values.get(finding_id, "unknown")
+            for finding_id in _finding_node_ids(bundle)
+        },
+        "posterior_sum": result["posterior_sum"],
+        "normalized_across_diseases": result["normalized_across_diseases"],
+        "disease_posteriors": [
+            {
+                "rank": rank,
+                "disease_node": posterior.disease_node,
+                "prior": posterior.prior,
+                "posterior": posterior.posterior,
+                "log_odds": posterior.log_odds,
+                "n_contributions": len(posterior.contributions),
+                "contributions": [
+                    {
+                        "finding_node": contribution.finding_node,
+                        "observed_value": contribution.observed_value,
+                        "p_finding_true_given_disease_true": contribution.p_finding_true_given_disease_true,
+                        "p_finding_true_given_disease_false": contribution.p_finding_true_given_disease_false,
+                        "likelihood_ratio": contribution.likelihood_ratio,
+                        "log_likelihood_ratio": contribution.log_likelihood_ratio,
+                        "use": contribution.use,
+                    }
+                    for contribution in posterior.contributions
+                ],
+            }
+            for rank, posterior in enumerate(result["disease_posteriors"], start=1)
+        ],
+        "audit_action_flags": audits or {},
     }
 
 

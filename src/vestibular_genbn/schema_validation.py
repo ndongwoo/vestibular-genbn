@@ -17,7 +17,7 @@ def validate_bundle(bundle: Any) -> None:
     disease_ids = _ids(bundle.disease_nodes)
     observation_ids = _ids(bundle.observation_nodes)
     finding_ids = _ids(bundle.finding_patterns)
-    
+
     # Add level node IDs from exclusive graded support groups to finding_ids for validation
     for finding in bundle.finding_patterns:
         if finding.get("group_type") == "exclusive_graded_support":
@@ -57,7 +57,9 @@ def validate_bundle(bundle: Any) -> None:
                     errors.append(f"finding pattern missing {field}: {finding}")
         for component in finding.get("components", []):
             if component not in observation_ids and component not in finding_ids:
-                errors.append(f"finding {finding.get('id')} references unknown component {component}")
+                errors.append(
+                    f"finding {finding.get('id')} references unknown component {component}"
+                )
 
     for row in bundle.likelihood_rows:
         for field in (
@@ -88,7 +90,9 @@ def validate_bundle(bundle: Any) -> None:
     active = set(bundle.active_disease_ids)
     missing_active = active - disease_ids
     if missing_active:
-        errors.append(f"candidate set includes unknown active disease nodes: {sorted(missing_active)}")
+        errors.append(
+            f"candidate set includes unknown active disease nodes: {sorted(missing_active)}"
+        )
 
     policy = bundle.inference_policy.get("posterior_mode")
     if policy != "independent_binary_multilabel":

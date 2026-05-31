@@ -1,6 +1,7 @@
 """
 Test exclusive graded support evaluation logic.
 """
+
 from vestibular_genbn import load_knowledge_bundle
 from vestibular_genbn.inference import load_case_csv, run_case
 
@@ -35,7 +36,9 @@ def test_exclusive_graded_support_skip_no_values():
                     break
 
             assert pc_bppv_posterior is not None, "dx_pc_bppv posterior not found"
-            assert pc_bppv_posterior > 0.8, f"Expected high posterior for dx_pc_bppv, got {pc_bppv_posterior}"
+            assert (
+                pc_bppv_posterior > 0.8
+            ), f"Expected high posterior for dx_pc_bppv, got {pc_bppv_posterior}"
 
             # Verify the values we expect for the exclusive support group
             values = result["values"]
@@ -96,7 +99,9 @@ def test_exclusive_support_levels_no_contribute_to_posterior():
                     break
 
             # Should be much higher than 0.3 (the previous incorrect result)
-            assert pc_bppv_posterior > 0.8, "Expected high posterior for dx_pc_bppv with moderate support"
+            assert (
+                pc_bppv_posterior > 0.8
+            ), "Expected high posterior for dx_pc_bppv with moderate support"
 
 
 def test_multiple_disease_scenarios():
@@ -113,7 +118,9 @@ def test_multiple_disease_scenarios():
 
             # Should still rank HC-BPPV highest
             top_disease = result["disease_posteriors"][0].disease_node
-            assert top_disease == "dx_hc_bppv", f"Expected dx_hc_bppv to be top for S02, got {top_disease}"
+            assert (
+                top_disease == "dx_hc_bppv"
+            ), f"Expected dx_hc_bppv to be top for S02, got {top_disease}"
 
             break
 
@@ -136,7 +143,9 @@ def test_s01_specific_validation():
 
             # Check that dx_pc_bppv is highest
             assert posteriors[0].disease_node == "dx_pc_bppv"
-            assert posteriors[0].posterior > 0.8, f"Expected high PC-BPPV posterior, got {posteriors[0].posterior}"
+            assert (
+                posteriors[0].posterior > 0.8
+            ), f"Expected high PC-BPPV posterior, got {posteriors[0].posterior}"
 
             # Validate the values in the case
             values = result["values"]
@@ -177,6 +186,8 @@ def test_that_old_behavior_would_have_failed():
 
             # PC-BPPV should now be much higher than HC-BPPV
             assert pc_bppv_posterior > 0.8, "PC-BPPV should have high posterior after fix"
-            assert hc_bppv_posterior < 0.4, "HC-BPPV should have low posterior after fix (not the wrong result)"
+            assert (
+                hc_bppv_posterior < 0.4
+            ), "HC-BPPV should have low posterior after fix (not the wrong result)"
 
             break

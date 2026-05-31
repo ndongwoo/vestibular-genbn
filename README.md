@@ -1,6 +1,7 @@
 # Vestibular-GenBN
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20460819.svg)](https://doi.org/10.5281/zenodo.20460819)
+[![tests](https://github.com/ndongwoo/vestibular-genbn/actions/workflows/tests.yml/badge.svg)](https://github.com/ndongwoo/vestibular-genbn/actions/workflows/tests.yml)
 
 **Vestibular-GenBN** is an open-source Python seed framework for modular generative Bayesian
 diagnostic networks in vestibular medicine.
@@ -21,7 +22,7 @@ validation, governance, and regulatory review.
 
 ## Architecture overview
 
-Vestibular-GenBN separates probabilistic phenotype support from deterministic criteria audit. In the current implementation, PC-BPPV positional findings are aggregated into mutually exclusive weak, moderate, and strong phenotype-support nodes using a strong > moderate > weak priority cascade. These graded support nodes are used as posterior evidence for `dx_pc_bppv`, while strict criteria and action flags remain separate audit outputs. Other modules, including HC-BPPV and Ménière disease, currently retain the existing pattern-node evidence structure and can be extended to graded support in future releases.
+Vestibular-GenBN separates probabilistic phenotype support from deterministic criteria audit. In the current implementation, the BPPV module implements mutually exclusive weak, moderate, and strong phenotype-support groups for both posterior-canal and horizontal-canal BPPV. These graded support nodes are used as posterior evidence for dx_pc_bppv and dx_hc_bppv, while strict criteria and action flags remain separate audit outputs. Ménière-spectrum disorders currently retain the existing pattern-node evidence structure.
 
 ## Repository layout
 
@@ -86,3 +87,7 @@ streamlit run app/streamlit_app.py
 
 The included parameters are transparent seed values for software demonstration and future
 calibration. They are not validated diagnostic probabilities.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for release history.

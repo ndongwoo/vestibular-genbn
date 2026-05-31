@@ -2,7 +2,7 @@
   "$schema_version": "vestibular-genbn.clean-seed.v0.1",
   "project_id": "vestibular_genbn_clean_seed",
   "display_name": "Vestibular Generative Bayesian Network Clean Seed",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "created": "2026-05-28",
   "status": "research_seed_not_clinically_validated",
   "intended_use": {

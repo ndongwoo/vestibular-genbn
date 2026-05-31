@@ -9,13 +9,13 @@ def test_evaluate_exclusive_graded_support_group_strong():
         "levels": [
             {"level": "strong", "node": "test_support_strong", "rule": "a == yes AND b == yes"},
             {"level": "moderate", "node": "test_support_moderate", "rule": "a == yes"},
-            {"level": "weak", "node": "test_support_weak", "rule": "c == yes"}
-        ]
+            {"level": "weak", "node": "test_support_weak", "rule": "c == yes"},
+        ],
     }
-    
+
     values = {"a": "yes", "b": "yes", "c": "yes"}
     evaluate_exclusive_graded_support_group(group, values)
-    
+
     assert values["test_support_strong"] == "yes"
     assert values["test_support_moderate"] == "no"
     assert values["test_support_weak"] == "no"
@@ -29,13 +29,13 @@ def test_evaluate_exclusive_graded_support_group_moderate():
         "levels": [
             {"level": "strong", "node": "test_support_strong", "rule": "a == yes AND b == yes"},
             {"level": "moderate", "node": "test_support_moderate", "rule": "a == yes"},
-            {"level": "weak", "node": "test_support_weak", "rule": "c == yes"}
-        ]
+            {"level": "weak", "node": "test_support_weak", "rule": "c == yes"},
+        ],
     }
-    
+
     values = {"a": "yes", "b": "no", "c": "yes"}
     evaluate_exclusive_graded_support_group(group, values)
-    
+
     assert values["test_support_strong"] == "no"
     assert values["test_support_moderate"] == "yes"
     assert values["test_support_weak"] == "no"
@@ -49,13 +49,13 @@ def test_evaluate_exclusive_graded_support_group_weak():
         "levels": [
             {"level": "strong", "node": "test_support_strong", "rule": "a == yes AND b == yes"},
             {"level": "moderate", "node": "test_support_moderate", "rule": "a == yes"},
-            {"level": "weak", "node": "test_support_weak", "rule": "c == yes"}
-        ]
+            {"level": "weak", "node": "test_support_weak", "rule": "c == yes"},
+        ],
     }
-    
+
     values = {"a": "no", "b": "no", "c": "yes"}
     evaluate_exclusive_graded_support_group(group, values)
-    
+
     assert values["test_support_strong"] == "no"
     assert values["test_support_moderate"] == "no"
     assert values["test_support_weak"] == "yes"
@@ -69,13 +69,13 @@ def test_evaluate_exclusive_graded_support_group_none():
         "levels": [
             {"level": "strong", "node": "test_support_strong", "rule": "a == yes AND b == yes"},
             {"level": "moderate", "node": "test_support_moderate", "rule": "a == yes"},
-            {"level": "weak", "node": "test_support_weak", "rule": "c == yes"}
-        ]
+            {"level": "weak", "node": "test_support_weak", "rule": "c == yes"},
+        ],
     }
-    
+
     values = {"a": "no", "b": "no", "c": "no"}
     evaluate_exclusive_graded_support_group(group, values)
-    
+
     assert values["test_support_strong"] == "no"
     assert values["test_support_moderate"] == "no"
     assert values["test_support_weak"] == "no"
@@ -89,13 +89,13 @@ def test_evaluate_exclusive_graded_support_group_missing():
         "levels": [
             {"level": "strong", "node": "test_support_strong", "rule": "a == yes AND b == yes"},
             {"level": "moderate", "node": "test_support_moderate", "rule": "a == yes"},
-            {"level": "weak", "node": "test_support_weak", "rule": "c == yes"}
-        ]
+            {"level": "weak", "node": "test_support_weak", "rule": "c == yes"},
+        ],
     }
-    
+
     values = {}
     evaluate_exclusive_graded_support_group(group, values)
-    
+
     assert values["test_support_strong"] == "no"
     assert values["test_support_moderate"] == "no"
     assert values["test_support_weak"] == "no"
@@ -107,7 +107,7 @@ def test_evaluate_findings_still_works_with_existing_patterns():
     # our changes don't break other functionality by testing that the module loads properly
     # and that the function is accessible without errors
     assert callable(evaluate_exclusive_graded_support_group)
-    
+
     # Test the function with some basic values to make sure there are no runtime issues
     group = {
         "id": "test_support_group",
@@ -115,13 +115,13 @@ def test_evaluate_findings_still_works_with_existing_patterns():
         "levels": [
             {"level": "strong", "node": "test_support_strong", "rule": "a == yes AND b == yes"},
             {"level": "moderate", "node": "test_support_moderate", "rule": "a == yes"},
-            {"level": "weak", "node": "test_support_weak", "rule": "c == yes"}
-        ]
+            {"level": "weak", "node": "test_support_weak", "rule": "c == yes"},
+        ],
     }
-    
+
     values = {"a": "yes", "b": "yes"}
     evaluate_exclusive_graded_support_group(group, values)
-    
+
     # Verify that the function worked without raising an exception
     assert values["test_support_strong"] == "yes"
     assert values["test_support_moderate"] == "no"
