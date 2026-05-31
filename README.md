@@ -1,6 +1,6 @@
 # Vestibular-GenBN
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20460819.svg)](https://doi.org/10.5281/zenodo.20460819)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20470541.svg)](https://doi.org/10.5281/zenodo.20470541)
 [![tests](https://github.com/ndongwoo/vestibular-genbn/actions/workflows/tests.yml/badge.svg)](https://github.com/ndongwoo/vestibular-genbn/actions/workflows/tests.yml)
 
 **Vestibular-GenBN** is an open-source Python seed framework for modular generative Bayesian

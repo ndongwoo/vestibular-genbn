@@ -319,7 +319,7 @@ paper/manuscript.md
 The recommended software citation format is:
 
 ```text
-Nam DW. Vestibular-GenBN: A modular generative Bayesian network framework for vestibular diagnostic knowledge engineering. Version 0.1.4 [software]. Zenodo; 2026. doi:10.5281/zenodo.xxxxxxxx.
+Nam DW. Vestibular-GenBN: A modular generative Bayesian network framework for vestibular diagnostic knowledge engineering. Version 0.1.4 [software]. Zenodo; 2026. doi:10.5281/zenodo.20470541.
 ```
 
 ## Clinical-Use Warning

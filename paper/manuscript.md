@@ -24,7 +24,7 @@ Bayesian network; Vestibular disorders; Dizziness; Clinical decision support
 | **Nr** | **Code  metadata description**                               | **Metadata**                                                 |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | C1     | Current code version                                         | v0.1.4                                                       |
-| C2     | Permanent link to  code/repository used for this code version | https://github.com/ndongwoo/vestibular-genbn; archived version: https://doi.org/10.5281/zenodo.20451790 |
+| C2     | Permanent link to  code/repository used for this code version | https://github.com/ndongwoo/vestibular-genbn; archived version: https://doi.org/10.5281/zenodo.20470541 |
 | C3     | Legal code license                                           | Apache License 2.0                                           |
 | C4     | Code versioning system used                                  | git                                                          |
 | C5     | Software code languages,  tools and services used            | Python 3.10+, JSON, YAML; NumPy, pandas, Pydantic, jsonschema, NetworkX, matplotlib, Click, Rich, PyYAML; optional Streamlit and Plotly; pytest, pytest-cov, ruff, black, mypy, and Jupyter for development/testing; GitHub and Zenodo for version control and archival release |
@@ -195,4 +195,4 @@ During the preparation of this work and the associated software, the authors use
 
 [9] Basura GJ, Adams ME, Monfared A, Schwartz SR, Antonelli PJ, Burkard R, et al. Clinical Practice Guideline: Meniere's Disease. Otolaryngol Head Neck Surg. 2020;162(2_suppl):S1-S55.
 
-[10] Nam DW. Vestibular-GenBN: A modular generative Bayesian network framework for vestibular diagnostic knowledge engineering. Version 0.1.4 [software]. Zenodo; 2026. https://doi.org/10.5281/zenodo.20451790.
+[10] Nam DW. Vestibular-GenBN: A modular generative Bayesian network framework for vestibular diagnostic knowledge engineering. Version 0.1.4 [software]. Zenodo; 2026. https://doi.org/10.5281/zenodo.20470541.
